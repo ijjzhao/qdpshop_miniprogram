@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/plan/list/list",
     "pages/index/index",
     "pages/catalog/catalog",
     "pages/catalog/forplan/catalog",
@@ -53,13 +52,14 @@
     "pages/plan/add/add",
     "pages/plan/canvas/canvas",
     "pages/plan/detail/detail",
+    "pages/plan/list/list",
     "pages/stylist/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "enablePullDownRefresh": false,
-    "navigationBarTitleText": "德威商城·乐家家国际超市",
+    "navigationBarTitleText": "轻搭配",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

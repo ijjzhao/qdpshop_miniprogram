@@ -184,7 +184,6 @@ button[class="box_bottom_item"]::after {
   flex-wrap: wrap;
   float: left;
   background: #fff;
-  border-radius: 0;
   border-bottom: 1px solid #fafafa;
 }
 .box_bottom_item_image {

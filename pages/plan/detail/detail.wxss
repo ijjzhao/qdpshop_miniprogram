@@ -1,0 +1,55 @@
+/* pages/plan/detail/detail.wxss */
+@import "../../../lib/mycss/plan";
+@import "../../../lib/mycss/common";
+
+.plan-pic {
+  margin: 0 100rpx 250rpx 100rpx;
+  width: 550rpx;
+  height: 550rpx;
+}
+
+.goods-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  padding-left: 20rpx;
+  color: #555;
+}
+
+.style-item-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0 30rpx;
+  margin-bottom: 50rpx;
+}
+
+.style-item-img {
+  width: 275rpx;
+  height: 275rpx;
+  left: 50rpx;
+  top: 20rpx;
+  overflow: hidden;
+}
+
+.style-item-img .img{
+  position: absolute;
+  width: 375rpx;
+  height: 375rpx;
+  left: -50rpx;
+  top: -50rpx;
+}
+
+.item-price {
+  width: 100%;
+  color: red;
+  bottom: 20rpx;
+  position: absolute;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.item-checkbox {
+  position: absolute;  
+  top: 10rpx;
+  left: 10rpx;
+}

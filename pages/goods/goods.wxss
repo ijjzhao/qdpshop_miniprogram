@@ -571,6 +571,20 @@ button[class="scroll_goods_tabler"]::after {
   border-bottom-right-radius: 0rpx;
   background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%);
 }
+
+.add_canvas {
+  text-align: center;
+  width: 640rpx;
+  height: 80rpx;
+  line-height: 82rpx;
+  padding: 0;
+  margin: 10rpx 55rpx;
+  font-size: 25rpx;
+  color: #f4f4f4;
+  border-radius: 50rpx;
+  background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%);
+}
+
 .action_button_area_nocollage .buy_now {
   /* border: 1px solid #000; */
   text-align: center;

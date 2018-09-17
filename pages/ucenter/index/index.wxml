@@ -106,5 +106,9 @@
     <image class='box_bottom_item_image' src='../../../image/ucenter_constrem.png'></image>
     <view class='box_bottom_item_text'>联系客服</view>
   </button>
+  <button class='box_bottom_item' open-type='contact' bindtap='jumpPage' data-route='/pages/plan/list/list'>
+    <image class='box_bottom_item_image' src='../../../image/ucenter_feedback.png'></image>
+    <view class='box_bottom_item_text'>我的方案</view>
+  </button>
 </view>
 <button wx:if="{{!auth}}" class='auth_btn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>

@@ -1,0 +1,50 @@
+<!--pages/plan/canvas/canvas.wxml-->
+<canvas canvas-id='customCanvas' style='width: {{750 * unit}}rpx; height: {{750 * unit}}rpx'></canvas>
+
+<view class="img-container">
+  <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
+    bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}}'></image>
+</view>
+
+<view class="action-bar {{actionBarShow ? '.action-bar-show' : ''}}"  wx:if="{{actionBarShow}}">
+  <view class="action-bar-item" bindtap="removeFromCanvas">
+    <image class="action-bar-item-icon" src="../../../static/icons/icon_delete.svg"></image>
+    <!-- <view class="action-bar-item-text">删除</view> -->
+  </view>
+  <view class="action-bar-item" bindtap="increaseZ">
+    <image class="action-bar-item-icon" src="../../../static/icons/icon_inc.svg"></image>
+    <!-- <view class="action-bar-item-text">上移</view> -->
+  </view>
+  <view class="action-bar-item" bindtap="decreaseZ">
+    <image class="action-bar-item-icon" src="../../../static/icons/icon_dec.svg"></image>
+    <!-- <view class="action-bar-item-text">下移</view> -->
+  </view>
+  <view class="action-bar-item" bindtap="increaseScale">
+    <image class="action-bar-item-icon" src="../../../static/icons/icon_inc_scale.svg"></image>
+    <!-- <view class="action-bar-item-text">放大</view> -->
+  </view>
+  <view class="action-bar-item" bindtap="decreaseScale">
+    <image class="action-bar-item-icon" src="../../../static/icons/icon_dec_scale.svg"></image>
+    <!-- <view class="action-bar-item-text">缩小</view> -->
+  </view>
+</view>
+
+<view class='bottom-control'>
+  <navigator url='/pages/catalog/forplan/catalog'>
+    <image class='add-btn' src='../../../static/icons/svg_add.svg'></image>
+  </navigator>
+  <scroll-view class='good-container' scroll-x='true'>
+    <view class='good-thumbnail' wx:for='{{goodsArr}}' wx:key='{{item.id}}' wx:for-index="index">
+      <image class='img' src='{{item.url}}' data-index='{{index}}' bindtap='addToCanvas' bindlongpress='toggleRemoveBtn'></image>
+      <view class="btn" wx:if="{{removeBtnShow}}">
+        <image class="remove" src='../../../static/icons/icon_remove.svg' bindtap='removeGoods' data-index='{{index}}'></image>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<view class="bottom-btn">
+  <view class="r {{goodsArr.length == 0 ? 'disable' : ''}}" bindtap="saveCanvas">
+  {{planid ? '更新详情' : '填写详情'}}
+  </view>
+</view>

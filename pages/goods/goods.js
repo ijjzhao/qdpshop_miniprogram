@@ -39,8 +39,18 @@ Page({
     Inviter_laster: '',
     Inviter_userid: [],
     CorporateName: '',
+    forplan: false,
   },
   onLoad: function (options) {
+    if (options.forplan == 'true') {
+      this.setData({
+        forplan: options.forplan
+      })
+      wx.setNavigationBarTitle({
+        title: '制作方案'
+      });
+    }
+
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     console.log(options)
@@ -867,6 +877,12 @@ Page({
       })
       return false;
     }
+
+    if (this.data.forplan) {
+      this.addToCanvas();
+      return
+    }
+
     // user.loginByWeixin().then(res => {
     //   app.globalData.userInfo = res.data.userInfo;
     //   app.globalData.token = res.data.token;
@@ -929,5 +945,32 @@ Page({
   },
   canelCart() {
     this.hideModal()
-  }
+  },
+  addToCanvas: function () {
+    wx.showLoading({
+      title: '添加中',
+    })
+    var pages = getCurrentPages();
+    var canvasPage = pages[pages.length - 4];  // -1 当前商品页面 -2 categroy页面 -3 catalog -4 cavas
+    let goodsArr = canvasPage.data.goodsArr
+    for (let i in goodsArr) {
+      if (this.data.goods.id == goodsArr[i].goods_id) {
+        wx.showModal({
+          title: '提示',
+          content: '您已添加过该宝贝',
+          showCancel: false
+        })
+        wx.hideLoading()
+        return
+      }
+    }
+    canvasPage.addGoods({
+      goods_id: this.data.goods.id,
+      url: this.data.goods.list_pic_url
+    })
+    wx.navigateBack({
+      delta: 3
+    })
+    wx.hideLoading()
+  },
 })

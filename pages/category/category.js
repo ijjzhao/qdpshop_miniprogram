@@ -24,7 +24,8 @@ Page({
     size: 16,
     lastX: 0,
     lastY: 0,
-    onPull: false
+    onPull: false,
+    forplan: false
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -40,6 +41,15 @@ Page({
         id: parseInt(options.id),
         title: options.title,
         frompage: parseInt(options.page)
+      });
+    }
+    // 区分是普通浏览 还是搭配方案的选择物品
+    if (options.forplan == 'true') {
+      this.setData({
+        forplan: true
+      })
+      wx.setNavigationBarTitle({
+        title: '制作方案'
       });
     }
     wx.setNavigationBarTitle({

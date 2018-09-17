@@ -1,0 +1,78 @@
+/* pages/plan/list/list.wxss */
+@import "../../../lib/mycss/plan";
+@import "../../../lib/mycss/common";
+
+page {
+  background: #f4f4f4;
+}
+
+.search {
+  margin: 20rpx 10rpx 0 10rpx;
+  padding: 10rpx 0;
+  display: flex;
+}
+
+.search-input {
+  flex: 3;
+  height: 70rpx;
+  float: left;
+  border: 1rpx solid #d8d8d8;
+  padding: 0 20rpx;
+  background: #fff;
+}
+
+.phcolor {
+  color: #acacac;
+}
+
+.search-btn {
+  flex: 1;
+  height: 74rpx;
+  float: left;
+  border: 1rpx solid #408ee2;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+  text-align: center;
+  margin-left: 10rpx;
+  background: #fff;
+}
+
+.search-title {
+  width: 180rpx;
+  height: 70rpx;
+  margin-left: 285rpx;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  margin-top: 30rpx;
+  line-height: 70rpx;
+  background: #408ee2;
+  border: 1px solid #408EE2;
+  border-radius: 15rpx;
+}
+
+.edit-row {
+  position: absolute;
+  height: 80rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+}
+
+.edit-row-btn {
+  flex: 1;
+  height: 100%;
+  text-align: center;
+  background: #408EE2;  
+}
+
+.edit-row-btn-2nd {
+  border-left: 1rpx solid #fff;
+}
+
+.edit-row-btn .text {
+  line-height: 80rpx;
+  color: #fff;
+}

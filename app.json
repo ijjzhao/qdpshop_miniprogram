@@ -1,7 +1,9 @@
 {
   "pages": [
+    "pages/plan/list/list",
     "pages/index/index",
     "pages/catalog/catalog",
+    "pages/catalog/forplan/catalog",
     "pages/newGoods/newGoods",
     "pages/hotGoods/hotGoods",
     "pages/ucenter/address/address",
@@ -47,7 +49,11 @@
     "pages/ucenter/collage/collage",
     "pages/ucenter/level_page/level_page",
     "pages/ucenter/NoviceGuide/NoviceGuide",
-    "pages/ucenter/AftersaleGuide/AftersaleGuide"
+    "pages/ucenter/AftersaleGuide/AftersaleGuide",
+    "pages/plan/add/add",
+    "pages/plan/canvas/canvas",
+    "pages/plan/detail/detail",
+    "pages/stylist/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

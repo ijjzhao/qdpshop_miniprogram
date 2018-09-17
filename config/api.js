@@ -1,6 +1,10 @@
 const ApiRootUrl = 'http://127.0.0.1:8360/api/';
+// const ApiRootUrl = 'http://39.104.85.163:8360/api/';
+// const ApiRootUrl = 'http://192.168.0.120:8360/api/';
+const cdnImgUrl = 'http://collocate.qingdapei.net/img/plan/';
 
 module.exports = {
+  cdnImgUrl: cdnImgUrl,
   uploadaddress: '', //七牛上传地址
   IndexUrl: ApiRootUrl + 'index/index', //首页数据接口
   CatalogList: ApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
@@ -217,4 +221,15 @@ module.exports = {
   SedDomesticSode: ApiRootUrl + 'bingphone/sedDomesticsode',//发送国内短信
   SedAbroadSode: ApiRootUrl + 'bingphone/sedAbroadsode',//发送国际短信
 
+
+
+  StylistDetail: ApiRootUrl + 'stylist/detail', // 搭配师详情
+
+  PlanSave: ApiRootUrl + 'plan/save', // 保存方案
+  PlanList: ApiRootUrl + 'plan/list', // 
+  PlanSearch: ApiRootUrl + 'plan/search', // 搜索方案
+  PlanGet: ApiRootUrl + 'plan/get', // 搜索方案
+  PlanUpdate: ApiRootUrl + 'plan/update', // 更新方案
+  PlanDelete: ApiRootUrl + 'plan/delete', // 删除方案
+  PlanCopy: ApiRootUrl + 'plan/copy', // 复制方案
 };

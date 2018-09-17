@@ -25,16 +25,12 @@
       <image class="arrow" src="../../static/images/address_right.png" background-size="cover"></image>
     </view>
     <button wx:if="{{!auth}}" class='scroll_goods_tabler' style='padding-left:0;padding-right:0' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-    <view class="text">选择：{{checkedSpecText}}</view>
-      <image class="arrow" src="../../static/images/address_right.png" background-size="cover"></image></button>
-    <view class="scroll_goods_tabler" style='border-bottom: 1px solid #fafafa;' bindtap='toindex' data-type='0'>
-
-
-
+      <view class="text">选择：{{checkedSpecText}}</view>
+      <image class="arrow" src="../../static/images/address_right.png" background-size="cover"></image>
+    </button>
+    <view class="scroll_goods_tabler" style='border-bottom: 1px solid #fafafa;' bindtap='toindex' data-type='0' wx:if="{{!forplan}}">
       <image src="../../image/CorporateData/bbg_goods_simple.png" class='scroll_goods_tabler_logo'></image>
-      <view class="scroll_goods_tabler_text" >贝堡商城</view>
-
-
+      <view class="scroll_goods_tabler_text">贝堡商城</view>
       <image class="scroll_goods_tabler_arrow" src="../../static/images/address_right.png" background-size="cover"></image>
     </view>
     <view class='scroll_goods_comments' wx:if="{{comment.count > 0}}">
@@ -61,7 +57,7 @@
     <view class="detail">
       <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />
     </view>
-    <view class="goods_problem">
+    <view class="goods_problem" wx:if="{{!forplan}}">
       <view class="h">
         <view class="line"></view>
         <text class="title">常见问题</text>
@@ -78,7 +74,7 @@
         </view>
       </view>
     </view>
-    <view class="goods_problem" wx:if="{{relatedGoods.length > 0}}">
+    <view class="goods_problem" wx:if="{{relatedGoods.length > 0 && !forplan}}">
       <view class="h" style='margin-bottom:5rpx;'>
         <view class="line"></view>
         <text class="title">大家都在看</text>
@@ -98,7 +94,7 @@
     </view>
     <view class='comy_tip'>贝堡网络 提供技术支持</view>
 </scroll-view>
-<view class='bottom_btn_area'>
+<view class='bottom_btn_area' wx:if='{{!forplan}}'>
   <button class='area customer' open-type='contact'>
     <image class="icon" src="/image/coumse.png"></image>
     <view class='text'>客服</view>
@@ -134,10 +130,13 @@
     </view>
   </view>
 </view>
+<view class='bottom_btn_area' wx:else>
+  <view class='add_canvas' bindtap="checkpower" data-type='0'>加入画布</view>
+</view>
 
 <!--隐藏区域  -->
-<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-<view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus}}">
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus && !forplan}}"></view>
+<view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus && !forplan}}">
   <view class='sku_box_top'>
     <image class='sku_box_top_img' src='{{goods.list_pic_url}}'></image>
     <view class='sku_box_top_skuprice' wx:if="{{typec == 0}}">
@@ -181,6 +180,41 @@
     <view class="right" bindtap="collect" wx:if="{{typec == 1}}">立即拼团</view>
   </view>
 </view>
+<!-- 加入画布的modal -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus &&forplan}}"></view>
+<view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus && forplan}}">
+  <view class='sku_box_top'>
+    <image class='sku_box_top_img' src='{{goods.list_pic_url}}'></image>
+    <view class='sku_box_top_skuprice' wx:if="{{typec == 0}}">
+      ￥
+      <span class="big">{{checkgoodsprice.retail_price}}</span> 元
+    </view>
+    <view class='sku_box_top_skuprice' wx:if="{{typec == 1}}">
+      <span style="font-size:20rpx;font-weight:bold"> 拼团价￥</span>
+      <span class="big">{{collage[0].collage_price}}</span> 元
+      <span class='sku_box_top_skurelprice'>￥ {{checkgoodsprice.retail_price}} </span>
+    </view>
+    <view class='sku_box_top_skuvalue' wx:if="{{productList.length>0}}">
+      已选择：{{checkedSpecText}}
+    </view>
+    <view class='sku_middle_spec_goodsnum'>剩余：{{checkgoodsprice.goods_number}}</view>
+  </view>
+  <view class='sku_box_middle'>
+    <view class="sku_middle_spec">
+      <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
+        <view class="sku_middle_spec_name">{{item.name}}</view>
+        <view class="sku_middle_spec_values">
+          <view class="sku_middle_spec_value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='second_corner_btn_area'>
+    <view class="add_canvas" bindtap="addToCart">加入画布</view>
+  </view>
+</view>
+
+
 <button class='shall_buttom top' wx:if="{{is_Inviter == 1}}" bindtap='toindex' data-type='0'>
   去商城首页</button>
 <button class='shall_buttom' open-type="share" wx:if="{{auth && isdistribution}}">

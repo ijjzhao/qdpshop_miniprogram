@@ -29,7 +29,7 @@
         <text class="desc">{{activemainCategory.front_name}}</text>
       </view>
       <view class="currency_goods_view_item" wx:if="{{point_local_category.length > 0}}">
-        <navigator class="currency_goods_view_item_a {{(iindex + 1) % 2 == 0 ? 'currency_goods_view_item_b' : ''}}" url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{point_local_category}}" wx:for-item="iitem" wx:for-index="iindex" wx:key="{{iitem.id}}" wx:key="{{iitem.id}}" >
+        <navigator class="currency_goods_view_item_a {{(iindex + 1) % 2 == 0 ? 'currency_goods_view_item_b' : ''}}" url="/pages/goods/goods?id={{iitem.id}}&forplan={{forplan}}" wx:for="{{point_local_category}}" wx:for-item="iitem" wx:for-index="iindex" wx:key="{{iitem.id}}" wx:key="{{iitem.id}}" >
            <image class="currency_goods_view_item_img" src="{{iitem.list_pic_url}}"></image>
            <view class="currency_goods_view_item_name">{{iitem.name}}</view> 
            

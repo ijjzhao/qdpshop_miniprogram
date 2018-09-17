@@ -1,0 +1,41 @@
+<!--pages/plan/list/list.wxml-->
+<view>
+<view class="search">
+  <input class="search-input" placeholder="请输入方案名称" placeholder-class="phcolor" bindinput="getKeyword"></input>
+  <view class="search-btn" bindtap='searchBtnTapped'>搜索</view>
+</view>
+
+<view class="style">
+  <view class='search-title' wx:if="{{showSearchResult}}">搜索结果</view>
+  <view class="style-btns" wx:if="{{!showSearchResult}}">
+    <view class="style-btn style-btn-first {{currentStyleBtnIndex == -1 ? 'style-btn-active' : ''}}" bindtap="styleBtnTapped" data-index="-1">全部</view>
+    <view class="style-btn style-btn-middle {{currentStyleBtnIndex == 0 ? 'style-btn-active' : ''}}" bindtap="styleBtnTapped" data-index="0">{{styles[0]}}</view>
+    <view class="style-btn style-btn-middle {{currentStyleBtnIndex == 1 ? 'style-btn-active' : ''}}" bindtap="styleBtnTapped" data-index="1">{{styles[1]}}</view>
+    <view class="style-btn style-btn-last {{currentStyleBtnIndex == 2 ? 'style-btn-active' : ''}}" bindtap="styleBtnTapped" data-index="2">{{styles[2]}}</view>
+  </view>
+  <view class="style-grid" style="margin-bottom: 110rpx;">
+    <view class="style-item" wx:for="{{stylePlans}}" wx:key="item.id" wx:index="index">
+      <image class="style-item-img" src="{{cdnImgUrl}}{{item.id}}.png?v={{item.v}}"
+      data-planid="{{item.id}}" data-index="{{index}}"
+      bindtap="itemTapped" bindlongpress="planLongPressed"></image>
+      <text class="style-item-text">{{item.name}}</text>
+      <view class="edit-row" wx:if="{{editRowIndex == index}}">
+        <view class='edit-row-btn' bindtap='copyPlan'>
+          <text class='text'>复制</text>
+        </view>
+        <view class='edit-row-btn edit-row-btn-2nd' bindtap='deletePlan'>
+          <text class='text'>删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style='height: 70rpx;'></view>
+
+<view class="bottom-btn">
+  <navigator class="bottom-navigator" url="../canvas/canvas?style={{styles[currentStyleBtnIndex]}}">
+    <view class="r">制作新方案</view>
+  </navigator>
+</view>
+</view>

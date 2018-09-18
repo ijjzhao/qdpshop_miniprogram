@@ -1,5 +1,5 @@
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
 const pay = require('../../../services/pay.js');
 
 var app = getApp();
@@ -221,7 +221,6 @@ Page({
     // } catch (e) {
 
     // }
-    console.log()
     this.onLoad()
 
   },

@@ -427,7 +427,6 @@ Page({
     // console.log(checkedNameValue)
 
     if (checkedValue.length == checkedNameValue.length) {
-      console.log("999999")
       wx.showLoading({
         title: '获取中...',
         mask: true,
@@ -440,9 +439,7 @@ Page({
         var obj = checkedNameValue[i].valueId
         value2.push(obj)
       }
-      console.log(value2)
       let value3 = value2.sort()
-      console.log(value3)
       // let ids = value2.join('_')
       util.request(api.FindValues, { data: value3 }, "POST").then(function (res) {
         console.log(res)
@@ -880,6 +877,7 @@ Page({
 
     if (this.data.forplan) {
       this.addToCanvas();
+      console.log(this.data.checkgoodsprice)
       return
     }
 
@@ -966,7 +964,8 @@ Page({
     }
     canvasPage.addGoods({
       goods_id: this.data.goods.id,
-      url: this.data.goods.list_pic_url
+      url: this.data.goods.list_pic_url,
+      product_id: this.data.checkgoodsprice.id,
     })
     wx.navigateBack({
       delta: 3

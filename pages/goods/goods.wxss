@@ -26,46 +26,48 @@ page {
 }
 .scroll_goods_info .name {
   /* border: 1px solid #000; */
-  text-align: center;
+  text-align: left;
   padding: 15rpx 20rpx;
   padding-top: 35rpx;
-  font-size: 40rpx;
+  font-size: 32rpx;
   font-weight: bold;
   color: #222;
   /* letter-spacing: 1rpx; */
-  line-height: 50rpx;
+  line-height: 40rpx;
 }
 .scroll_goods_info .desc {
   /* border: 1px solid #000; */
-  text-align: center;
-  margin: 10rpx 30rpx;
-  font-size: 24rpx;
+  text-align: left;
+  margin: 10rpx 20rpx;
+  font-size: 28rpx;
   /* letter-spacing: 1rpx; */
   color: #757575;
   line-height: 32rpx;
 }
 .scroll_goods_info .price_area {
   /* border: 1px solid #000; */
-  height: 88rpx;
-  line-height: 88rpx;
+  height: 148rpx;
+  line-height: 148rpx;
+  margin: 10rpx 20rpx;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 .scroll_goods_info .price_area .extra_price {
-  font-size: 22rpx;
+  font-size: 28rpx;
   padding-top: 11.75rpx;
   /* line-height: 100rpx; */
-  color: #757575;
+  color: #8f8f8f;
+  font-weight: lighter;
   text-decoration:line-through;
 }
 .scroll_goods_info .price_area .retail_price {
-  color: #dc3022;
+  color: #b4180a;
   font-weight: bold;
 }
 .scroll_goods_info .price_area .retail_price .big{
   /* color: #dc3022; */
-  font-size: 48rpx;
+  font-size: 60rpx;
   padding-right: 10rpx;
 }
 /* //商品售出等信息区域 */
@@ -242,11 +244,18 @@ page {
   top: 30rpx;
   font-size: 22rpx;
   /* font-weight: bold; */
-  color: #dc3022;
+  color: #b82618;
 }
 .sku_box_top_skuprice .big {
-   font-size: 46rpx;
-   font-weight: bold; 
+   font-size: 32rpx;
+   /* font-weight: bold;  */
+   display: inline-block;
+}
+.sku_box_top_skuprice .extra_price {
+   display: inline-block;
+   text-decoration:line-through;
+   margin-left: 20rpx;
+   color: #666;
 }
 
 .sku_box_top_skuvalue {
@@ -254,7 +263,7 @@ page {
   left: 300rpx;
   top: 90rpx;
   font-size: 28rpx;
-  color: #444;
+  color: #666;
   /* color: #E02E24; */
 }
 
@@ -285,18 +294,18 @@ page {
 
 .sku_middle_spec_value {
   display: inline-block;
-  height: 62rpx;
-  background: #d5d5d5;
-  border-radius: 15rpx;
+  height: 70rpx;
+  /* background: #fff; */
+  border-radius: 5rpx;
   padding: 0 35rpx;
-  line-height: 62rpx;
+  line-height: 70rpx;
   text-align: center;
   margin-right: 25rpx;
   margin-top: 5.5rpx;
   margin-bottom: 17.5rpx;
-  /* border: 1px solid #333; */
   font-size: 25rpx;
-  color: #333;
+  color: #777;
+  border: 1rpx solid #e7e7e7;
 }
 
 .sku_middle_spec_goodsnum {
@@ -317,9 +326,9 @@ page {
 }
 
 .sku_middle_spec_value.selected {
-  /* border: 1px solid #b4282d; */
-  background: #fe4800;
-  color: #f5f5f5;
+  border: 1px solid #bb6b6b;
+  /* background: #fe4800; */
+  color: #bb6b6b;
 }
 
 .sku_middle_spec_num {
@@ -330,8 +339,9 @@ page {
 .sku_middle_spec_num .selnum {
   width: 322rpx;
   height: 71rpx;
-  border: 1px solid #ccc;
-  margin: 0 auto;
+  border: 1px solid #e7e7e7;
+  border-radius: 5rpx;
+  margin: 0 0;
   /* left: calc(50vw - 161px); */
   display: flex;
 }
@@ -341,6 +351,7 @@ page {
   height: 100%;
   text-align: center;
   line-height: 65rpx;
+  color: #777;  
 }
 
 .sku_middle_spec_num .number {
@@ -348,8 +359,8 @@ page {
   height: 100%;
   text-align: center;
   line-height: 68.75rpx;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-left: 1px solid #e7e7e7;
+  border-right: 1px solid #e7e7e7;
   float: left;
 }
 
@@ -358,6 +369,7 @@ page {
   height: 100%;
   text-align: center;
   line-height: 65rpx;
+  color: #777;  
 }
 
 
@@ -574,15 +586,24 @@ button[class="scroll_goods_tabler"]::after {
 
 .add_canvas {
   text-align: center;
-  width: 640rpx;
-  height: 80rpx;
-  line-height: 82rpx;
+  /* width: 640rpx;
+  height: 80rpx; */
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
   padding: 0;
-  margin: 10rpx 55rpx;
-  font-size: 25rpx;
+  /* margin: 10rpx 55rpx; */
+  font-size: 29rpx;
   color: #f4f4f4;
+  /* border-radius: 50rpx; */
+  /* background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%); */
+  background: #408EE2;
+}
+
+.add_canvas_radius {
+  width: 610rpx;
   border-radius: 50rpx;
-  background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%);
+  margin: 0 20rpx;
 }
 
 .action_button_area_nocollage .buy_now {
@@ -714,9 +735,6 @@ button[class="scroll_goods_tabler"]::after {
   color: #f4f4f4;
   letter-spacing: 2rpx;
 }
-
-
-
 
 .container {
   margin-bottom: 100rpx;

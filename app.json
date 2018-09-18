@@ -17,6 +17,7 @@
     "pages/pay/pay",
     "pages/payResult/payResult",
     "pages/ucenter/index/index",
+    "pages/ucenter/bbgindex/bbgindex",
     "pages/comment/comment",
     "pages/brand/brand",
     "pages/brandDetail/brandDetail",

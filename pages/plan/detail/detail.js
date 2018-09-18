@@ -86,29 +86,7 @@ Page({
 
   bottomBtnTapped() {
     if (this.data.forCustomer) {
-      let hasGoods = false
-      for (let i in this.data.goodsArr) {
-        let goods = this.data.goodsArr[i];
-        if (goods.checked) {
-          hasGoods = true
-          break
-        }
-      }
-
-      if (hasGoods) {
-        // todo 下单
-        wx.showModal({
-          title: '提示',
-          content: '用户下单待开发',
-          showCancel: false
-        })
-      } else {
-        wx.showModal({
-          title: '提示',
-          content: '您尚未选择宝贝',
-          showCancel: false
-        })
-      }
+      this.addToCart();
     } else {
       wx.navigateTo({
         url: `../canvas/canvas?planid=${this.data.planDetail.id}`,
@@ -116,6 +94,67 @@ Page({
     }
   },
 
+  addToCart() {
+    let hasGoods = false
+    for (let i in this.data.goodsArr) {
+      let goods = this.data.goodsArr[i];
+      if (goods.checked) {
+        hasGoods = true
+        break
+      }
+    }
+    // 如果一项没选
+    if (!hasGoods) {
+      wx.showModal({
+        title: '提示',
+        content: '您尚未选择宝贝',
+        showCancel: false
+      })
+      return
+    }
+
+    wx.showLoading({
+      title: '添加中',
+    })
+
+    let asyncRequest = async () => {
+      try {
+        for (let i in this.data.goodsArr) {
+          let goods = this.data.goodsArr[i];
+          if (goods.checked) {
+            await this.addCartRequest(goods);
+          }
+        }
+        wx.switchTab({
+          url: '/pages/cart/cart',
+        })
+      } catch (err) {
+        console.log(err);
+      }
+
+      wx.hideLoading()
+    }
+
+    asyncRequest();
+  },
+
+  addCartRequest(goods) {
+    return new Promise((resolve, reject) => {
+      util.request(api.CartAdd, {
+        goodsId: goods.goods_id,
+        number: 1,
+        productId: goods.product_id
+      }, "POST").then((res) => {
+        console.log(res)
+        if (res.errno === 0) {
+          console.log('添加购物车成功')
+          resolve(res);
+        } else {
+          reject(res);
+        }
+      })
+    })
+  },
   
   /**
    * 生命周期函数--监听页面初次渲染完成

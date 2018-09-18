@@ -52,9 +52,9 @@ Page({
     });
   },
 
-  handleNameChange({ detail = {} }) {
+  handleNameChange(e) {
     this.setData({
-      name: detail.detail.value
+      name: e.detail.value
     });
     this.checkBtnValidation()
   },
@@ -67,23 +67,23 @@ Page({
     this.checkBtnValidation()
   },
 
-  handlefitGroupChange({ detail = {} }) {
+  handlefitGroupChange(e) {
     this.setData({
-      fit_group: detail.detail.value
+      fit_group: e.detail.value
     });
     this.checkBtnValidation()    
   },
 
-  handlefitSceneChange({ detail = {} }) {
+  handlefitSceneChange(e) {
     this.setData({
-      fit_scene: detail.detail.value
+      fit_scene: e.detail.value
     });
     this.checkBtnValidation()
   },
 
-  handleDescChange({ detail = {} }) {
+  handleDescChange(e) {
     this.setData({
-      desc: detail.detail.value
+      desc: e.detail.value
     });
     this.checkBtnValidation()
   },

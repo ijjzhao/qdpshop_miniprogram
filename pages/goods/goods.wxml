@@ -1,4 +1,4 @@
-<scroll-view scroll-y class='goods_view_scroll'>
+<scroll-view scroll-y class='goods_view_scroll {{forplan ? "":"to-bottom"}}'>
   <swiper class="goods_view_scroll_loop_imgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{gallery}}" wx:key="{{item.id}}">
       <image style='height:100%;width:100%' src="{{item.img_url}}"></image>
@@ -73,7 +73,7 @@
       </view>
     </view>
   </view>
-  <view class="goods_problem" wx:if="{{relatedGoods.length > 0 && !forplan}}">
+  <view class="goods_problem" wx:if="{{relatedGoods.length > 0 && false}}">
     <view class="h" style='margin-bottom:5rpx;'>
       <view class="line"></view>
       <text class="title">大家都在看</text>
@@ -94,7 +94,7 @@
   <view class='comy_tip'>轻搭配</view>
 </scroll-view>
 
-<view class='bottom_btn_area' wx:if='{{!forplan}}'>
+<view class='bottom_btn_area' wx:if='{{false}}'>
   <button class='area customer' open-type='contact'>
     <image class="icon" src="/image/coumse.png"></image>
     <view class='text'>客服</view>

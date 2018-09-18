@@ -95,7 +95,8 @@ Page({
         title: '搭配师帮你挑了一件好货，打开看看吧',
         desc: that.data.goods.name,
         path: '/pages/goods/goods?id=' + that.data.goods.id + '&ids=' + that.data.Inviter_locallaster,
-        imageUrl: '../../image/CorporateData/bbg_share_logo.png',
+        imageUrl: that.data.goods.list_pic_url
+        // imageUrl: '../../image/CorporateData/bbg_share_logo.png',
     }
   },
   bindGetUserInfo: function (e) {

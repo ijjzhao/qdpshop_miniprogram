@@ -202,6 +202,13 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    let that = this
+    return {
+      title: '帮你搭配了一套服饰，打开看看吧',
+      desc: that.data.planDetail.name,
+      path: `/pages/plan/detail/detail?planid=${that.data.planDetail.id}&forCustomer=1`,
+      imageUrl: `${that.data.cdnImgUrl}${that.data.planDetail.id}.png?v=${that.data.planDetail.v}`
+      // imageUrl: '../../image/CorporateData/bbg_share_logo.png',
+    }
   }
 })

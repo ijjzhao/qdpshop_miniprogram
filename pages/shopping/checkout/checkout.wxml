@@ -6,7 +6,7 @@
         <text class="default" wx:if="{{checkedAddress.is_default === 1}}">默认</text>
       </view>
       <view class="m">
-        <text class="mobile">{{checkedAddress.mobile}}</text>
+        <!-- <text class="mobile">{{checkedAddress.mobile}}</text> -->
         <!-- <text class="mobile">123</text> -->
         <text class="address">{{checkedAddress.full_region + checkedAddress.address}}</text>
       </view>

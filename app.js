@@ -43,7 +43,7 @@ App({
     token: '',
   },
   CorporateData: {
-    name: 'bbg',
-    title: '贝堡商城'
+    name: 'Light',
+    title: '轻搭配'
   }
 })

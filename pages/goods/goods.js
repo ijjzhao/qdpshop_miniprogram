@@ -92,7 +92,7 @@ Page({
     console.log(that.data.goods.id)
     console.log(that.data.Inviter_locallaster)
       return {
-        title: '贝堡商城',
+        title: '搭配师帮你挑了一件好货，打开看看吧',
         desc: that.data.goods.name,
         path: '/pages/goods/goods?id=' + that.data.goods.id + '&ids=' + that.data.Inviter_locallaster,
         imageUrl: '../../image/CorporateData/bbg_share_logo.png',

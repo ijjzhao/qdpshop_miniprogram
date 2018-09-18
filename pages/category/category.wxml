@@ -49,4 +49,4 @@
 </view>
 <view wx:if="{{count > point_local_category.length}}" class='comy_tip comy_tip_gory'>{{loading_text}} ~ </view>
 <view wx:if="{{point_local_category.length !== 0 && (count == point_local_category.length)}}" class='comy_tip comy_tip_gory'>您已经到底啦 ~ </view>
-<view wx:if="{{point_local_category.length !== 0 && (count == point_local_category.length)}}" class='comy_tip comy_tip_gory'>贝堡网络 提供技术支持</view>
+<view wx:if="{{point_local_category.length !== 0 && (count == point_local_category.length)}}" class='comy_tip comy_tip_gory'>轻搭配</view>

@@ -27,8 +27,8 @@ Page({
   onShareAppMessage: function() {
     let that = this
       return {
-        title: '贝堡商城',
-        desc: '贝堡商城微信小程序',
+        title: '轻搭配',
+        desc: '搭配师帮你挑好衣服，邮寄到家！',
         path: '/pages/index/index',
         imageUrl: '../../image/CorporateData/bbg_share_logo.png',
     }

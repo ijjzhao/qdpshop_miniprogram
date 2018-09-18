@@ -13,18 +13,18 @@
       <text class="txt">商品搜索, 共{{goodsCount}}款好物</text>
     </navigator>
   </view>
+  <!--
   <view class="icon_bar">
     <view class="icon_bar_item" bindtap='JumpUrl' data-url='{{item.category_id}}' wx:for="{{channel}}" wx:key="{{item.id}}">
       <image  lazy-load class='icon_bar_img' src="{{item.icon_url}}"></image>
     </view>
   </view>
-  <!-- 123 -->
-  <!-- <view class="catalog">
+    <view class="catalog">
     <navigator  class="item" url="{{item.url}}" wx:for="{{channel}}" wx:key="{{item.id}}">
       <image src="{{item.icon_url}}" background-size="cover"></image>
       <text>{{item.name}}</text>
     </navigator>
-  </view> -->
+  </view> 
   <view class="currency_title_view_title_area" wx:if="{{luckdraw.length > 0}}">
     <view class="currency_title_view_title_area_h">
       抽奖
@@ -98,29 +98,29 @@
       </view>
     </scroll-view>
   </view>
+-->
 
-
-  <view class="currency_title_view_title_area" style='margin-top:10rpx;' wx:key="{{item.id}}" wx:if="{{newGoods.length > 0}}">
-    <view class="currency_title_view_title_area_h">
-      新品首发
-    </view>
+    <view class="currency_title_view_title_area" style='margin-top:10rpx;' wx:key="{{item.id}}" wx:if="{{newGoods.length > 0}}"> 
+    <view class="currency_title_view_title_area_h">新品首发</view>
   </view>
   <view class="currency_goods_view_item" wx:if="{{newGoods.length > 0}}">
     <navigator wx:for="{{newGoods}}" wx:key="{{item.id}}" class="currency_goods_view_item_a" url="/pages/goods/goods?id={{item.id}}">
       <image class="currency_goods_view_item_img" src="{{item.list_pic_url}}"></image>
       <view class="currency_goods_view_item_name">{{item.name}}</view>
+      
+      <!-- 
       <view class="currency_goods_view_item_price">
         <view class='currency_goods_view_item_price_left'> ￥
           <span class="currency_goods_view_item_price_price">{{item.retail_price}}</span>
         </view>
-        <view class='currency_goods_view_item_price_right'>已售 {{item.have_pay_num}} </view>
+        <view class='currency_goods_view_item_price_right'>已售 {{item.have_pay_num}} </view> 
+
       </view>
+      -->
     </navigator>
   </view>
   <view class="currency_title_view_title_area" style='margin-top:10rpx;' wx:if="{{hotGoods.length > 0}}">
-    <view class="currency_title_view_title_area_h">
-      人气推荐
-    </view>
+    <view class="currency_title_view_title_area_h">人气推荐</view>
   </view>
   <view class="hot_goods_area">
     <view class="hot_goods_area_item" wx:for="{{hotGoods}}" wx:key="{{item.id}}">
@@ -129,17 +129,17 @@
         <!-- <view class="right"> -->
         <!-- <view class="text"> -->
         <view class="hot_goods_area_item_name">{{item.name}}</view>
-        <view class="hot_goods_area_item_desc">{{item.goods_brief}}</view>
-        <view class='hot_goods_area_item_desc_soled'>已售 {{item.have_pay_num}} </view>
-        <view class="hot_goods_area_item_price">￥
-          <span class="currency_goods_view_item_price_price">{{item.retail_price}}</span>
-        </view>
+        <!--  <view class="hot_goods_area_item_desc">{{item.goods_brief}}</view> -->
+        <!-- <view class='hot_goods_area_item_desc_soled'>已售 {{item.have_pay_num}} </view> -->
+        <!-- <view class="hot_goods_area_item_price">￥  -->
+        <!-- <span class="currency_goods_view_item_price_price">{{item.retail_price}}</span> -->
         <!-- </view> -->
         <!-- </view> -->
       </navigator>
     </view>
   </view>
-  <view class="currency_goods_view_title_area" wx:for="{{floorGoods}}" wx:key="{{item.id}}">  
+   <!--
+    <view class="currency_goods_view_title_area" wx:for="{{floorGoods}}" wx:key="{{item.id}}"> 
     <image wx:if="{{item.banner_url}}" class='currency_goods_view_title_area_banner' bindtap='tocategorypage' data-id='{{item.id}}' src='{{item.banner_url}}'></image>
     <view wx:if="{{!item.banner_url}}" class="currency_goods_view_title_area_h">
       {{item.name}}
@@ -148,25 +148,28 @@
       <navigator class="currency_goods_view_item_a {{(iindex + 1) % 2 == 0 ? 'currency_goods_view_item_b' : ''}}" url="/pages/goods/goods?id={{iitem.id}}" wx:for="{{item.goodsList}}" wx:for-item="iitem" wx:for-index="iindex" wx:key="{{iitem.id}}">
         <image lazy-load class="currency_goods_view_item_img" src="{{iitem.list_pic_url}}"></image>
         <view class="currency_goods_view_item_name">{{iitem.name}}</view>
+        
         <view class="currency_goods_view_item_price">
           <view class='currency_goods_view_item_price_left'> ￥
             <span class="currency_goods_view_item_price_price">{{iitem.retail_price}}</span>
+        
           </view>
           <view class='currency_goods_view_item_price_right'>已售 {{iitem.have_pay_num}} </view>
         </view>
+
       </navigator>
     </view>
+
     <view class="seemore">
       <navigator url="/pages/category/category?id={{item.id}}" class="more-a">
         <view class='moretext'>{{'更多'+item.name}}</view>
         <image class="moreicon" src="../../static/images/address_right.png"></image>
       </navigator>
     </view>
-    <!-- </view> -->
-  </view>
+    -->
+
   <view class='comy_tip comy_tip_btn'>您已经到底啦 ~ </view>
-  <view class='comy_tip comy_tip_btn'>贝堡网络 提供技术支持</view>
+  <view class='comy_tip comy_tip_btn'>轻搭配</view>
 </scroll-view>
 <!-- <image class='back_to_top' src="../../image/top.png" bindtap='back_to_top'></image>  -->
-<!-- <button class='shall_buttom' wx:if="{{scrollTop > 422}}" open-type="share" wx:if="{{auth && isdistribution}}">
-  分享此页面给好友赚取佣金</button> -->
+<!-- <button class='shall_buttom' wx:if="{{scrollTop > 422}}" open-type="share" wx:if="{{auth && isdistribution}}">分享此页面给好友赚取佣金</button> -->

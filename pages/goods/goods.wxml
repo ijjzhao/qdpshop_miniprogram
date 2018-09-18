@@ -30,7 +30,7 @@
     </button>
     <view class="scroll_goods_tabler" style='border-bottom: 1px solid #fafafa;' bindtap='toindex' data-type='0' wx:if="{{!forplan}}">
       <image src="../../image/CorporateData/bbg_goods_simple.png" class='scroll_goods_tabler_logo'></image>
-      <view class="scroll_goods_tabler_text">贝堡商城</view>
+      <view class="scroll_goods_tabler_text">商城首页</view>
       <image class="scroll_goods_tabler_arrow" src="../../static/images/address_right.png" background-size="cover"></image>
     </view>
     <view class='scroll_goods_comments' wx:if="{{comment.count > 0}}">
@@ -92,7 +92,7 @@
         </navigator>
       </view>
     </view>
-    <view class='comy_tip'>贝堡网络 提供技术支持</view>
+    <view class='comy_tip'>轻搭配</view>
 </scroll-view>
 <view class='bottom_btn_area' wx:if='{{!forplan}}'>
   <button class='area customer' open-type='contact'>

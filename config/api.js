@@ -2,6 +2,7 @@ const ApiRootUrl = 'http://127.0.0.1:8360/api/';
 // const ApiRootUrl = 'http://39.104.85.163:8360/api/';
 // const ApiRootUrl = 'http://192.168.0.120:8360/api/';
 const cdnImgUrl = 'http://collocate.qingdapei.net/img/plan/';
+// const ApiRootUrl = 'https://mini.qingdapei.net/api/';
 
 module.exports = {
   cdnImgUrl: cdnImgUrl,

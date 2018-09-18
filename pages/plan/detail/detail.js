@@ -20,7 +20,7 @@ Page({
     // todo： 如何确定入口是用户 还是搭配师
     let planid = parseInt(options.planid);
     this.setData({
-      forCustomer: options.forCustomer == 1 ? true : false,
+      forCustomer: options.forCustomer == 1 ? true : false, // true, //
       cdnImgUrl: api.cdnImgUrl
     })
     this.getPlanDetail(planid);
@@ -45,9 +45,14 @@ Page({
             })
           } else {
             let planDetail = res.data.plan
+            let goodsArr = res.data.items
+            for (let i in goodsArr) {
+              let goods = goodsArr[i]
+              goods.checked = true
+            }
             that.setData({
               planDetail: planDetail,
-              goodsArr: res.data.items
+              goodsArr: goodsArr
             });
             wx.setNavigationBarTitle({
               title: planDetail.name,

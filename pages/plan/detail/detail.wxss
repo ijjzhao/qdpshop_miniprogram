@@ -3,9 +3,9 @@
 @import "../../../lib/mycss/common";
 
 .plan-pic {
-  margin: 0 100rpx 250rpx 100rpx;
-  width: 550rpx;
-  height: 550rpx;
+  /* margin: 0 100rpx 250rpx 100rpx; */
+  width: 750rpx;
+  height: 750rpx;
 }
 
 .goods-title {

@@ -350,6 +350,15 @@ Page({
     if (checkedGoods.length <= 0) {
       return false;
     }
+
+    wx.showLoading({
+      title: '核实规格...',
+      mask: true,
+    })
+    that.checkcartsku(checkedGoods)
+
+    // 先 去掉手机绑定环节
+    /*
     util.request(api.BingPhoneFind, {
       userId: app.globalData.userInfo.id
     }, 'POST').then(function (res) {
@@ -372,6 +381,7 @@ Page({
         // })
       }
     })
+    */
   },
   checkcartsku(checkedGoods) {
     console.log(checkedGoods)

@@ -553,7 +553,7 @@ page {
 }
 
 .action_bottom_bar .total .big {
-  color: #fc2d2d;
+  color: #b4282d;
   font-size: 50rpx;
   font-weight: bold;
 }

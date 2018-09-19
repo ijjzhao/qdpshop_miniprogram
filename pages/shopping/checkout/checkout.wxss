@@ -46,7 +46,7 @@ page {
   /* float: right; */
 }
 .box_area_item_right.red {
-  color: #ff5566;
+  color: #b4282d;
   font-weight: bold;
 }
 .box_area_item_right.blue {
@@ -127,7 +127,7 @@ page {
 .res_goods_area_item_price .big {
   font-size: 32rpx;
   font-weight: bold;
-  color: #ff5566;
+  color: #b4282d;
 }
 .res_goods_area_item_num {
   /* border: 1rpx solid #333; */
@@ -365,23 +365,24 @@ page {
 .order_total_bar .price .big {
   /* border: 1px sold black; *//* padding: 0 25rpx; */
   font-size: 46rpx;
-  color: #fc2d2d;
+  color: #b4282d;
   font-weight: bold;
 }
 
 .order_total_bar .acton {
   /* border: 1px solid #333; */
   position: absolute;
-  right: 20rpx;
-  height: 66rpx;
-  line-height: 66rpx;
+  right: 0rpx;
+  height: 90rpx;
+  line-height: 90rpx;
   text-align: center;
   color: #f4f4f4;
-  width: 180rpx;
+  width: 200rpx;
   font-size: 28rpx;
-  border-top-left-radius: 50rpx;
+  /* border-top-left-radius: 50rpx;
   border-bottom-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
-  background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%);
+  border-bottom-right-radius: 50rpx; */
+  /* background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%); */
+  background: #b4282d;
 }

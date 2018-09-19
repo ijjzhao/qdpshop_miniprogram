@@ -1,5 +1,5 @@
 <!--pages/plan/detail/detail.wxml-->
-<image class="plan-pic" src="{{cdnImgUrl}}{{planDetail.id}}.png?v={{planDetail.v}}"></image>
+<image class="plan-pic" src="{{imageUrl}}"></image>
 
 <text class="goods-title">相关商品</text>
 <view class="style-grid">

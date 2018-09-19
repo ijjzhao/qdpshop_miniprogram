@@ -41,7 +41,7 @@
 
 .item-price {
   width: 100%;
-  color: red;
+  color: #B4282D;
   bottom: 20rpx;
   position: absolute;
   text-align: center;

@@ -43,40 +43,44 @@ view,text{
   align-items: center;
 }
 .second_corner_btn_area .left {
-  width: 320rpx;
+  width: 365rpx;
   /* border: 1px solid #000; */
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 88rpx;
+  line-height: 88rpx;
   padding: 0;
   margin: 0;
   text-align: center;
   margin-right: -1rpx; 
-  padding-left: 32rpx; 
+  /* padding-left: 10rpx;  */
   font-size: 28rpx;
-  color: #f4f4f4;
-  border-top-left-radius: 50rpx;
-  border-bottom-left-radius: 50rpx;
+  color: #333;
+  border-top-left-radius: 5rpx;
+  border-bottom-left-radius: 5rpx;
   border-top-right-radius: 0rpx;
   border-bottom-right-radius: 0rpx;
-  background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%);
+  border: 1rpx solid #CCC;
+  background: #F7F7F9;
+  /* background-image: linear-gradient(to right, #ffca00 0%, #ff7701 100%); */
 }
 .second_corner_btn_area .right {
   text-align: center;
-  width: 320rpx;
-  height: 70rpx;
-  line-height: 70rpx;
+  width: 365rpx;
+  height: 88rpx;
+  line-height: 88rpx;
   padding: 0;
   margin: 0;
   font-size: 28rpx;
-  color: #f4f4f4;
-  padding-right: 32rpx; 
+  color: #333;
+  /* padding-right: 10rpx;  */
   margin-left: -1rpx; 
   /* text-align: center; */
   border-top-left-radius: 0rpx;
   border-bottom-left-radius: 0rpx;
-  border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
-  background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%);
+  border-top-right-radius: 5rpx;
+  border-bottom-right-radius: 5rpx;
+  border: 1rpx solid #CCC;  
+  background: #F7F7F9;  
+  /* background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%); */
   
 }
 
@@ -96,16 +100,20 @@ view,text{
 }
 .corner_btn {
   text-align: center;
-  color: #f4f4f4;
+  /* color: #f4f4f4; */
+  color: #333;
   height: 88rpx;
   line-height: 88rpx;
-  width: 700rpx;
+  width: 730rpx;
   font-size: 30rpx;
-  border-top-left-radius: 50rpx;
+  /* border-top-left-radius: 50rpx;
   border-bottom-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
-  background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%);
+  border-bottom-right-radius: 50rpx; */
+  border-radius: 5rpx;
+  border: 1rpx solid #CCC;
+  background: #F7F7F9;
+  /* background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%); */
 }
 
 .comy_tip {

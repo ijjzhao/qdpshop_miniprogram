@@ -10,7 +10,8 @@ Page({
   data: {
     planDetail: '',
     goodsArr: [],
-    forCustomer: false
+    forCustomer: false,
+    imageUrl: ''
   },
 
   /**
@@ -45,6 +46,7 @@ Page({
             })
           } else {
             let planDetail = res.data.plan
+            imageUrl = `${that.data.cdnImgUrl}${planDetail.id}.png?v=${planDetail.v}`;
             let goodsArr = res.data.items
             for (let i in goodsArr) {
               let goods = goodsArr[i]
@@ -52,7 +54,8 @@ Page({
             }
             that.setData({
               planDetail: planDetail,
-              goodsArr: goodsArr
+              goodsArr: goodsArr,
+              imageUrl: imageUrl
             });
             wx.setNavigationBarTitle({
               title: planDetail.name,

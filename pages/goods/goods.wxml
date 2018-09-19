@@ -138,7 +138,7 @@
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="commodity_sku_box" wx:if="{{showModalStatus}}">
   <view class='sku_box_top'>
-    <image class='sku_box_top_img' src='{{goods.list_pic_url}}'></image>
+    <image class='sku_box_top_img' src='{{canvas_pic}}'></image>
     <view class='sku_box_top_skuprice' wx:if="{{typec == 0}}">
       <span class="big">价格: ￥{{checkgoodsprice.retail_price}}</span>
       <view class='extra_price'>￥{{goods.extra_price}}</view>
@@ -158,7 +158,7 @@
       <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
         <view class="sku_middle_spec_name">{{item.name}}</view>
         <view class="sku_middle_spec_values">
-          <view class="sku_middle_spec_value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>
+          <view class="sku_middle_spec_value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}" data-pic-url="{{vitem.pic_url}}" >{{vitem.value}}</view>
         </view>
       </view>
     </view>

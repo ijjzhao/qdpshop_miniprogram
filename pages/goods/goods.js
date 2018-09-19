@@ -40,6 +40,7 @@ Page({
     Inviter_userid: [],
     CorporateName: '',
     forplan: false,
+    canvas_pic: '' // 显示的图片
   },
   onLoad: function (options) {
     if (options.forplan == 'true') {
@@ -152,7 +153,8 @@ Page({
           brand: res.data.brand,
           specificationList: res.data.specificationList,
           productList: res.data.productList,
-          userHasCollect: res.data.userHasCollect
+          userHasCollect: res.data.userHasCollect,
+          canvas_pic: res.data.info.list_pic_url
         });
 
         if (res.data.userHasCollect == 1) {
@@ -330,7 +332,13 @@ Page({
     let that = this;
     let specNameId = event.currentTarget.dataset.nameId;
     let specValueId = event.currentTarget.dataset.valueId;
-
+    let picUrl = event.currentTarget.dataset.picUrl;
+    console.log(specValueId)
+    if (picUrl) {
+      this.setData({
+        canvas_pic: picUrl
+      })
+    }
     //判断是否可以点击
 
     //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
@@ -878,7 +886,6 @@ Page({
 
     if (this.data.forplan) {
       this.addToCanvas();
-      console.log(this.data.checkgoodsprice)
       return
     }
 
@@ -965,7 +972,7 @@ Page({
     }
     canvasPage.addGoods({
       goods_id: this.data.goods.id,
-      url: this.data.goods.list_pic_url,
+      url: this.data.canvas_pic,
       product_id: this.data.checkgoodsprice.id,
     })
     wx.navigateBack({

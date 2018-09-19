@@ -130,7 +130,7 @@ Page({
         wx.hideLoading()
         if (res.statusCode === 200) {
           let planListPage = pages[pages.length - 3];
-          planListPage.getPlanDataByStyle();
+          planListPage.onPullDownRefresh();
           wx.navigateBack({
             delta: 2
           })

@@ -76,7 +76,7 @@ Page({
       page: that.data.page,
       size: that.data.size
     },'POST').then(res => {
-      console.log(res)
+      // console.log(res)
       that.setData({
         allnavcategory: res.data
       })
@@ -90,8 +90,6 @@ Page({
           Reachnavcategory: res.data
         })
       }
-
-
       that.getactivecategory(typec)
     })
   },

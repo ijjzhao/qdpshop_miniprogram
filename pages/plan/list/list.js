@@ -38,7 +38,7 @@ Page({
 
   searchBtnTapped() {
     this.setData({
-      page: 0,
+      page: 1,
       stylePlans: []
     })
     let keyword = this.data.keyword;
@@ -250,7 +250,7 @@ Page({
   onPullDownRefresh: function() {
     console.log('onPullDownRefresh')
     this.setData({
-      page: 0,
+      page: 1,
       stylePlans: []
     })
     this.onLoad();

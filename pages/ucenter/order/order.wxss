@@ -213,8 +213,8 @@ textarea {
   float: left;
 }
 .coupon_tabbar_item.active {
-  color: #f23030;
-  border-bottom: 1px solid #f23030;
+  color: #b4282d;
+  border-bottom: 1px solid #b4282d;
 }
 .content_scroll {
   /* border: 1px solid #757575; */

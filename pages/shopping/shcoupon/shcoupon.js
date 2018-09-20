@@ -130,6 +130,8 @@ Page({
     // wx.redirectTo({
     //   url: '/pages/shopping/checkout/checkout'
     // })
+    // let pages = getCurrentPages()
+    // let checkoutpage = pages[pages.length - 2]
     wx.navigateBack({
       delta: 1,
     })

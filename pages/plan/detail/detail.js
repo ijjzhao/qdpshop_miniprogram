@@ -10,7 +10,7 @@ Page({
   data: {
     planDetail: '',
     goodsArr: [],
-    forCustomer: false,
+    forCustomer: 1,
     imageUrl: ''
   },
 
@@ -21,10 +21,15 @@ Page({
     // todo： 如何确定入口是用户 还是搭配师
     let planid = parseInt(options.planid);
     this.setData({
-      forCustomer: options.forCustomer == 1 ? true : false, // true, //
       cdnImgUrl: api.cdnImgUrl
     })
     this.getPlanDetail(planid);
+
+    if (options.forCustomer != undefined) {
+      this.setData({
+        forCustomer: options.forCustomer,        
+      })
+    }
   },
 
   getPlanDetail(planid) {

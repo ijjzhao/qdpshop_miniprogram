@@ -17,6 +17,7 @@ Page({
     editRowIndex: -1, // 编辑条目前所在的方案index，-1则都不显示
     cdnImgUrl: '',
     page: 1,
+    forCustomer: 1,
   },
 
   /**
@@ -24,11 +25,19 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      cdnImgUrl: api.cdnImgUrl
+      cdnImgUrl: api.cdnImgUrl,
     })
+
+    if (options.forCustomer != undefined) {
+      this.setData({
+        forCustomer: options.forCustomer        
+      })
+    }
+
     wx.setNavigationBarTitle({
       title: '方案库'
     })
+
     if (this.data.keyword == '') {
       this.getPlanDataByStyle();
     } else {
@@ -154,7 +163,7 @@ Page({
 
   enterPlanDetail(planid) {
     wx.navigateTo({
-      url: `../detail/detail?planid=${planid}&forCustomer=0`,
+      url: `../detail/detail?planid=${planid}&forCustomer=${this.data.forCustomer}`,
     })
     this.setData({
       editRowIndex: -1

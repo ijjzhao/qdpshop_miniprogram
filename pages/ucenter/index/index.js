@@ -69,7 +69,11 @@ Page({
   },
 
   cardBtnTapped: function() {
+    // util.getUserInfo().then((res) => {
+    //   console.log(res)
+    // })
     this.addWxCard();
+    // this.getWxCard();
   },
 
   addWxCard() {
@@ -92,9 +96,17 @@ Page({
           ],
           success: function (res) {
             console.log(res.cardList) // 卡券添加结果
-            let cardId = res.cardList.cardId
-            let encrypt_code = res.cardList.code
-            that.getWxCard(cardId, encrypt_code);
+
+            util.request(api.WxCardGetSuccess, {
+              cardList: res.cardList
+            }, 'POST').then((res) => {
+              if (res.errno == 0) {
+                console.log('卡券领取成功')
+              }
+            })
+            // let cardId = res.cardList.cardId
+            // let encrypt_code = res.cardList.code
+            // that.getWxCard(cardId, encrypt_code);
           },
           fail: function (message) {
             console.log(message)
@@ -105,8 +117,8 @@ Page({
   },
 
   getWxCard(cardId, encrypt_code) {
-    // cardId = 'pO78F1sBphJKd7tpy9-z25crV_50';
-    // encrypt_code = 'IksvsPH78QozCvH3vW9v/PlPjMYMa5exUQbT0YdhcIs=';
+    cardId = 'pO78F1sBphJKd7tpy9-z25crV_50';
+    encrypt_code = 'IksvsPH78QozCvH3vW9v/PlPjMYMa5exUQbT0YdhcIs=';
 
     // Code解码接口
     util.request(api.WxCardDecrypt, {
@@ -116,7 +128,7 @@ Page({
         wx.openCard({
           cardList: [{
             cardId: cardId,
-            code: res.data.code
+            code: res.data
           }],
           success: function (res) {
             console.log(res)

@@ -48,7 +48,7 @@ Page({
   getIndexData: function() {
     let that = this;
     util.request(api.IndexUrl).then(function(res) {
-      console.log(res)
+      // console.log(res)
       wx.hideLoading()
       if (res.errno === 0) {
         that.setData({
@@ -74,7 +74,7 @@ Page({
   },
   setTime() {
     let that = this
-    console.log(that.data.luckdraw)
+    // console.log(that.data.luckdraw)
     for (let i = 0; i < that.data.luckdraw.length; i++) {
       let item = that.data.luckdraw[i]
       item.open_local_time = util.timestampToTime(item.luck_open_time)
@@ -115,11 +115,11 @@ Page({
     wx.getStorage({
       key: 'auth',
       success: function(res) {
-        console.log('存在')
-        console.log(res.data)
+        // console.log('存在')
+        // console.log(res.data)
       },
       fail: function(res) {
-        console.log('不存在')
+        // console.log('不存在')
         wx.setStorage({
           key: "auth",
           data: false
@@ -181,7 +181,7 @@ Page({
     util.request(api.getchildrenCategoryIdByFather,{
       id:id
     },'POST').then(res => {
-      console.log(res)
+      // console.log(res)
       id = res.data.return_id
       let title = res.data.fathercategoryTitle
       wx.navigateTo({

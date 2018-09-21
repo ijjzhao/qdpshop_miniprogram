@@ -64,7 +64,8 @@
           已领{{item.percept}}%
         </view>
       </view>
-      <view class='coupon_list_right_btn' wx:if="{{item.end == 0}}" bindtap='get_coupon' data-id='{{item.id}}' data-name='{{item.name}}'>
+      <view class='coupon_list_right_btn' wx:if="{{item.end == 0}}" bindtap='get_coupon'
+      data-id='{{item.id}}' data-name='{{item.name}}' data-wx='{{item.isWxcard}}'>
         立即领取
       </view>
       <view class='coupon_list_right_disbtn' wx:if="{{item.end == 1}}">

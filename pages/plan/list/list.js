@@ -28,7 +28,7 @@ Page({
       cdnImgUrl: api.cdnImgUrl,
     })
 
-    if (options.forCustomer != undefined) {
+    if (options && options.forCustomer != undefined) {
       this.setData({
         forCustomer: options.forCustomer        
       })

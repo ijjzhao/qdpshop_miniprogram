@@ -5,7 +5,7 @@ var user = require('./services/user.js');
 App({
   onLaunch: function () {
     //获取用户的登录信息
-    console.log('action')
+    // console.log('action')
     user.checkLogin().then(res => {
       console.log('app login')
       // console.log(res)
@@ -15,7 +15,7 @@ App({
     }).catch(() => {
       console.log('login faild')
       // this.globalData.token = wx.getStorageSync('token');
-      console.log(this.globalData.token)
+      // console.log(this.globalData.token)
     });
     // //动态加载字体
     // wx.loadFontFace({

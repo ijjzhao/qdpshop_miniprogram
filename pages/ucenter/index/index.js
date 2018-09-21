@@ -78,7 +78,7 @@ Page({
 
   addWxCard() {
     let that = this;
-    util.request(api.WxCardGet).then((res) => {
+    util.request(api.WxCardGetTest).then((res) => {
       if (res.errno === 0) {
         let data = res.data;
         let cardExt = {

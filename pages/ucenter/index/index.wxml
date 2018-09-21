@@ -93,12 +93,12 @@
         <text class="txt">意见反馈</text>
       </navigator>
     </view>
-    <!-- <view class="item" bindtap='cardBtnTapped'>
+    <view class="item" bindtap='cardBtnTapped'>
       <view class="a">
         <text class="icon feedback"></text>
         <text class="txt">卡券领取</text>
       </view>
-    </view> -->
+    </view>
     <view class="item">
       <navigator url="/pages/plan/list/list?forCustomer=1" class="a">
         <text class="icon feedback"></text>

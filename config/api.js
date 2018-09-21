@@ -1,4 +1,4 @@
-let isDev = true;
+let isDev = false;
 let cdnImgUrl = 'http://collocate.qingdapei.net/img/plan/';
 let ApiRootUrl = 'https://mini.qingdapei.net/api/';
 
@@ -240,6 +240,7 @@ module.exports = {
   PlanCopy: ApiRootUrl + 'plan/copy', // 复制方案
 
   WxCardGet: ApiRootUrl + 'wxcard/get', // 获取卡券数据
+  WxCardGetTest: ApiRootUrl + 'wxcard/gettest', // 测试获取卡券数据
   WxCardGetSuccess: ApiRootUrl + 'wxcard/getsuccess', // 卡券领取成功
   
   WxCardDecrypt: ApiRootUrl + 'wxcard/decrypt', // 获取卡券数据

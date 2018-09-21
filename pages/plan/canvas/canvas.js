@@ -247,6 +247,9 @@ Page({
   },
 
   getImgInfo(netUrl, storageKeyUrl) {
+    if (netUrl.indexOf('https') == -1) {
+      netUrl = netUrl.replace('http', 'https')
+    }
     let that = this;
     wx.getImageInfo({
       src: netUrl,

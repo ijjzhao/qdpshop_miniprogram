@@ -104,12 +104,12 @@ Page({
   },
   getCheckoutInfo: function () {
     let that = this;
-    console.log(that.data.addressId)
-    console.log(that.data.couponId)
+    // console.log(that.data.addressId)
+    // console.log(that.data.couponId)
     // console.log(that.data.userinfo)
     util.request(api.CartCheckout, { addressId: that.data.addressId, couponId: that.data.couponId, userId: that.data.userinfo.id },'POST').then(function (res) {
         if (res.errno === 0) {
-          console.log(res.data);
+          // console.log(res.data);
           that.setData({
             addressId: res.data.addressId,
             checkedGoodsList: res.data.checkedGoodsList,
@@ -127,7 +127,7 @@ Page({
             orderTotalPrice: res.data.orderTotalPrice,
             is_Identity: res.data.is_Identity
           });
-          console.log(that.data.checkedGoodsList)
+          // console.log(that.data.checkedGoodsList)
         }
 
         setTimeout(() => {
@@ -150,8 +150,8 @@ Page({
   },
   selectcoupon() {
     var that = this
-    console.log(that.data.goodsTotalPrice)
-    console.log(that.data.checkedGoodsList)
+    // console.log(that.data.goodsTotalPrice)
+    // console.log(that.data.checkedGoodsList)
     // console.log(this.data.goodsidList)
     let idlist = []
     for (var i = 0; i < that.data.checkedGoodsList.length;i++){
@@ -160,7 +160,7 @@ Page({
       obj = goodsLiss.goods_id
       idlist.push(obj)
     }
-    console.log(idlist)
+    // console.log(idlist)
     let id = idlist.join(',')
     wx.navigateTo({
       url: '/pages/shopping/shcoupon/shcoupon?Price=' + that.data.goodsTotalPrice + '&Goods=' + id,
@@ -190,9 +190,9 @@ Page({
   },
   FindCup(){
     var that = this
-    console.log(this.data.couponId)
+    // console.log(this.data.couponId)
     util.request(api.CouponFind, { couponId: this.data.couponId },"POST").then(function (res) {
-      console.log(res);
+      // console.log(res);
       that.setData({
         selectconponlist: res.data.couponList,
       })
@@ -302,8 +302,8 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
-    console.log(this.data.checkedGoodsList)
-    console.log(this.data.actualPrice)
+    // console.log(this.data.checkedGoodsList)
+    // console.log(this.data.actualPrice)
     util.request(api.OrderSubmit, { 
       addressId: this.data.addressId, 
       couponId: this.data.couponId, 
@@ -318,16 +318,16 @@ Page({
       IdentityInput: this.data.IdentityInput
       // supplier_ids: this.data.supplier_ids
       }, 'POST').then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
-        console.log(res.data.orderInfo);
+        // console.log(res.data.orderInfo);
         var orderid = res.data.orderInfo.id
         util.request(api.OrderDetail,{
           orderId: orderid
         }).then(function (res) {
           wx.hideLoading()
           if (res.errno === 0) {
-            console.log(res.data);
+            // console.log(res.data);
             var actualprice = res.data.orderInfo.actual_price
             var ordertrueId = res.data.orderInfo.order_sn
             wx.navigateTo({

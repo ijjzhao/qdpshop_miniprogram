@@ -183,7 +183,6 @@ Page({
     util.request(api.WxCardGet, {
       card_id: cardid
     }, 'POST').then((res) => {
-      wx.hideLoading()
       if (res.errno === 0) {
         let data = res.data;
         let cardExt = {
@@ -203,8 +202,21 @@ Page({
             util.request(api.WxCardGetSuccess, {
               cardList: res.cardList
             }, 'POST').then((res) => {
+              wx.hideLoading()         
               if (res.errno == 0) {
                 console.log('卡券领取成功')
+                var data = res.data
+                that.onLoad()
+                var endtime = (data.validity_end / 1).toFixed(0)
+                console.log(endtime)
+                var endlocaltime = util.timestampToTime(endtime)
+                wx.showModal({
+                  title: '提示',
+                  content: '领取成功，请在' + endlocaltime + '前使用！',
+                  success: function (res) { },
+                  fail: function (res) { },
+                  complete: function (res) { },
+                })
               }
             })
           },

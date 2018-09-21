@@ -59,7 +59,9 @@ Page({
     var that = this
     // console.log(that.data.couponListget)
     var getList = that.data.couponListget
+    console.log(getList)
     var unableList = that.data.unablecouponListget
+    console.log(unableList)
     var usedList = that.data.usedcouponListget
     that.data.couponList = []
     let list = []

@@ -54,7 +54,7 @@ Page({
     let that = this
     try {
       var value = wx.getStorageSync('auth')
-      console.log(value)
+      // console.log(value)
       if (value) {
         that.setData({
           auth: true
@@ -63,7 +63,7 @@ Page({
         that.data.cartTotal = []
         util.request(api.CartList).then(function (res) {
           if (res.errno === 0) {
-            console.log(res.data);
+            // console.log(res.data);
             that.setData({
               cartGoods: res.data.cartList,
               cartTotal: res.data.cartTotal
@@ -113,7 +113,7 @@ Page({
       })
       // that.getGoodsInfo()
       user.loginByWeixin().then(res => {
-        console.log(res)
+        // console.log(res)
         that.goLogin()
         wx.hideLoading()
         app.globalData.userInfo = res.data.userInfo;
@@ -147,7 +147,7 @@ Page({
     let that = this;
     util.request(api.CartList).then(function (res) {
       if (res.errno === 0) {
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({
           cartGoods: res.data.cartList,
           cartTotal: res.data.cartTotal
@@ -187,7 +187,7 @@ Page({
     if (!this.data.isEditCart) {
       util.request(api.CartChecked, { productIds: that.data.cartGoods[itemIndex].product_id, isChecked: that.data.cartGoods[itemIndex].checked ? 0 : 1 }, 'POST').then(function (res) {
         if (res.errno === 0) {
-          console.log(res.data);
+          // console.log(res.data);
           that.setData({
             cartGoods: res.data.cartList,
             cartTotal: res.data.cartTotal
@@ -223,7 +223,7 @@ Page({
         checkedGoodsCount += v.number;
       }
     });
-    console.log(checkedGoodsCount);
+    // console.log(checkedGoodsCount);
     return checkedGoodsCount;
   },
   checkedAll: function () {
@@ -238,7 +238,7 @@ Page({
       });
       util.request(api.CartChecked, { productIds: productIds.join(','), isChecked: that.isCheckedAll() ? 0 : 1 }, 'POST').then(function (res) {
         if (res.errno === 0) {
-          console.log(res.data);
+          // console.log(res.data);
           that.setData({
             cartGoods: res.data.cartList,
             cartTotal: res.data.cartTotal
@@ -300,7 +300,7 @@ Page({
       id: id
     }, 'POST').then(function (res) {
       if (res.errno === 0) {
-        console.log(res.data);
+        // console.log(res.data);
         that.setData({
           //cartGoods: res.data.cartList,
           //cartTotal: res.data.cartTotal
@@ -384,12 +384,12 @@ Page({
     */
   },
   checkcartsku(checkedGoods) {
-    console.log(checkedGoods)
+    // console.log(checkedGoods)
     var that = this
     util.request(api.CartCheckSku, {
       checkedGoods: checkedGoods
     }, 'POST').then(res => {
-      console.log(res)
+      // console.log(res)
       wx.hideLoading()
       let chagesku = res.data
       if (chagesku.length == 0) {
@@ -413,11 +413,11 @@ Page({
               util.request(api.CartDelete, {
                 productIds: ids
               }, 'POST').then(res => {
-                console.log(res)
+                // console.log(res)
                 if (res.errno === 0) {
-                  console.log(res.data);
+                  // console.log(res.data);
                   let cartList = res.data.cartList.map(v => {
-                    console.log(v);
+                    // console.log(v);
                     v.checked = false;
                     return v;
                   });
@@ -467,9 +467,9 @@ Page({
             productIds: productIds.join(',')
           }, 'POST').then(function (res) {
             if (res.errno === 0) {
-              console.log(res.data);
+              // console.log(res.data);
               let cartList = res.data.cartList.map(v => {
-                console.log(v);
+                // console.log(v);
                 v.checked = false;
                 return v;
               });

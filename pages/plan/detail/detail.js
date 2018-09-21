@@ -51,7 +51,7 @@ Page({
             })
           } else {
             let planDetail = res.data.plan
-            imageUrl = `${that.data.cdnImgUrl}${planDetail.id}.png?v=${planDetail.v}`;
+            let imageUrl = `${that.data.cdnImgUrl}${planDetail.id}.png?v=${planDetail.v}`;
             let goodsArr = res.data.items
             for (let i in goodsArr) {
               let goods = goodsArr[i]
@@ -98,7 +98,7 @@ Page({
   },
 
   bottomBtnTapped() {
-    if (this.data.forCustomer) {
+    if (this.data.forCustomer == 1) {
       this.addToCart();
     } else {
       wx.navigateTo({

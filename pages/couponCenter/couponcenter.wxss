@@ -166,7 +166,7 @@ page {
   line-height: 36rpx;
   font-size: 40rpx;
   font-weight: bold;
-  color: #ec3233;
+  color: #b4282d;
 }
 
 .coupon_list_left_limit {
@@ -179,7 +179,7 @@ page {
   font-size: 20rpx;
   height: 36rpx;
   line-height: 36rpx;
-  color: #ec3233;
+  color: #b4282d;
   font-weight: bold;
 }
 
@@ -206,7 +206,7 @@ page {
 .coupon_list_right_btn {
   position: absolute;
   /* border: 1px solid #000; */
-  background: #ec3233;
+  background: #b4282d;
   color: #fff;
   border-radius: 25rpx;
   width: 14vw;

@@ -12,7 +12,7 @@
     <text class="style-item-text">{{item.name}}</text>
     <text class="item-price">¥{{item.retail_price}}</text>
     <checkbox class="item-checkbox" checked="{{item.checked}}" data-index="{{index}}"
-    wx:if="{{forCustomer}}"/>
+    wx:if="{{forCustomer == 1}}"/>
   </view>
 </view>
 

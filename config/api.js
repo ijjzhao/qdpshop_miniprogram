@@ -1,4 +1,4 @@
-let isDev = false;
+let isDev = true;
 let cdnImgUrl = 'http://collocate.qingdapei.net/img/plan/';
 let ApiRootUrl = 'https://mini.qingdapei.net/api/';
 

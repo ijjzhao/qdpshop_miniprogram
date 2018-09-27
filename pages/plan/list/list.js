@@ -16,7 +16,7 @@ Page({
     showSearchResult: false, // 显示搜索结果的时候 把 tab隐藏
     editRowIndex: -1, // 编辑条目前所在的方案index，-1则都不显示
     cdnImgUrl: '',
-    page: 1,
+    page: 0,
     forCustomer: 1,
   },
 
@@ -47,7 +47,7 @@ Page({
 
   searchBtnTapped() {
     this.setData({
-      page: 1,
+      page: 0,
       stylePlans: []
     })
     let keyword = this.data.keyword;
@@ -259,7 +259,7 @@ Page({
   onPullDownRefresh: function() {
     console.log('onPullDownRefresh')
     this.setData({
-      page: 1,
+      page: 0,
       stylePlans: []
     })
     this.onLoad();

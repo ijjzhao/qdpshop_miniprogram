@@ -74,7 +74,8 @@ Page({
             let goodsArr = res.data.items;
             for (let i in goodsArr) {
               let goods = goodsArr[i];
-              goods.scale = 1;
+              let width = that.data.screenWidth / 2
+              goods.scale = width / goods.w;
               goods.picwidth = goods.w;
               goods.picheight = goods.h;
               that.getImgInfo(goods.url, `pic${i}`)
@@ -258,6 +259,12 @@ Page({
           key: storageKeyUrl,
           data: res.path,
         });
+      },
+      fail: function (res) {
+        wx.showToast({
+          icon: 'none',
+          title: '画布图片下载失败',
+        })
       }
     })
   },
@@ -406,6 +413,37 @@ Page({
       distance: 0,
       touchX: 0,
       touchY: 0
+    })
+  },
+
+  handleChange(e) {
+    let { x, y, source } = e.detail;
+    let index = e.currentTarget.dataset.index;
+    let goodsArr = this.data.goodsArr;
+    let goods = goodsArr[index];
+    if (source == 'touch') {
+      goods.x = x;
+      goods.y = y;
+      this.setData({
+        goodsArr: goodsArr
+      })
+    }
+  },
+
+  handleScale(e) {
+    let { x, y, scale } = e.detail;
+    let index = e.currentTarget.dataset.index;
+    let goodsArr = this.data.goodsArr;
+    let goods = goodsArr[index];
+    console.log(scale);
+
+    goods.scale = scale
+    goods.w = goods.picwidth * scale
+    goods.h = goods.picheight * scale
+    goods.x = x
+    goods.y = y
+    this.setData({
+      goodsArr: goodsArr
     })
   },
 

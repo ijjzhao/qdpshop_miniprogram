@@ -1,12 +1,16 @@
 <!--pages/plan/canvas/canvas.wxml-->
 <canvas canvas-id='customCanvas' style='width: {{750 * unit}}rpx; height: {{750 * unit}}rpx'></canvas>
 
-<view class="img-container">
-  <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
-    bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}}'></image>
-</view>
+<movable-area class="img-container">
+  <!-- <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
+    bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}};'></image> -->
+  <movable-view style="height: 50px; width: 50px; background: blue;" x="{{x}}" y="{{y}}" direction="all" class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}'
+    data-index='{{index}}' bindchange='handleChange' bindscale='handleScale' x='{{item.x}}' y='{{item.y}}' scale-value='{{item.scale}}' style='width: {{item.w}}px;height: {{item.h}}px;'>
+    <image class='goods-img' src='{{item.url}}'></image>
+  </movable-view>
+</movable-area>
 
-<view class="action-bar {{actionBarShow ? '.action-bar-show' : ''}}"  wx:if="{{actionBarShow}}">
+<view class="action-bar {{actionBarShow ? '.action-bar-show' : ''}}" wx:if="{{actionBarShow}}">
   <view class="action-bar-item" bindtap="removeFromCanvas">
     <image class="action-bar-item-icon" src="../../../static/icons/icon_delete.svg"></image>
     <!-- <view class="action-bar-item-text">删除</view> -->
@@ -45,6 +49,6 @@
 
 <view class="bottom-btn">
   <view class="r {{goodsArr.length == 0 ? 'disable' : ''}}" bindtap="saveCanvas">
-  {{planid ? '更新详情' : '填写详情'}}
+    {{planid ? '更新详情' : '填写详情'}}
   </view>
 </view>

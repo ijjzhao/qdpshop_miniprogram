@@ -1,0 +1,114 @@
+<!--pages/ucenter/info/update/update.wxml-->
+<view class='navigation'>
+  <view class='navigation-item {{index == 0 || index == 1 ? "active" : ""}}' bindtap='setIndex' data-index='0'>基础信息</view>
+  <view class='navigation-item {{index == 2 ? "active" : ""}}' bindtap='setIndex' data-index='2'>颜色偏好</view>
+  <view class='navigation-item {{index == 3 || index == 4 ? "active" : ""}}' bindtap='setIndex' data-index='3'>风格裁剪</view>
+  <view class='navigation-item {{index == 5 ? "active" : ""}}' bindtap='setIndex' data-index='5'>个人信息</view>
+</view>
+
+<view class='content'>
+  <!-- 基础信息 -->
+  <view class='item0' wx:if='{{index == 0}}'>
+    <view class='input-row'>
+      <view class='text'>身高</view>
+      <input class='input' type='text' placeholder='请输入您的身高' value='{{height}}' bindinput='bindinputHeight'></input>
+      <view class='text'>CM</view>
+    </view>
+    <view class='input-row'>
+      <view class='text'>体重</view>
+      <input class='input' placeholder='请输入您的体重' value='{{weight}}' bindinput='bindinputWeight'></input>
+      <view class='text'>KG</view>
+    </view>
+    <view class='input-row'>
+      <view class='text'>年龄</view>
+      <input class='input' placeholder='请输入您的年龄' value='{{age}}' bindinput='bindinputAge'></input>
+      <view class='text' bindtap='updateValue'>AGE</view>
+    </view>
+  </view>
+  <view class='item1' wx:if='{{index == 1}}'>
+    <view class='left-checkboxes'>
+      <view class='checkbox-row' wx:for='{{detail_infos[0]}}' wx:for-index='i' wx:key='i'>
+        <checkbox class='checkbox' checked='{{detail_info_choice[0][i] == 1}}' data-set='{{i}}' data-key='0'></checkbox>
+        <view class='text'>{{detail_infos[0][i]}}</view>
+      </view>
+    </view>
+    <view class='right-checkboxes'>
+      <view class='checkbox-row' wx:for='{{detail_infos[1]}}' wx:for-index='i' wx:key='i'>
+        <checkbox class='checkbox' checked='{{detail_info_choice[1][i] == 1}}' data-set='{{i}}' data-key='1'></checkbox>
+        <view class='text'>{{detail_infos[1][i]}}</view>
+      </view>
+    </view>
+    <image class='body-pic' src='../../../../image/body.png'></image>
+  </view>
+  <!-- 颜色偏好 -->
+  <view class='item2' wx:if='{{index == 2}}'>
+    <view class='color-row'>
+      <view class='text'>喜欢的颜色</view>
+      <view class='colors'>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colors[i].like}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
+          <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+        </view>
+      </view>
+    </view>
+    <view class='color-row'>
+      <view class='text'>绝不能接受的颜色</view>
+      <view class='colors'>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colors[i].dislike}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
+          <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 风格裁剪 -->
+  <view class='item3' wx:if='{{index == 3}}'>
+    <image class='style-pic' src=''></image>
+  </view>
+  <view class='item4' wx:if='{{index == 4}}'>
+    <view class='style-btn {{cutStatus == 0 ? "active" : ""}}' data-index='0' bindtap='cutStatusSet'>修身裁剪</view>
+    <view class='style-btn {{cutStatus == 1 ? "active" : ""}}' data-index='1' bindtap='cutStatusSet'>正常裁剪</view>
+    <view class='style-btn {{cutStatus == 2 ? "active" : ""}}' data-index='2' bindtap='cutStatusSet'>宽松裁剪</view>
+  </view>
+  <!-- 个人信息 -->
+  <view class='item5' wx:if='{{index == 5}}'>
+    <view class='row'>
+      <view class='title'>上装尺寸</view>
+      <view class='size {{sizeStatus[0] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='0' bindtap='sizeStatusSet'>
+        {{sizes[i].name}}码({{sizes[i].value}})
+      </view>
+    </view>
+    <view class='row'>
+      <view class='title'>下装尺寸</view>
+      <view class='size {{sizeStatus[1] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='1' bindtap='sizeStatusSet'>
+        {{sizes[i].name}}码({{sizes[i].value}})
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='bottom'>
+  <view class='text'>{{bottomTexts[index]}}</view>
+  <view class='btns'>
+    <view class='btn btn-left' bindtap='prePageBtnTapped'>
+      <image class='btn-pic btn-pic-left btn-pic-rotate' src='../../../../image/arrows.png'></image>
+    </view>
+    <view class='btn btn-right' bindtap='nextPageBtnTapped'>
+      <image class='btn-pic' src='../../../../image/arrows.png'></image>
+    </view>
+  </view>
+  <view class='points'>
+    <view class='point {{i == 0 ? "point-first" : i == 5 ? "point-last" : "point-middle"}} {{index == i ? "active" : ""}}' wx:for='{{bottomTexts}}' wx:for-index='i' wx:key='i'>
+    </view>
+  </view>
+</view>
+
+<view class='color-picker' wx:if='{{colorPickShow != 0}}'>
+  <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view>
+  <view class='title'>{{colorPickTitle}}</view>
+  <view>
+    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{colors[i][colorPickShow == 1 ? "like" : "dislike"] ? "color active" : "color"}}'>
+      <view class='name'>{{colors[i].name}}</view>
+    </view>
+  </view>
+</view>

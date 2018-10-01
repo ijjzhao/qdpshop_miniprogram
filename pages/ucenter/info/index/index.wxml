@@ -1,0 +1,34 @@
+<!--pages/ucenter/info/index/index.wxml-->
+<view class='title'>个人档案</view>
+
+<view class='info'>
+  <view class='info-pic'>
+    <view class='avatarUrl-container'>
+      <image class='avatarUrl' src='{{userInfo.avatarUrl}}'></image>
+    </view>
+  </view>
+  <view class='info-detail'>
+    <view class='info-line'>身高：180cm</view>
+    <view class='info-line'>体重：70kg</view>
+    <view class='info-line'>年龄：33岁</view>
+  </view>
+</view>
+
+<view class='rows'>
+  <view class='row' bindtap='rowTapped' data-index='0'>
+    <text class='row-text'>基础信息</text>
+    <text class='row-text right'>x项未完成 ></text>
+  </view>
+  <view class='row' bindtap='rowTapped' data-index='2'>
+    <text class='row-text'>颜色偏好</text>
+    <text class='row-text right'>x项未完成 ></text>
+  </view>
+  <view class='row' bindtap='rowTapped' data-index='3'>
+    <text class='row-text'>风格裁剪</text>
+    <text class='row-text right'>x项未完成 ></text>
+  </view>
+  <view class='row' bindtap='rowTapped' data-index='5'>
+    <text class='row-text'>个人信息</text>
+    <text class='row-text right'>x项未完成 ></text>
+  </view>
+</view>

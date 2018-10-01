@@ -105,6 +105,12 @@
         <text class="txt">我的方案(客户入口)</text>
       </navigator>
     </view>
+    <view class="item">
+      <navigator url="/pages/ucenter/info/index/index" class="a">
+        <text class="icon feedback"></text>
+        <text class="txt">我的档案</text>
+      </navigator>
+    </view>
 
   </view>
 

@@ -1,0 +1,70 @@
+/* pages/ucenter/info/index/index.wxss */
+
+.title {
+  font-size: 36rpx;
+  width: 750rpx;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.info {
+  margin: 50rpx 5rpx;
+  height: 300rpx;
+  background: #eee;
+  position: relative;
+}
+
+.info-pic {
+  height: 400rpx;
+  width: 300rpx;
+  background: #eee;
+  position: absolute;
+  top: -50rpx;
+  left: 50rpx;
+  border-radius: 6rpx;
+}
+
+.avatarUrl-container {
+  width: 300rpx;
+  height: 400rpx;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6rpx;  
+}
+
+.avatarUrl {
+  height: 400rpx;
+  width: 400rpx;
+  left: -50rpx;
+  position: absolute
+}
+
+.info-detail {
+  float: right;
+  margin-right: 80rpx;
+  line-height: 100rpx;
+}
+
+.info-line {
+  font-size: 32rpx;
+}
+
+.rows {
+  margin: 100rpx 60rpx;
+}
+
+.row {
+  height: 140rpx;
+  border-bottom: 1rpx solid rgb(235, 235, 235);
+}
+
+.row-text {
+  font-size: 32rpx;
+  line-height: 140rpx;
+  color: #777;
+}
+
+.right {
+  float: right;
+}

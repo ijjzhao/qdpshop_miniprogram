@@ -65,7 +65,9 @@
   </view>
   <!-- 风格裁剪 -->
   <view class='item3' wx:if='{{index == 3}}'>
-    <image class='style-pic' src=''></image>
+    <image class='style-pic' src='http://collocate.qingdapei.net/img/planTest/81.png'></image>
+    <image class='style-pic style-pic-left' src='http://collocate.qingdapei.net/img/planTest/81.png'></image>
+    <image class='style-pic style-pic-right' src='http://collocate.qingdapei.net/img/planTest/81.png'></image>
   </view>
   <view class='item4' wx:if='{{index == 4}}'>
     <view class='style-btn {{cutStatus == 0 ? "active" : ""}}' data-index='0' bindtap='cutStatusSet'>修身裁剪</view>

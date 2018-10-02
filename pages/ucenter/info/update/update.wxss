@@ -125,8 +125,9 @@ page {
 }
 
 .content .item3 {
-  width: 500rpx;
-  margin-left: 125rpx;
+  width: 750rpx;
+  height: 750rpx;
+  position: relative;
 }
 
 .content .item4 {
@@ -136,6 +137,31 @@ page {
 
 .content .item5 {
   width: 750rpx;
+}
+
+.item3 .style-pic {
+  width: 550rpx;
+  height: 550rpx;
+  position: absolute;
+  left: 100rpx;
+  top: 0;
+  border: 1rpx solid #888;
+}
+
+.item3 .style-pic-left {
+  left: -350rpx;
+  top: 70rpx;
+  opacity: 0.6;
+  z-index: -1;
+  transform: scale(0.95)
+}
+
+.item3 .style-pic-right {
+  left: 550rpx;
+  top: 70rpx;
+  opacity: 0.6;
+  z-index: -1;
+  transform: scale(0.95)  
 }
 
 .item4 .style-btn {

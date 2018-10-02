@@ -26,22 +26,25 @@ Page({
       ]
     ],
     detail_info_choice: [
-      [ 0, 0, 0, 0, 0 ],
-      [ 0, 0, 0, 0, 0 ]
+      [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]
     ],
     colors: [
-      { color: '#000000', name: '黑色', like: false, dislike: false },
-      { color: '#FFFFFF', name: '白色', like: false, dislike: false },
-      { color: '#C0C0C0', name: '灰色', like: false, dislike: false },
-      { color: '#082E54', name: '藏青色', like: false, dislike: false },
-      { color: '#A39480', name: '米色', like: false, dislike: false },
-      { color: '#8B4513', name: '棕色', like: false, dislike: false },
-      { color: '#F8F8FF', name: '米白色', like: false, dislike: false },
-      { color: '#FFFF00', name: '黄色', like: false, dislike: false },
-      { color: '#6B8E23', name: '军绿色', like: false, dislike: false },
-      { color: '#4169E1', name: '深蓝色', like: false, dislike: false },
-      { color: '#FF0000', name: '红色', like: false, dislike: false },
-      { color: '#9013FE', name: '紫色', like: false, dislike: false }
+      { color: '#000000', name: '黑色' },
+      { color: '#FFFFFF', name: '白色' },
+      { color: '#C0C0C0', name: '灰色' },
+      { color: '#082E54', name: '藏青色' },
+      { color: '#A39480', name: '米色' },
+      { color: '#8B4513', name: '棕色' },
+      { color: '#F8F8FF', name: '米白色' },
+      { color: '#FFFF00', name: '黄色' },
+      { color: '#6B8E23', name: '军绿色' },
+      { color: '#4169E1', name: '深蓝色' },
+      { color: '#FF0000', name: '红色' },
+      { color: '#9013FE', name: '紫色' }
+    ],
+    colorChoise: [
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     colorPickShow: 0,
     colorPickTitle: '',
@@ -130,6 +133,28 @@ Page({
     })
   },
 
+  checkboxChange(e) {
+    console.log(e.detail.value)
+    let detail_infos = this.data.detail_infos
+    let detail_info_choise = [
+      [0,0,0,0,0], [0,0,0,0,0]
+    ]
+    for (let i in e.detail.value) {
+      let info = e.detail.value[i]
+      let index0 = detail_infos[0].indexOf(info)
+      let index1 = detail_infos[1].indexOf(info)
+      if (index0 != -1) {
+        detail_info_choise[0][index0] = 1
+      }
+      if (index1 != -1) {
+        detail_info_choise[1][index1] = 1
+      }
+    }
+    this.setData({
+      detail_info_choice: detail_info_choise
+    })
+  },
+
   toggleColorPicker(e) {
     let show = e.currentTarget.dataset.show
     if (show != 0) {
@@ -146,17 +171,12 @@ Page({
   colorPick(e) {
     let index = e.currentTarget.dataset.index
     let colorPickShow = this.data.colorPickShow
-    let colors = this.data.colors;
-
+    let colorChoise = this.data.colorChoise;
     if (colorPickShow == 0) return
-    if (colorPickShow == 1) {
-      colors[index].like = !colors[index].like
-    } else {
-      colors[index].dislike = !colors[index].dislike
-    }
-
+    let choise = colorChoise[colorPickShow - 1][index]
+    colorChoise[colorPickShow - 1][index] = choise == 1 ? 0 : 1
     this.setData({
-      colors
+      colorChoise
     })
   },
 

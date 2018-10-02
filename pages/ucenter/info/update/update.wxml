@@ -26,18 +26,20 @@
     </view>
   </view>
   <view class='item1' wx:if='{{index == 1}}'>
-    <view class='left-checkboxes'>
-      <view class='checkbox-row' wx:for='{{detail_infos[0]}}' wx:for-index='i' wx:key='i'>
-        <checkbox class='checkbox' checked='{{detail_info_choice[0][i] == 1}}' data-set='{{i}}' data-key='0'></checkbox>
-        <view class='text'>{{detail_infos[0][i]}}</view>
+    <checkbox-group bindchange="checkboxChange">
+      <view class='left-checkboxes'>
+        <view class='checkbox-row' wx:for='{{detail_infos[0]}}' wx:for-index='i' wx:key='i'>
+          <checkbox class='checkbox' checked='{{detail_info_choice[0][i]}}' value='{{detail_infos[0][i]}}'></checkbox>
+          <view class='text'>{{detail_infos[0][i]}}</view>
+        </view>
       </view>
-    </view>
-    <view class='right-checkboxes'>
-      <view class='checkbox-row' wx:for='{{detail_infos[1]}}' wx:for-index='i' wx:key='i'>
-        <checkbox class='checkbox' checked='{{detail_info_choice[1][i] == 1}}' data-set='{{i}}' data-key='1'></checkbox>
-        <view class='text'>{{detail_infos[1][i]}}</view>
+      <view class='right-checkboxes'>
+        <view class='checkbox-row' wx:for='{{detail_infos[1]}}' wx:for-index='i' wx:key='i'>
+          <checkbox class='checkbox' checked='{{detail_info_choice[1][i]}}' value='{{detail_infos[1][i]}}'></checkbox>
+          <view class='text'>{{detail_infos[1][i]}}</view>
+        </view>
       </view>
-    </view>
+    </checkbox-group>
     <image class='body-pic' src='../../../../image/body.png'></image>
   </view>
   <!-- 颜色偏好 -->
@@ -45,7 +47,7 @@
     <view class='color-row'>
       <view class='text'>喜欢的颜色</view>
       <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colors[i].like}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[0][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
         <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
           <image class='add' src='../../../../static/icons/svg_add.svg'></image>
         </view>
@@ -54,7 +56,7 @@
     <view class='color-row'>
       <view class='text'>绝不能接受的颜色</view>
       <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colors[i].dislike}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[1][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
         <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
           <image class='add' src='../../../../static/icons/svg_add.svg'></image>
         </view>

@@ -11,7 +11,7 @@ App({
       // console.log(res)
       this.globalData.userInfo = wx.getStorageSync('userInfo');
       this.globalData.token = wx.getStorageSync('token');
-      console.log(this.globalData.token)
+      // console.log(this.globalData.token)
     }).catch(() => {
       console.log('login faild')
       // this.globalData.token = wx.getStorageSync('token');

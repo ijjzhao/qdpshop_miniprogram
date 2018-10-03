@@ -127,7 +127,7 @@ page {
 .content .item3 {
   width: 750rpx;
   height: 750rpx;
-  position: relative;
+  overflow: hidden;
 }
 
 .content .item4 {
@@ -145,14 +145,44 @@ page {
   position: absolute;
   left: 100rpx;
   top: 0;
-  border: 1rpx solid #888;
+  background: #fff;
+  z-index: 99;
+  border: 1rpx solid #333;
+}
+
+.item3 .style-pic-container {
+  width: 750rpx;
+  height: 630rpx;
+  position: relative;
+}
+
+.item3 .btns {
+  height: 88rpx;
+  margin: 0 45rpx;
+}
+
+.item3 .active {
+  background: #333;
+  color: #fff;
+}
+
+.item3 .btn {
+  height: 88rpx;
+  width: 200rpx;
+  line-height: 88rpx;
+  float: left;
+  margin: 0 10rpx;
+  font-size: 29rpx;
+  border: 1rpx solid #333;
+  text-align: center;
 }
 
 .item3 .style-pic-left {
   left: -350rpx;
   top: 70rpx;
   opacity: 0.6;
-  z-index: -1;
+  background: #fff;
+  z-index: 1;
   transform: scale(0.95)
 }
 
@@ -160,8 +190,32 @@ page {
   left: 550rpx;
   top: 70rpx;
   opacity: 0.6;
-  z-index: -1;
+  z-index: 1;
   transform: scale(0.95)  
+}
+
+.anim-middle-left {
+  animation: middle-to-left 0.4s;
+  -moz-animation: middle-to-left 0.4s;
+  -webkit-animation: middle-to-left 0.4s;
+  -o-animation: middle-to-left 0.4s;
+}
+
+@keyframes middle-to-left {
+  from {left: 100rpx; top: 70rpx;}
+  to {left: -350rpx; top: 0rpx;}
+}
+
+.anim-right-middle {
+  animation: right-to-middle 0.4s;
+  -moz-animation: right-to-middle 0.4s;
+  -webkit-animation: right-to-middle 0.4s;
+  -o-animation: right-to-middle 0.4s;
+}
+
+@keyframes right-to-middle {
+  from {left: 550rpx; top: 70rpx;}
+  to {left: 100rpx; top: 0rpx;}
 }
 
 .item4 .style-btn {

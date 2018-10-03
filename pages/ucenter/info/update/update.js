@@ -48,12 +48,14 @@ Page({
     ],
     colorPickShow: 0,
     colorPickTitle: '',
-    style:[
-      { url: 'http://collate.qingdapei.net/img/plan/1.png', status: 0 },
-      { url: 'http://collate.qingdapei.net/img/plan/2.png', status: 0 },
-      { url: 'http://collate.qingdapei.net/img/plan/3.png', status: 0 },
-      { url: 'http://collate.qingdapei.net/img/plan/4.png', status: 0 },
+    stylePics:[
+      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
+      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
+      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
+      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
     ],
+    styleIndex: 0,
+    styleChoice: [0, 0, 0, 0],
     cutStatus: -1,
     upwareSizeStatus: 0,
     downwareSizeStatus: 0,
@@ -195,6 +197,45 @@ Page({
     this.setData({
       sizeStatus
     })
+  },
+
+  styleImgTapped: function(e) {
+    let key = e.currentTarget.dataset.key;
+    let styleIndex = this.data.styleIndex;
+    console.log(styleIndex);
+    switch (key) {
+      case 'left': {
+        this.setData({
+          styleIndex: styleIndex - 1,
+        })
+        break
+      }
+      case 'middle': {
+        break
+      }
+      case 'right': {
+        this.setData({
+          styleIndex: styleIndex + 1,       
+        })
+        break
+      }
+    }
+  },
+  
+  styleBtnTapped: function(e) {
+    let choice = parseInt(e.currentTarget.dataset.choice)
+    let styleChoice = this.data.styleChoice
+    let index = this.data.styleIndex
+    styleChoice[index] = choice
+    this.setData({
+      styleChoice
+    })
+
+    if (index != this.data.stylePics.length - 1) {
+      this.setData({
+        styleIndex: index + 1
+      })
+    }
   },
 
   /**

@@ -1,11 +1,17 @@
 // pages/ucenter/info/index/index.js
+const util = require('../../../../utils/util.js')
+const api = require('../../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    avatarUrl: '',
+    user_id: 48,
+    noFill: [0, 0, 0, 0]
   },
 
   /**
@@ -18,7 +24,64 @@ Page({
         let userInfo = res.userInfo
         userInfo.avatarUrl = userInfo.avatarUrl.replace('/132', '/0');
         that.setData({
-          userInfo: res.userInfo
+          avatarUrl: res.userInfo.avatarUrl
+        })
+      }
+    })
+
+    if (options.id) {
+      this.setData({
+        user_id: options.id
+      })
+    }
+
+  },
+
+  getUserInfo: function(user_id) {
+    let that = this
+    util.request(api.UserInfoGet, {user_id}).then((res) => {
+      let userInfo = res.data
+      if (!userInfo.user_id) {
+        wx.showModal({
+          title: '提示',
+          content: '请完善您的档案',
+          showCancel: false,
+          success: function(res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: `../update/update?index=0&user_id=${that.data.user_id}`,
+              })
+            }
+          }
+        })
+      } else {
+        let noFill = [0, 0, 0, 0]
+        if (!userInfo.height) {
+          noFill[0]++
+        }
+        if (!userInfo.weight) {
+          noFill[0]++
+        }
+        if (!userInfo.age) {
+          noFill[0]++
+        }
+        if (!userInfo.detail) {
+          noFill[0]++
+        }
+        if (!userInfo.color) {
+          noFill[1]++
+        }
+        if (!userInfo.style) {
+          noFill[2]++
+        }
+        if (!userInfo.cut) {
+          noFill[2]++
+        }
+        if (!userInfo.size) {
+          noFill[3]++
+        }
+        this.setData({
+          userInfo, noFill
         })
       }
     })
@@ -27,7 +90,7 @@ Page({
   rowTapped(e) {
     let index = e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: `../update/update?index=${index}`,
+      url: `../update/update?index=${index}&user_id=${this.data.user_id}`,
     })
   },
 
@@ -42,7 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getUserInfo(this.data.user_id)  
   },
 
   /**

@@ -1,10 +1,14 @@
 // pages/ucenter/info/update/update.js
+const util = require('../../../../utils/util.js')
+const api = require('../../../../config/api.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    user_id: 0,
     index: 3,
     bottomTexts: [
       '基本的身高体重数据，是让搭配师了解你的第一步',
@@ -76,9 +80,65 @@ Page({
   onLoad: function (options) {
     if (options.index) {
       this.setData({
-        index: options.index
+        index: parseInt(options.index)
       })
     }
+
+    this.setData({
+      user_id: options.user_id
+    })
+
+    this.showData()
+  },
+
+  showData() {
+    let pages = getCurrentPages();
+    let indexPage = pages[pages.length - 2]
+    let userInfo = indexPage.data.userInfo
+    if (userInfo.height) {
+      this.setData({
+        height: userInfo.height
+      })
+    }
+    if (userInfo.weight) {
+      this.setData({
+        weight: userInfo.weight
+      })
+    }
+    if (userInfo.age) {
+      this.setData({
+        age: userInfo.age
+      })
+    }
+    if (userInfo.cut) {
+      this.setData({
+        cutStatus: userInfo.cut
+      })
+    }
+
+    if (userInfo.detail) {
+      this.setDetailInfoChoice(JSON.parse(userInfo.detail))
+    }
+    if (userInfo.color) {
+      this.setData({
+        colorChoise: JSON.parse(userInfo.color)
+      })
+    }
+    if (userInfo.style) {
+      this.setData({
+        styleChoice: JSON.parse(userInfo.style)
+      })
+    }
+    if (userInfo.size) {
+      this.setData({
+        sizeStatus: JSON.parse(userInfo.size)
+      })
+    }
+  },
+
+  updateInfo(form) {
+    let user_id = this.data.user_id
+    util.request(api.UserInfoUpdate, {user_id, form}, 'POST')
   },
 
   prePageBtnTapped: function () {
@@ -108,15 +168,12 @@ Page({
     })
   },
 
-  updateValue() {
-    console.log(this.data.height)
-    console.log(this.data.weight)
-    console.log(this.data.age)
-  },
-
   bindinputHeight(e) {
     let value = e.detail.value;
     this.setData({
+      height: value
+    })
+    this.updateInfo({
       height: value
     })
   },
@@ -126,6 +183,9 @@ Page({
     this.setData({
       weight: value
     })
+    this.updateInfo({
+      weight: value
+    })
   },
 
   bindinputAge(e) {
@@ -133,16 +193,28 @@ Page({
     this.setData({
       age: value
     })
+    this.updateInfo({
+      age: value
+    })
   },
 
   checkboxChange(e) {
-    console.log(e.detail.value)
+    this.setDetailInfoChoice(e.detail.value)
+    this.updateInfo({
+      detail: JSON.stringify(e.detail.value)
+    })
+  },
+
+  setDetailInfoChoice(data) {
     let detail_infos = this.data.detail_infos
     let detail_info_choise = [
-      [0,0,0,0,0], [0,0,0,0,0]
+      [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]
     ]
-    for (let i in e.detail.value) {
-      let info = e.detail.value[i]
+    if (!data) {
+      return detail_info_choise
+    }
+    for (let i in data) {
+      let info = data[i]
       let index0 = detail_infos[0].indexOf(info)
       let index1 = detail_infos[1].indexOf(info)
       if (index0 != -1) {
@@ -180,12 +252,18 @@ Page({
     this.setData({
       colorChoise
     })
+    this.updateInfo({
+      color: JSON.stringify(colorChoise)
+    })
   },
 
   cutStatusSet: function(e) {
     let index = e.currentTarget.dataset.index;
     this.setData({
       cutStatus: index
+    })
+    this.updateInfo({
+      cut: index
     })
   },
 
@@ -197,12 +275,14 @@ Page({
     this.setData({
       sizeStatus
     })
+    this.updateInfo({
+      size: JSON.stringify(sizeStatus)
+    })
   },
 
   styleImgTapped: function(e) {
     let key = e.currentTarget.dataset.key;
     let styleIndex = this.data.styleIndex;
-    console.log(styleIndex);
     switch (key) {
       case 'left': {
         this.setData({
@@ -236,6 +316,10 @@ Page({
         styleIndex: index + 1
       })
     }
+
+    this.updateInfo({
+      style: JSON.stringify(styleChoice)
+    })
   },
 
   /**
@@ -263,7 +347,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    
   },
 
   /**

@@ -244,4 +244,7 @@ module.exports = {
   WxCardGetSuccess: ApiRootUrl + 'wxcard/getsuccess', // 卡券领取成功
   
   WxCardDecrypt: ApiRootUrl + 'wxcard/decrypt', // 获取卡券数据
+
+  UserInfoGet: ApiRootUrl + 'userinfo/get', // 获取用户详细信息
+  UserInfoUpdate: ApiRootUrl + 'userinfo/update', // 更新用户详细信息
 };

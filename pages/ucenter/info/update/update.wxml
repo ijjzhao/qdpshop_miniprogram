@@ -11,18 +11,18 @@
   <view class='item0' wx:if='{{index == 0}}'>
     <view class='input-row'>
       <view class='text'>身高</view>
-      <input class='input' type='text' placeholder='请输入您的身高' value='{{height}}' bindinput='bindinputHeight'></input>
+      <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input>
       <view class='text'>CM</view>
     </view>
     <view class='input-row'>
       <view class='text'>体重</view>
-      <input class='input' placeholder='请输入您的体重' value='{{weight}}' bindinput='bindinputWeight'></input>
+      <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input>
       <view class='text'>KG</view>
     </view>
     <view class='input-row'>
       <view class='text'>年龄</view>
-      <input class='input' placeholder='请输入您的年龄' value='{{age}}' bindinput='bindinputAge'></input>
-      <view class='text' bindtap='updateValue'>AGE</view>
+      <input class='input' type='number' placeholder='请输入您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done'></input>
+      <view class='text'>AGE</view>
     </view>
   </view>
   <view class='item1' wx:if='{{index == 1}}'>

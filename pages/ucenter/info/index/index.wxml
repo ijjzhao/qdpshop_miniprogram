@@ -4,31 +4,31 @@
 <view class='info'>
   <view class='info-pic'>
     <view class='avatarUrl-container'>
-      <image class='avatarUrl' src='{{userInfo.avatarUrl}}'></image>
+      <image class='avatarUrl' src='{{avatarUrl}}'></image>
     </view>
   </view>
   <view class='info-detail'>
-    <view class='info-line'>身高：180cm</view>
-    <view class='info-line'>体重：70kg</view>
-    <view class='info-line'>年龄：33岁</view>
+    <view class='info-line'>身高：{{userInfo.height}}cm</view>
+    <view class='info-line'>体重：{{userInfo.weight}}kg</view>
+    <view class='info-line'>年龄：{{userInfo.age}}岁</view>
   </view>
 </view>
 
 <view class='rows'>
   <view class='row' bindtap='rowTapped' data-index='0'>
     <text class='row-text'>基础信息</text>
-    <text class='row-text right'>x项未完成 ></text>
+    <text class='row-text right'>{{noFill[0] == 0 ? "" : noFill[0]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='2'>
     <text class='row-text'>颜色偏好</text>
-    <text class='row-text right'>x项未完成 ></text>
+    <text class='row-text right'>{{noFill[1] == 0 ? "" : noFill[1]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='3'>
     <text class='row-text'>风格裁剪</text>
-    <text class='row-text right'>x项未完成 ></text>
+    <text class='row-text right'>{{noFill[2] == 0 ? "" : noFill[2]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='5'>
     <text class='row-text'>个人信息</text>
-    <text class='row-text right'>x项未完成 ></text>
+    <text class='row-text right'>{{noFill[3] == 0 ? "" : noFill[3]+"项未完成"}} ></text>
   </view>
 </view>

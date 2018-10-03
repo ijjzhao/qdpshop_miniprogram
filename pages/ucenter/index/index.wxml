@@ -106,7 +106,7 @@
       </navigator>
     </view>
     <view class="item">
-      <navigator url="/pages/ucenter/info/index/index" class="a">
+      <navigator url="/pages/ucenter/info/index/index?id={{userInfo.id}}" class="a">
         <text class="icon feedback"></text>
         <text class="txt">我的档案</text>
       </navigator>

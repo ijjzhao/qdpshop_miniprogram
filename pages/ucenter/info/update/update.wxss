@@ -234,13 +234,15 @@ page {
 }
 
 .item5 .row {
+  height: 400rpx;
   padding: 30rpx;
 }
 
 .item5 .row .title {
+  height: 120rpx;
   font-size: 36rpx;
   font-weight: 700;
-  margin: 40rpx 0;
+  line-height: 120rpx;
 }
 
 .item5 .row .size {
@@ -367,6 +369,7 @@ page {
   top: calc(50% - 350rpx);
   left: 25rpx;
   padding: 0 100rpx;
+  border-radius: 10rpx;
 }
 
 .color-picker .title {

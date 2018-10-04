@@ -118,7 +118,7 @@
   <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view>
   <view class='title'>{{colorPickTitle}}</view>
   <view>
-    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{colors[i][colorPickShow == 1 ? "like" : "dislike"] ? "color active" : "color"}}'>
+    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "color active" : "color"}}'>
       <view class='name'>{{colors[i].name}}</view>
     </view>
   </view>

@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/ucenter/info/index/index",
+    "pages/ucenter/info/update/update",
     "pages/index/index",
     "pages/catalog/catalog",
     "pages/catalog/forplan/catalog",
@@ -54,9 +56,7 @@
     "pages/plan/canvas/canvas",
     "pages/plan/detail/detail",
     "pages/plan/list/list",
-    "pages/stylist/detail/detail",
-    "pages/ucenter/info/index/index",    
-    "pages/ucenter/info/update/update"   
+    "pages/stylist/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

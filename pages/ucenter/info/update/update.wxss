@@ -24,14 +24,17 @@ page {
 }
 
 .bottom {
-  height: 200rpx;
+  height: 300rpx;
   width: 750rpx;
 }
 
 .bottom .text {
+  height: 100rpx;
+  line-height: 100rpx;
   margin-top: 10rpx;
   width: 750rpx;
   text-align: center;
+  color: gray;
 }
 
 .bottom .btns {
@@ -99,7 +102,7 @@ page {
 }
 
 .content {
-  height: calc(100% - 270rpx);
+  height: calc(100% - 300rpx - 70rpx);
   /* background: red; */
   display: flex;
   align-items: center;
@@ -354,11 +357,16 @@ page {
 
 .input-row .input {
   height: 80rpx;
+  line-height: 80rpx;
   float: left;
   margin: 0 20rpx;
   flex: 1;
   text-align: center;
   border: 1rpx solid #aaa;
+}
+
+.placeholder {
+  color: #888;
 }
 
 .color-picker {

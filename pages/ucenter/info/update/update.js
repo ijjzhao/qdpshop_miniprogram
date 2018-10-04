@@ -8,8 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_id: 0,
-    index: 3,
+    user_id: 48,
+    index: 0,
     bottomTexts: [
       '基本的身高体重数据，是让搭配师了解你的第一步',
       '一些特殊的细节，可以主动告诉搭配师',
@@ -18,8 +18,12 @@ Page({
       '哪种裁剪让你觉得更加舒适',
       '合身的衣服更加容易出效果哦'
       ],
-    height:'',
-    weight: '',
+    height: '请选择您的身高',
+    heightIndex: 30,
+    heightRange: [],
+    weight: '请选择您的体重',
+    weightIndex: 10,
+    weightRange: [],
     age: '',
     detail_infos: [
       [
@@ -84,8 +88,23 @@ Page({
       })
     }
 
+    if (options.user_id) {
+      this.setData({
+        user_id: options.user_id
+      })
+    }
+
+
+    let heightRange = []
+    for (let i = 140; i <= 200; i++) {
+      heightRange.push(i)
+    }
+    let weightRange = []
+    for (let i = 50; i <= 100; i++) {
+      weightRange.push(i)
+    }
     this.setData({
-      user_id: options.user_id
+      heightRange, weightRange
     })
 
     this.showData()
@@ -97,12 +116,14 @@ Page({
     let userInfo = indexPage.data.userInfo
     if (userInfo.height) {
       this.setData({
-        height: userInfo.height
+        height: userInfo.height,
+        heightIndex: this.data.heightRange.indexOf(parseInt(userInfo.height))
       })
     }
     if (userInfo.weight) {
       this.setData({
-        weight: userInfo.weight
+        weight: userInfo.weight,
+        weightIndex: this.data.weightRange.indexOf(parseInt(userInfo.weight))
       })
     }
     if (userInfo.age) {
@@ -178,6 +199,17 @@ Page({
     })
   },
 
+  bindHeightPickerChange(e) {
+    let height = this.data.heightRange[e.detail.value]
+    this.setData({
+      height: height,
+      heightIndex: e.detail.value
+    })
+    this.updateInfo({
+      height
+    })
+  },
+
   bindinputWeight(e) {
     let value = e.detail.value;
     this.setData({
@@ -185,6 +217,17 @@ Page({
     })
     this.updateInfo({
       weight: value
+    })
+  },
+
+  bindWeightPickerChange(e) {
+    let weight = this.data.weightRange[e.detail.value]    
+    this.setData({
+      weight: weight,
+      weightIndex: e.detail.value
+    })
+    this.updateInfo({
+      weight
     })
   },
 

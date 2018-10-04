@@ -10,18 +10,24 @@
   <!-- 基础信息 -->
   <view class='item0' wx:if='{{index == 0}}'>
     <view class='input-row'>
-      <view class='text'>身高</view>
-      <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input>
+      <view class='text'>身 高</view>
+      <!-- <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input> -->
+      <picker class='input' bindchange="bindHeightPickerChange" value="{{heightIndex}}" range="{{heightRange}}">
+        <view class='{{height == "请选择您的身高" ? "placeholder" : ""}}'>{{height}}</view>
+      </picker>
       <view class='text'>CM</view>
     </view>
     <view class='input-row'>
-      <view class='text'>体重</view>
-      <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input>
+      <view class='text'>体 重</view>
+      <!-- <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input> -->
+      <picker class='input' bindchange="bindWeightPickerChange" value="{{weightIndex}}" range="{{weightRange}}">
+        <view class='{{weight == "请选择您的体重" ? "placeholder" : ""}}'>{{weight}}</view>
+      </picker>
       <view class='text'>KG</view>
     </view>
     <view class='input-row'>
-      <view class='text'>年龄</view>
-      <input class='input' type='number' placeholder='请输入您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done'></input>
+      <view class='text'>年 龄</view>
+      <input class='input' type='number' placeholder='请填写您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
       <view class='text'>AGE</view>
     </view>
   </view>
@@ -68,7 +74,7 @@
     <view class='style-pic-container'>
       <image class='style-pic style-pic-left' wx:if='{{styleIndex != 0}}' src='{{stylePics[styleIndex - 1].url}}' bindtap='styleImgTapped' data-key='left'></image>
       <image class='style-pic' src='{{stylePics[styleIndex].url}}' bindtap='styleImgTapped' data-key='middle'></image>
-      <image class='style-pic style-pic-right' wx:if='{{styleIndex != stylePics.length - 1}}' src='{{stylePics[styleIndex + 1].url}}' bindtap='styleImgTapped'  data-key='right'></image>
+      <image class='style-pic style-pic-right' wx:if='{{styleIndex != stylePics.length - 1}}' src='{{stylePics[styleIndex + 1].url}}' bindtap='styleImgTapped' data-key='right'></image>
     </view>
     <view class='btns'>
       <view class='btn {{styleChoice[styleIndex] == 1 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='1'>喜欢</view>

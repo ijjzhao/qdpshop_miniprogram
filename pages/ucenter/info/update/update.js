@@ -2,13 +2,15 @@
 const util = require('../../../../utils/util.js')
 const api = require('../../../../config/api.js')
 
+let canSetIndexByNavigation = false;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user_id: 48,
+    user_id: 0,
     index: 0,
     bottomTexts: [
       '基本的身高体重数据，是让搭配师了解你的第一步',
@@ -93,7 +95,6 @@ Page({
         user_id: options.user_id
       })
     }
-
 
     let heightRange = []
     for (let i = 140; i <= 200; i++) {
@@ -182,11 +183,13 @@ Page({
     }
   },
 
-  setIndex: function(e) {
-    let index = parseInt(e.currentTarget.dataset.index);
-    this.setData({
-      index: index
-    })
+  setIndexByNavigation: function(e) {
+    if (canSetIndexByNavigation) {
+      let index = parseInt(e.currentTarget.dataset.index);
+      this.setData({
+        index: index
+      })
+    }
   },
 
   bindinputHeight(e) {
@@ -355,9 +358,12 @@ Page({
     })
 
     if (index != this.data.stylePics.length - 1) {
-      this.setData({
-        styleIndex: index + 1
-      })
+      let that = this
+      setTimeout(function () {
+        that.setData({
+          styleIndex: index + 1
+        })
+      }, 500) 
     }
 
     this.updateInfo({

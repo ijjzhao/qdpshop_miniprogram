@@ -73,6 +73,7 @@ page {
 }
 
 .bottom .points {
+  margin-top: 20rpx;
   text-align: center;
 }
 
@@ -102,6 +103,7 @@ page {
 }
 
 .content {
+  width: 750rpx;
   height: calc(100% - 300rpx - 70rpx);
   /* background: red; */
   display: flex;
@@ -249,11 +251,12 @@ page {
 }
 
 .item5 .row .size {
-  height: 120rpx;
+  height: 90rpx;
   width: 230rpx;
-  line-height: 120rpx;
+  line-height: 90rpx;
   text-align: center;
   float: left;
+  margin: 15rpx 0;
 }
 
 .item5 .row .active {
@@ -287,6 +290,7 @@ page {
   height: 50rpx;
   width: 50rpx;
   margin: 15rpx 15rpx;
+  display: block;
 }
 
 .left-checkboxes {
@@ -342,7 +346,8 @@ page {
 }
 
 .input-row {
-  height: 150rpx;
+  height: 82rpx;
+  margin-bottom: 70rpx;
   /* background: green; */
   display: flex;
 }
@@ -376,8 +381,9 @@ page {
   position: absolute;
   top: calc(50% - 350rpx);
   left: 55rpx;
-  padding: 0 100rpx;
+  padding: 0 90rpx;
   border-radius: 10rpx;
+  text-align: center;
 }
 
 .color-picker .title {
@@ -402,6 +408,10 @@ page {
   font-size: 50rpx;
 }
 
+.color-picker .colors {
+  width: 450rpx;
+}
+
 .color-picker .color {
   width: 130rpx;
   height: 75rpx;
@@ -411,14 +421,23 @@ page {
 }
 
 .color-picker .active {
-  background: url(http://127.0.0.1:8360/static/img/icon_ok.png) center fixed;
-  background-size: 100% 100%;
+  /* border: 2rpx solid greenyellow; */
+}
+
+.color-picker .colors .selected {
+  width: 100%;
+  height: 100%;
+}
+
+.color-picker .colors .unselect {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
 .color-picker .name {
   width: 100%;
   text-align: center;
-  margin-top: 75rpx;
   color: #fff;
   font-size: 28rpx;
 }
@@ -432,8 +451,8 @@ page {
   height: 88rpx;
   line-height: 88rpx;
   text-align: center;
-  color: #fff;
-  background: #333;
+  color: #333;
+  background: rgb(255, 255, 255);
   margin-top: 10rpx;
   border-radius: 10rpx;
 }

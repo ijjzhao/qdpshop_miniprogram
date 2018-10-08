@@ -1,9 +1,9 @@
 <!--pages/ucenter/info/update/update.wxml-->
 <view class='navigation'>
-  <view class='navigation-item {{index == 0 || index == 1 ? "active" : ""}}' bindtap='setIndex' data-index='0'>基础信息</view>
-  <view class='navigation-item {{index == 2 ? "active" : ""}}' bindtap='setIndex' data-index='2'>颜色偏好</view>
-  <view class='navigation-item {{index == 3 || index == 4 ? "active" : ""}}' bindtap='setIndex' data-index='3'>风格裁剪</view>
-  <view class='navigation-item {{index == 5 ? "active" : ""}}' bindtap='setIndex' data-index='5'>个人信息</view>
+  <view class='navigation-item {{index == 0 || index == 1 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='0'>基础信息</view>
+  <view class='navigation-item {{index == 2 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='2'>颜色偏好</view>
+  <view class='navigation-item {{index == 3 || index == 4 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='3'>风格裁剪</view>
+  <view class='navigation-item {{index == 5 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='5'>个人信息</view>
 </view>
 
 <view class='content'>
@@ -25,7 +25,7 @@
       </picker>
       <view class='text'>KG</view>
     </view>
-    <view class='input-row'>
+    <view class='input-row' style='margin-bottom: 0rpx;'>
       <view class='text'>年 龄</view>
       <input class='input' type='number' placeholder='请填写您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
       <view class='text'>AGE</view>
@@ -53,7 +53,8 @@
     <view class='color-row'>
       <view class='text'>喜欢的颜色</view>
       <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[0][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[0][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
+        </view>
         <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
           <image class='add' src='../../../../static/icons/svg_add.svg'></image>
         </view>
@@ -85,7 +86,7 @@
   <view class='item4' wx:if='{{index == 4}}'>
     <view class='style-btn {{cutStatus == 0 ? "active" : ""}}' data-index='0' bindtap='cutStatusSet'>修身裁剪</view>
     <view class='style-btn {{cutStatus == 1 ? "active" : ""}}' data-index='1' bindtap='cutStatusSet'>正常裁剪</view>
-    <view class='style-btn {{cutStatus == 2 ? "active" : ""}}' data-index='2' bindtap='cutStatusSet'>宽松裁剪</view>
+    <view class='style-btn {{cutStatus == 2 ? "active" : ""}}' data-index='2' bindtap='cutStatusSet' style='margin-bottom:0rpx;'>宽松裁剪</view>
   </view>
   <!-- 个人信息 -->
   <view class='item5' wx:if='{{index == 5}}'>
@@ -123,8 +124,9 @@
 <view class='color-picker' wx:if='{{colorPickShow != 0}}'>
   <!-- <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view> -->
   <view class='title'>{{colorPickTitle}}</view>
-  <view>
-    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "color active" : "color"}}'>
+  <view class='colors'>
+    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background-color: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "color active" : "color"}}'>
+      <image class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "selected" : "unselect"}}' src='../../../../static/icons/icon_ok.png'></image>
       <view class='name'>{{colors[i].name}}</view>
     </view>
   </view>

@@ -6,104 +6,118 @@
   <view class='navigation-item {{index == 5 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='5'>个人信息</view>
 </view>
 
-<view class='content'>
+<swiper class='swiper' current="{{index}}" duration="300" bindchange="switchTab">
   <!-- 基础信息 -->
-  <view class='item0' wx:if='{{index == 0}}'>
-    <view class='input-row'>
-      <view class='text'>身 高</view>
-      <!-- <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input> -->
-      <picker class='input' bindchange="bindHeightPickerChange" value="{{heightIndex}}" range="{{heightRange}}">
-        <view class='{{height == "请选择您的身高" ? "placeholder" : ""}}'>{{height}}</view>
-      </picker>
-      <view class='text'>CM</view>
-    </view>
-    <view class='input-row'>
-      <view class='text'>体 重</view>
-      <!-- <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input> -->
-      <picker class='input' bindchange="bindWeightPickerChange" value="{{weightIndex}}" range="{{weightRange}}">
-        <view class='{{weight == "请选择您的体重" ? "placeholder" : ""}}'>{{weight}}</view>
-      </picker>
-      <view class='text'>KG</view>
-    </view>
-    <view class='input-row' style='margin-bottom: 0rpx;'>
-      <view class='text'>年 龄</view>
-      <input class='input' type='number' placeholder='请填写您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
-      <view class='text'>AGE</view>
-    </view>
-  </view>
-  <view class='item1' wx:if='{{index == 1}}'>
-    <checkbox-group bindchange="checkboxChange">
-      <view class='left-checkboxes'>
-        <view class='checkbox-row' wx:for='{{detail_infos[0]}}' wx:for-index='i' wx:key='i'>
-          <checkbox class='checkbox' checked='{{detail_info_choice[0][i]}}' value='{{detail_infos[0][i]}}'></checkbox>
-          <view class='text'>{{detail_infos[0][i]}}</view>
-        </view>
+  <swiper-item class='content'>
+    <view class='item0'>
+      <view class='input-row'>
+        <view class='text'>身 高</view>
+        <!-- <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input> -->
+        <picker class='input' bindchange="bindHeightPickerChange" value="{{heightIndex}}" range="{{heightRange}}">
+          <view class='{{height == "请选择您的身高" ? "placeholder" : ""}}'>{{height}}</view>
+        </picker>
+        <view class='text'>CM</view>
       </view>
-      <view class='right-checkboxes'>
-        <view class='checkbox-row' wx:for='{{detail_infos[1]}}' wx:for-index='i' wx:key='i'>
-          <checkbox class='checkbox' checked='{{detail_info_choice[1][i]}}' value='{{detail_infos[1][i]}}'></checkbox>
-          <view class='text'>{{detail_infos[1][i]}}</view>
-        </view>
+      <view class='input-row'>
+        <view class='text'>体 重</view>
+        <!-- <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input> -->
+        <picker class='input' bindchange="bindWeightPickerChange" value="{{weightIndex}}" range="{{weightRange}}">
+          <view class='{{weight == "请选择您的体重" ? "placeholder" : ""}}'>{{weight}}</view>
+        </picker>
+        <view class='text'>KG</view>
       </view>
-    </checkbox-group>
-    <image class='body-pic' src='../../../../image/body.png'></image>
-  </view>
+      <view class='input-row' style='margin-bottom: 0rpx;'>
+        <view class='text'>年 龄</view>
+        <input class='input' type='number' placeholder='请填写您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
+        <view class='text'>AGE</view>
+      </view>
+    </view>
+  </swiper-item>
+  <swiper-item class='content'>
+    <view class='item1'>
+      <checkbox-group bindchange="checkboxChange">
+        <view class='left-checkboxes'>
+          <view class='checkbox-row' wx:for='{{detail_infos[0]}}' wx:for-index='i' wx:key='i'>
+            <checkbox class='checkbox' checked='{{detail_info_choice[0][i]}}' value='{{detail_infos[0][i]}}'></checkbox>
+            <view class='text'>{{detail_infos[0][i]}}</view>
+          </view>
+        </view>
+        <view class='right-checkboxes'>
+          <view class='checkbox-row' wx:for='{{detail_infos[1]}}' wx:for-index='i' wx:key='i'>
+            <checkbox class='checkbox' checked='{{detail_info_choice[1][i]}}' value='{{detail_infos[1][i]}}'></checkbox>
+            <view class='text'>{{detail_infos[1][i]}}</view>
+          </view>
+        </view>
+      </checkbox-group>
+      <image class='body-pic' src='../../../../image/body.png'></image>
+    </view>
+
+  </swiper-item>
   <!-- 颜色偏好 -->
-  <view class='item2' wx:if='{{index == 2}}'>
-    <view class='color-row'>
-      <view class='text'>喜欢的颜色</view>
-      <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 1}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
+  <swiper-item class='content'>
+    <view class='item2'>
+      <view class='color-row'>
+        <view class='text'>喜欢的颜色</view>
+        <view class='colors'>
+          <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 1}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
+          </view>
+          <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
+            <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+          </view>
         </view>
-        <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
-          <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+      </view>
+      <view class='color-row'>
+        <view class='text'>绝不能接受的颜色</view>
+        <view class='colors'>
+          <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 2}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+          <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
+            <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+          </view>
         </view>
       </view>
     </view>
-    <view class='color-row'>
-      <view class='text'>绝不能接受的颜色</view>
-      <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 2}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
-        <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
-          <image class='add' src='../../../../static/icons/svg_add.svg'></image>
-        </view>
-      </view>
-    </view>
-  </view>
+  </swiper-item>
   <!-- 风格裁剪 -->
-  <view class='item3' wx:if='{{index == 3}}'>
-    <view class='style-pic-container'>
-      <image class='style-pic style-pic-left' wx:if='{{styleIndex != 0}}' src='{{stylePics[styleIndex - 1].url}}' bindtap='styleImgTapped' data-key='left'></image>
-      <image class='style-pic' src='{{stylePics[styleIndex].url}}' bindtap='styleImgTapped' data-key='middle'></image>
-      <image class='style-pic style-pic-right' wx:if='{{styleIndex != stylePics.length - 1}}' src='{{stylePics[styleIndex + 1].url}}' bindtap='styleImgTapped' data-key='right'></image>
+  <swiper-item class='content'>
+    <view class='item3'>
+      <view class='style-pic-container'>
+        <image class='style-pic style-pic-left' wx:if='{{styleIndex != 0}}' src='{{stylePics[styleIndex - 1].url}}' bindtap='styleImgTapped' data-key='left'></image>
+        <image class='style-pic' src='{{stylePics[styleIndex].url}}' bindtap='styleImgTapped' data-key='middle'></image>
+        <image class='style-pic style-pic-right' wx:if='{{styleIndex != stylePics.length - 1}}' src='{{stylePics[styleIndex + 1].url}}' bindtap='styleImgTapped' data-key='right'></image>
+      </view>
+      <view class='btns'>
+        <view class='btn {{styleChoice[styleIndex] == 1 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='1'>喜欢</view>
+        <view class='btn {{styleChoice[styleIndex] == 2 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='2'>不喜欢</view>
+        <view class='btn {{styleChoice[styleIndex] == 3 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='3'>可以尝试</view>
+      </view>
     </view>
-    <view class='btns'>
-      <view class='btn {{styleChoice[styleIndex] == 1 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='1'>喜欢</view>
-      <view class='btn {{styleChoice[styleIndex] == 2 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='2'>不喜欢</view>
-      <view class='btn {{styleChoice[styleIndex] == 3 ? "active" : ""}}' bindtap='styleBtnTapped' data-choice='3'>可以尝试</view>
+
+  </swiper-item>
+  <swiper-item class='content'>
+    <view class='item4'>
+      <view class='style-btn {{cutStatus == 0 ? "active" : ""}}' data-index='0' bindtap='cutStatusSet'>修身裁剪</view>
+      <view class='style-btn {{cutStatus == 1 ? "active" : ""}}' data-index='1' bindtap='cutStatusSet'>正常裁剪</view>
+      <view class='style-btn {{cutStatus == 2 ? "active" : ""}}' data-index='2' bindtap='cutStatusSet' style='margin-bottom:0rpx;'>宽松裁剪</view>
     </view>
-  </view>
-  <view class='item4' wx:if='{{index == 4}}'>
-    <view class='style-btn {{cutStatus == 0 ? "active" : ""}}' data-index='0' bindtap='cutStatusSet'>修身裁剪</view>
-    <view class='style-btn {{cutStatus == 1 ? "active" : ""}}' data-index='1' bindtap='cutStatusSet'>正常裁剪</view>
-    <view class='style-btn {{cutStatus == 2 ? "active" : ""}}' data-index='2' bindtap='cutStatusSet' style='margin-bottom:0rpx;'>宽松裁剪</view>
-  </view>
+  </swiper-item>
   <!-- 个人信息 -->
-  <view class='item5' wx:if='{{index == 5}}'>
-    <view class='row'>
-      <view class='title'>上装尺寸</view>
-      <view class='size {{sizeStatus[0] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='0' bindtap='sizeStatusSet'>
-        {{sizes[i].name}}码({{sizes[i].value}})
+  <swiper-item class='content'>
+    <view class='item5'>
+      <view class='row'>
+        <view class='title'>上装尺寸</view>
+        <view class='size {{sizeStatus[0] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='0' bindtap='sizeStatusSet'>
+          {{sizes[i].name}}码({{sizes[i].value}})
+        </view>
+      </view>
+      <view class='row'>
+        <view class='title'>下装尺寸</view>
+        <view class='size {{sizeStatus[1] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='1' bindtap='sizeStatusSet'>
+          {{sizes[i].name}}码({{sizes[i].value}})
+        </view>
       </view>
     </view>
-    <view class='row'>
-      <view class='title'>下装尺寸</view>
-      <view class='size {{sizeStatus[1] == i ? "active" : ""}}' wx:for='{{sizes}}' wx:for-index='i' wx:key='i' data-index='{{i}}' data-key='1' bindtap='sizeStatusSet'>
-        {{sizes[i].name}}码({{sizes[i].value}})
-      </view>
-    </view>
-  </view>
-</view>
+  </swiper-item>
+</swiper>
 
 <view class='bottom'>
   <view class='text'>{{bottomTexts[index]}}</view>
@@ -115,10 +129,11 @@
       <image class='btn-pic' src='../../../../image/arrows.png'></image>
     </view>
   </view>
-  <view class='points'>
+  <view class='points' wx:if='{{index != bottomTexts.length - 1}}'>
     <view class='point {{i == 0 ? "point-first" : i == 5 ? "point-last" : "point-middle"}} {{index == i ? "active" : ""}}' wx:for='{{bottomTexts}}' wx:for-index='i' wx:key='i'>
     </view>
   </view>
+  <view class='back-save' wx:else bindtap='saveInfo'>保存</view>
 </view>
 
 <view class='color-picker' wx:if='{{colorPickShow != 0}}'>

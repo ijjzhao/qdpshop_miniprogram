@@ -102,9 +102,23 @@ page {
   background: #666;
 }
 
-.content {
+.bottom .back-save {
+  height: 88rpx;
+  margin-top: 12rpx;
+  line-height: 88rpx;
+  background: #333;
+  color: #fff;
+  text-align: center;
+}
+
+.swiper {
   width: 750rpx;
   height: calc(100% - 300rpx - 80rpx);
+}
+
+.content {
+  width: 750rpx;
+  height: 100%;
   /* background: red; */
   display: flex;
   align-items: center;

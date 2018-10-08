@@ -38,6 +38,7 @@ Page({
     detail_info_choice: [
       [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]
     ],
+    detailArr: [],
     colors: [
       { color: '#000000', name: '黑色' },
       { color: '#FFFFFF', name: '白色' },
@@ -52,9 +53,7 @@ Page({
       { color: '#FF0000', name: '红色' },
       { color: '#9013FE', name: '紫色' }
     ],
-    colorChoise: [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
+    colorChoise: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
     colorPickShow: 0,
     colorPickTitle: '',
     stylePics:[
@@ -136,7 +135,6 @@ Page({
         cutStatus: userInfo.cut
       })
     }
-
     if (userInfo.detail) {
       this.setDetailInfoChoice(JSON.parse(userInfo.detail))
     }
@@ -146,8 +144,13 @@ Page({
       })
     }
     if (userInfo.style) {
+      // 如果遇到图片增加的情况，原数据库存入的数组长度会不够，这个时候补0
+      let styleChoice = JSON.parse(userInfo.style)
+      while (this.data.stylePics.length - styleChoice.length > 0) {
+        styleChoice.push(0)
+      }
       this.setData({
-        styleChoice: JSON.parse(userInfo.style)
+        styleChoice: styleChoice
       })
     }
     if (userInfo.size) {
@@ -158,8 +161,87 @@ Page({
   },
 
   updateInfo(form) {
+    return
     let user_id = this.data.user_id
     util.request(api.UserInfoUpdate, {user_id, form}, 'POST')
+  },
+
+  saveInfo() {
+    let form = {}
+    if (this.data.height == '请选择您的身高') {
+      wx.showModal({
+        title: '提示',
+        content: '请正确选择您的身高',
+        showCancel: false
+      })
+      return
+    } else {
+      form.height = this.data.height
+    }
+
+    if (this.data.weight == '请选择您的体重') {
+      wx.showModal({
+        title: '提示',
+        content: '请正确选择您的体重',
+        showCancel: false
+      })
+      return
+    } else {
+      form.weight = this.data.weight
+    }
+
+    if (!this.data.age) {
+      wx.showModal({
+        title: '提示',
+        content: '请正确填写您的年龄',
+        showCancel: false
+      })
+      return
+    } else {
+      form.age = this.data.age
+    }
+
+
+    if (this.data.cutStatus == -1) {
+      wx.showModal({
+        title: '提示',
+        content: '请正确选择您的裁剪',
+        showCancel: false
+      })
+      return
+    } else {
+      form.cut = this.data.cutStatus
+    }
+
+    if (this.data.detailArr.length != 0) {
+      form.detail = JSON.stringify(this.data.detailArr)
+    }
+
+    if (this.data.colorChoise.join('') != '000000000000') {
+      form.color = JSON.stringify(this.data.colorChoise)
+    }
+
+    if (this.data.styleChoice.join('') != '0000') {
+      form.style = JSON.stringify(this.data.styleChoice)
+    }
+
+    if (this.data.sizeStatus[0] != -1 || this.data.sizeStatus[1] != -1) {
+      form.size = JSON.stringify(this.data.sizeStatus)
+    }
+
+    wx.showLoading({
+      title: '保存中',
+    })
+
+    let user_id = this.data.user_id
+    util.request(api.UserInfoUpdate, { user_id, form }, 'POST').then((res) => {
+      if (res.errno == 0) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+      wx.hideLoading()
+    })
   },
 
   prePageBtnTapped: function () {
@@ -180,9 +262,9 @@ Page({
         index: index
       })
     } else {
-      wx.navigateBack({
-        delta: 1,
-      })
+      // wx.navigateBack({
+      //   delta: 1,
+      // })
     }
   },
 
@@ -193,6 +275,12 @@ Page({
         index: index
       })
     }
+  },
+
+  switchTab(e) {
+    this.setData({
+      index: e.detail.current
+    })
   },
 
   bindinputHeight(e) {
@@ -274,7 +362,8 @@ Page({
       }
     }
     this.setData({
-      detail_info_choice: detail_info_choise
+      detail_info_choice: detail_info_choise,
+      detailArr: data
     })
   },
 

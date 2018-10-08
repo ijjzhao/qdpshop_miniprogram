@@ -77,8 +77,12 @@ Page({
         if (userInfo.cut == undefined) {
           noFill[2]++
         }
-        if (!userInfo.size) {
-          noFill[3]++
+        if (userInfo.size) {
+          let sizeArr = JSON.parse(userInfo.size)
+          if (sizeArr[0] == -1) noFill[3]++
+          if (sizeArr[1] == -1) noFill[3]++
+        } else {
+          noFill[3] += 2
         }
         this.setData({
           userInfo, noFill

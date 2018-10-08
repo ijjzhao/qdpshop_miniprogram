@@ -131,7 +131,7 @@ Page({
         age: userInfo.age
       })
     }
-    if (userInfo.cut) {
+    if (userInfo.cut != undefined) {
       this.setData({
         cutStatus: userInfo.cut
       })

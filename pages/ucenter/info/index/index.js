@@ -74,7 +74,7 @@ Page({
         if (!userInfo.style) {
           noFill[2]++
         }
-        if (!userInfo.cut) {
+        if (userInfo.cut != undefined) {
           noFill[2]++
         }
         if (!userInfo.size) {

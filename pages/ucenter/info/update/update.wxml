@@ -121,11 +121,12 @@
 </view>
 
 <view class='color-picker' wx:if='{{colorPickShow != 0}}'>
-  <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view>
+  <!-- <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view> -->
   <view class='title'>{{colorPickTitle}}</view>
   <view>
     <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "color active" : "color"}}'>
       <view class='name'>{{colors[i].name}}</view>
     </view>
   </view>
+  <view class='btn-ok' bindtap='toggleColorPicker' data-show='0'>确定</view>
 </view>

@@ -73,7 +73,7 @@ page {
 }
 
 .bottom .points {
-  margin-top: 20rpx;
+  margin-top: 60rpx;
   text-align: center;
 }
 
@@ -102,9 +102,11 @@ page {
   background: #666;
 }
 
-.bottom .back-save {
+.bottom .btn-save {
   height: 88rpx;
+  width: 600rpx;
   margin-top: 12rpx;
+  margin-left: 75rpx;
   line-height: 88rpx;
   background: #333;
   color: #fff;
@@ -289,6 +291,7 @@ page {
 }
 
 .color-row .colors {
+  text-align: center;
 }
 
 .color-row .color {
@@ -367,7 +370,7 @@ page {
 }
 
 .input-row .text {
-  width: 80rpx;
+  width: 90rpx;
   line-height: 80rpx;
   font-size: 32rpx;
   float: left;

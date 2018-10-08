@@ -2,7 +2,7 @@
 const util = require('../../../../utils/util.js')
 const api = require('../../../../config/api.js')
 
-let canSetIndexByNavigation = false;
+let canSetIndexByNavigation = true;
 
 Page({
 
@@ -13,26 +13,26 @@ Page({
     user_id: 0,
     index: 0,
     bottomTexts: [
-      '基本的身高体重数据，是让搭配师了解你的第一步',
-      '一些特殊的细节，可以主动告诉搭配师',
-      '选出你最钟爱的颜色，让搭配师更加了解你',
-      '每个人都有自己期望的样子',
-      '哪种裁剪让你觉得更加舒适',
-      '合身的衣服更加容易出效果哦'
+      '这 是 搭 配 师 了 解 你 的 第 一 步',
+      '你 的 不 一 样， 我 们 帮 你 记 录 ',
+      '正 确 的 颜 色 是 搭 配 的 灵 魂',
+      '每 个 人 都 有 自 己 期 望 的 样 子',
+      '哪 种 裁 剪 让 你 觉 得 更 加 舒 适',
+      '合 身 的 衣 服 更 加 容 易 出 效 果 哦'
       ],
-    height: '请选择您的身高',
+    height: '请 选 择 您 的 身 高',
     heightIndex: 30,
     heightRange: [],
-    weight: '请选择您的体重',
+    weight: '请 选 择 您 的 体 重',
     weightIndex: 10,
     weightRange: [],
     age: '',
     detail_infos: [
       [
-        '肤色黑', '脸大', '肩宽', '屁股大', '大粗腿'
+        '肤 色 黑', '脸 大', '肩 宽', '屁 股 大', '大 粗 腿'
       ],
       [
-        '肤色白', '脖子短', '啤酒肚', '腰粗', '腿短'
+        '肤 色 白', '脖 子 短', '啤 酒 肚', '腰 粗', '腿 短'
       ]
     ],
     detail_info_choice: [
@@ -440,7 +440,7 @@ Page({
     }
   },
   
-  styleBtnTapped: function(e) {
+  styleBtnTapped: function (e) {
     let choice = parseInt(e.currentTarget.dataset.choice)
     let styleChoice = this.data.styleChoice
     let index = this.data.styleIndex
@@ -455,7 +455,14 @@ Page({
         that.setData({
           styleIndex: index + 1
         })
-      }, 500) 
+      }, 500)
+    } else {
+      let that = this
+      setTimeout(function () {
+        that.setData({
+          index: that.data.index + 1
+        })
+      }, 500)
     }
 
     this.updateInfo({

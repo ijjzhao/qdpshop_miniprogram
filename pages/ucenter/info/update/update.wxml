@@ -53,7 +53,7 @@
     <view class='color-row'>
       <view class='text'>喜欢的颜色</view>
       <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[0][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 1}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
         </view>
         <view class='color' bindtap='toggleColorPicker' data-show='1' data-title='请选择您喜欢的颜色'>
           <image class='add' src='../../../../static/icons/svg_add.svg'></image>
@@ -63,7 +63,7 @@
     <view class='color-row'>
       <view class='text'>绝不能接受的颜色</view>
       <view class='colors'>
-        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[1][i]}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+        <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 2}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
         <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
           <image class='add' src='../../../../static/icons/svg_add.svg'></image>
         </view>
@@ -125,8 +125,8 @@
   <!-- <view class='btn' bindtap='toggleColorPicker' data-show='0'>x</view> -->
   <view class='title'>{{colorPickTitle}}</view>
   <view class='colors'>
-    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background-color: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "color active" : "color"}}'>
-      <image class='{{ colorChoise[colorPickShow - 1][i] == 1 ? "selected" : "unselect"}}' src='../../../../static/icons/icon_ok.png'></image>
+    <view wx:for='{{colors}}' wx:for-index='i' wx:key='i' style='background-color: {{colors[i].color}}' bindtap='colorPick' data-index='{{i}}' class='{{ colorChoise[i] == colorPickShow ? "color active" : "color"}}'>
+      <image class='selected' src='{{colorChoise[i] == 0 ? "" : colorChoise[i] == 1 ? "../../../../static/icons/icon_ok.png" : "../../../../static/icons/icon_no.png"}}'></image>
       <view class='name'>{{colors[i].name}}</view>
     </view>
   </view>

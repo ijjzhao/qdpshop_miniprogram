@@ -104,7 +104,7 @@ page {
 
 .content {
   width: 750rpx;
-  height: calc(100% - 300rpx - 70rpx);
+  height: calc(100% - 300rpx - 80rpx);
   /* background: red; */
   display: flex;
   align-items: center;
@@ -281,7 +281,7 @@ page {
   height: 80rpx;
   width: 80rpx;
   border: 1rpx solid #666;
-  margin: 20rpx;
+  margin: 10rpx;
   display: inline-block;
   overflow: hidden;
 }

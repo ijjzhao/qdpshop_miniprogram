@@ -53,7 +53,6 @@ Page({
       { color: '#9013FE', name: '紫色' }
     ],
     colorChoise: [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     colorPickShow: 0,
@@ -180,6 +179,10 @@ Page({
       this.setData({
         index: index
       })
+    } else {
+      wx.navigateBack({
+        delta: 1,
+      })
     }
   },
 
@@ -293,8 +296,8 @@ Page({
     let colorPickShow = this.data.colorPickShow
     let colorChoise = this.data.colorChoise;
     if (colorPickShow == 0) return
-    let choise = colorChoise[colorPickShow - 1][index]
-    colorChoise[colorPickShow - 1][index] = choise == 1 ? 0 : 1
+    let choise = colorChoise[index]
+    colorChoise[index] = choise != colorPickShow ? parseInt(colorPickShow) : 0
     this.setData({
       colorChoise
     })

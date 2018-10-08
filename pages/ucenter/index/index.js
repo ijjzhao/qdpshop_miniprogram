@@ -5,7 +5,8 @@ var app = getApp();
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    isCustomer: true
   },
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -29,7 +30,18 @@ Page({
       userInfo: app.globalData.userInfo,
     });
 
+    this.checkStylist(this.data.userInfo.id)
+
   },
+
+  checkStylist: function(user_id) {
+    util.request(api.StylistCheck, { user_id }).then((res) => {
+      this.setData({
+        isCustomer: res.errno != 0
+      })
+    })
+  },
+
   onHide: function() {
     // 页面隐藏
 
@@ -138,4 +150,5 @@ Page({
     })
     
   }
+
 })

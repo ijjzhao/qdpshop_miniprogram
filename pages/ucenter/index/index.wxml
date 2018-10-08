@@ -21,9 +21,9 @@
       </navigator>
     </view>
     <view class="item">
-      <navigator url="/pages/plan/list/list?forCustomer=0" class="a">
+      <navigator url="/pages/plan/list/list?forCustomer={{isCustomer ? 1 : 0}}" class="a">
         <text class="icon feedback"></text>
-        <text class="txt">我的方案</text>
+        <text class="txt">{{isCustomer ? '方案库' : '我的方案'}}</text>
       </navigator>
     </view>
     <view class='item'>
@@ -93,7 +93,7 @@
         <text class="txt">意见反馈</text>
       </navigator>
     </view>
-    <view class="item" bindtap='cardBtnTapped'>
+    <!-- <view class="item" bindtap='cardBtnTapped'>
       <view class="a">
         <text class="icon feedback"></text>
         <text class="txt">卡券领取</text>
@@ -104,8 +104,8 @@
         <text class="icon feedback"></text>
         <text class="txt">我的方案(客户入口)</text>
       </navigator>
-    </view>
-    <view class="item">
+    </view> -->
+    <view class="item" wx:if="{{isCustomer}}">
       <navigator url="/pages/ucenter/info/index/index?id={{userInfo.id}}" class="a">
         <text class="icon feedback"></text>
         <text class="txt">我的档案</text>

@@ -10,14 +10,33 @@ Page({
   data: {
     userInfo: {},
     avatarUrl: '',
-    user_id: 48,
-    noFill: [0, 0, 0, 0]
+    user_id: 0,
+    noFill: [0, 0, 0, 0],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    if (options.id) {
+      this.setData({
+        user_id: options.id
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '您尚未登录',
+        showCancel: false,
+        success: function(e) {
+          wx.navigateBack({
+            delta: 1
+          })
+        }
+      })
+      return
+    }
+
     let that = this
     wx.getUserInfo({
       success: function (res) {
@@ -29,15 +48,10 @@ Page({
       }
     })
 
-    if (options.id) {
-      this.setData({
-        user_id: options.id
-      })
-    }
-
   },
 
   getUserInfo: function(user_id) {
+    if (!user_id) return
     let that = this
     util.request(api.UserInfoGet, {user_id}).then((res) => {
       let userInfo = res.data

@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<!-- <web-view src="http://figure.baiduux.com/h5/57f018fb-ae40-3230-e4d0-22b246180885.html"></web-view> -->
 <scroll-view scroll-y class="container" style="height: 100%" enable-back-to-top>
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">

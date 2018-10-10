@@ -111,6 +111,13 @@
         <text class="txt">我的档案</text>
       </navigator>
     </view>
+    <view class="item">
+      <navigator url="/pages/ucenter/couponbag/couponbag" class="a">
+        <text class="icon feedback"></text>
+        <text class="txt">卡包领取</text>
+      </navigator>
+    </view>
+
 
   </view>
 

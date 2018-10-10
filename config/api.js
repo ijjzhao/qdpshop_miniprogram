@@ -3,9 +3,9 @@ let cdnImgUrl = 'http://collocate.qingdapei.net/img/plan/';
 let ApiRootUrl = 'https://mini.qingdapei.net/api/';
 
 if (isDev) {
-  ApiRootUrl = 'http://127.0.0.1:8360/api/';
-// ApiRootUrl = 'http://39.104.85.163:8360/api/';
-// ApiRootUrl = 'http://192.168.0.120:8360/api/';
+  // ApiRootUrl = 'http://127.0.0.1:8360/api/';
+  // ApiRootUrl = 'http://39.104.85.163:8360/api/';
+  ApiRootUrl = 'http://192.168.0.120:8360/api/';
   cdnImgUrl = 'http://collocate.qingdapei.net/img/planTest/';
 }
 
@@ -230,6 +230,7 @@ module.exports = {
 
 
   StylistDetail: ApiRootUrl + 'stylist/detail', // 搭配师详情
+  StylistCheck: ApiRootUrl + 'stylist/check', // 查询用户是不是搭配师
 
   PlanSave: ApiRootUrl + 'plan/save', // 保存方案
   PlanList: ApiRootUrl + 'plan/list', // 
@@ -247,4 +248,6 @@ module.exports = {
 
   UserInfoGet: ApiRootUrl + 'userinfo/get', // 获取用户详细信息
   UserInfoUpdate: ApiRootUrl + 'userinfo/update', // 更新用户详细信息
+
+  CouponBagGetForNewUser: ApiRootUrl + 'couponbag/getfornewuser', // 获取新用户卡包
 };

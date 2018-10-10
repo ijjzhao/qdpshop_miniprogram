@@ -1,0 +1,65 @@
+/* pages/ucenter/couponbag/couponbag.wxss */
+
+page {
+  height: 100%;
+}
+
+.coupon-bag {
+  width: 750rpx;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: darkblue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon-bag .main {
+  width: 500rpx;
+  /* height: 700rpx; */
+  background: rgba(0, 0, 0, 0.1);
+  padding: 40rpx;
+  border-radius: 10rpx;
+}
+
+.coupon-bag .main .title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.coupon-bag .main .coupons {
+  width: 100%;
+}
+
+.coupon-bag .main .coupons .coupon {
+  height: 120rpx;
+  margin-bottom: 30rpx;
+  display: flex
+}
+
+.coupon-bag .main .coupons .coupon .head {
+  height: 100%;
+  width: 140rpx;
+  background: greenyellow;
+  float: left;
+}
+
+.coupon-bag .main .coupons .coupon .detail {
+  height: 100%;
+  flex: 1;
+  background: blue;
+  float: left;
+}
+
+.coupon-bag .main .btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  border-radius: 10rpx;
+}

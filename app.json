@@ -55,6 +55,7 @@
     "pages/plan/detail/detail",
     "pages/plan/list/list",
     "pages/stylist/detail/detail",
+    "pages/ucenter/couponbag/couponbag",    
     "pages/ucenter/info/index/index",
     "pages/ucenter/info/update/update"
   ],

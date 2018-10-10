@@ -10,7 +10,7 @@ Page({
   data: {
     bag: {},
     coupons: [],
-    showCounponBag: true
+    showCounponBag: false
   },
 
   /**
@@ -26,7 +26,8 @@ Page({
       if (res.errno == 0) {
         that.setData({
           bag: res.data.bag,
-          coupons: res.data.coupons
+          coupons: res.data.coupons,
+          showCounponBag: true
         })
       }
     })

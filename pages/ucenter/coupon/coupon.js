@@ -72,6 +72,7 @@ Page({
       obj.coupon_type = getList[i].coupon_type
       obj.validity_end = getList[i].validity_end
       obj.validity_start = getList[i].validity_start
+      obj.Instructions = getList[i].Instructions
       if (getList[i].coupon_limit == 1) {
         obj.limit = '满 ' + getList[i].coupon_limit_value + ' 可用'
       } else {
@@ -205,7 +206,7 @@ Page({
           var time = parseInt(list.validity_end) - new Date().getTime()
           // console.log(util.timestampToDate(time)) 
           // list.localvalend = util.timestampToDateSec(time)
-          list.localvalend = util.timestampToTime(endtime) + ' 截止，剩余 ' + util.timestampToDateSec(time)
+          list.localvalend = '有效期至：' +  util.timestampToTime(endtime)//，剩余 ' + util.timestampToDateSec(time)
           list.abled = '1'
         }
       }

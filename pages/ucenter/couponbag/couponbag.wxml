@@ -1,15 +1,24 @@
 <!--pages/ucenter/couponbag/couponbag.wxml-->
 <text>pages/ucenter/couponbag/couponbag.wxml</text>
 
-<view class='coupon-bag' wx:if='{{showCounponBag}}'>
+<!-- <view class='coupon-bag' wx:if='{{showCounponBag}}'>
   <view class='main'>
     <view class='title'>卡包</view>  
     <view class='coupons'>
       <view class='coupon' wx:for='{{coupons}}' wx:for-item='item'>
-        <view class='head'>{{item.coupon_value}}{{item.coupon_type ? '折' : '元'}}</view>
-        <view class='detail'>{{item.coupon_name}}</view>
+        <view class='head'>
+          <view class='value'>{{item.coupon_value}}</view>
+          <view class='unit'>{{item.coupon_type ? '折' : '元'}}</view>
+        </view>
+        <view class='detail'>{{item.coupon_type ? '折扣券' : '代金券'}}{{bag.type ? '':''}}</view>
       </view>
     </view>
+    <view class='btn' bindtap='getCouponBagBtnTapped'>领取</view>
+  </view>
+</view> -->
+
+<view class='coupon-bag' wx:if='{{showCounponBag}}'>
+  <view class='main'>
     <view class='btn' bindtap='getCouponBagBtnTapped'>领取</view>
   </view>
 </view>

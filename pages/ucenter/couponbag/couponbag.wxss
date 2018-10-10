@@ -10,7 +10,40 @@ page {
   position: absolute;
   top: 0;
   left: 0;
-  /* background: darkblue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon-bag .main {
+  width: 600rpx;
+  height: 760rpx;
+  padding: 40rpx;
+  border-radius: 10rpx;
+  position: relative;
+  background: rgba(0, 0, 0, 0.1) url() center;
+  background-size: 100%;
+}
+
+.coupon-bag .main .btn {
+  position: absolute;
+  width: 520rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  border-radius: 10rpx;
+  bottom: 40rpx;
+  left: 40rpx;
+}
+
+/* .coupon-bag {
+  width: 750rpx;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +51,6 @@ page {
 
 .coupon-bag .main {
   width: 500rpx;
-  /* height: 700rpx; */
   background: rgba(0, 0, 0, 0.1);
   padding: 40rpx;
   border-radius: 10rpx;
@@ -37,21 +69,40 @@ page {
 .coupon-bag .main .coupons .coupon {
   height: 120rpx;
   margin-bottom: 30rpx;
-  display: flex
+  display: flex;
+  background: #fff;
 }
 
 .coupon-bag .main .coupons .coupon .head {
   height: 100%;
   width: 140rpx;
-  background: greenyellow;
   float: left;
+  font-weight: 700;
+  text-align: center;
+  background: #b4282d
+}
+
+.coupon-bag .main .coupons .coupon .head .value {
+  line-height: 120rpx;
+  font-size: 64rpx;
+  color: #fff;
+  display: inline;
+}
+.coupon-bag .main .coupons .coupon .head .unit {
+  line-height: 120rpx;
+  font-size: 24rpx;
+  color: #fff;
+  display: inline;
 }
 
 .coupon-bag .main .coupons .coupon .detail {
   height: 100%;
   flex: 1;
-  background: blue;
   float: left;
+  padding: 10rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+  
 }
 
 .coupon-bag .main .btn {
@@ -62,4 +113,4 @@ page {
   background: #333;
   color: #fff;
   border-radius: 10rpx;
-}
+} */

@@ -37,6 +37,12 @@ Page({
     this.setData({
       showCounponBag: false
     })
+    // wx.navigateTo({
+    //   url: '../coupon/coupon',
+    // })
+    wx.redirectTo({
+      url: '../coupon/coupon',
+    })
   },
 
   /**

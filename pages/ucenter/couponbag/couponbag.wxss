@@ -21,21 +21,22 @@ page {
   padding: 40rpx;
   border-radius: 10rpx;
   position: relative;
-  background: rgba(0, 0, 0, 0.1) url() center;
-  background-size: 100%;
+  background: rgba(0, 0, 0, 0.1) url(https://img.qingdapei.net/giftPop.png?v=2) center;
+  background-size: 100% 103%;
 }
 
 .coupon-bag .main .btn {
   position: absolute;
-  width: 520rpx;
+  /* width: 540rpx; */
   height: 88rpx;
   line-height: 88rpx;
   text-align: center;
   background: #333;
   color: #fff;
   border-radius: 10rpx;
-  bottom: 40rpx;
-  left: 40rpx;
+  bottom: 50rpx;
+  left: 30rpx;
+  right: 30rpx;
 }
 
 /* .coupon-bag {

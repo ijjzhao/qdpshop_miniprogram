@@ -123,7 +123,9 @@
       <view class='row'>
         <view class='left'>
           <text class='demo {{pics[0] ? "hidden" : ""}}'>示例图</text>
-          <image class='pic' src='{{pics[0] || defaultPics[0]}}'></image>
+          <view class='pic-container'>
+            <image class='pic' src='{{pics[0] || defaultPics[0]}}' mode='aspectFit'></image>
+          </view>
           <image class='add' src='../../../../static/icons/icon_add_pic.png' bindtap='choosePic' data-index='0'></image>
         </view>
         <view class='btn' data-index='0' bindtap='showBigImg'>
@@ -139,7 +141,9 @@
       <view class='row'>
         <view class='left'>
           <text class='demo {{pics[1] ? "hidden" : ""}}'>示例图</text>        
-          <image class='pic' src='{{pics[1] || defaultPics[1]}}'></image>
+          <view class='pic-container'>
+            <image class='pic' src='{{pics[1] || defaultPics[1]}}' mode='aspectFit'></image>
+          </view>
           <image class='add' src='../../../../static/icons/icon_add_pic.png' bindtap='choosePic' data-index='1'></image>
         </view>
         <view class='btn' data-index='1' bindtap='showBigImg'>

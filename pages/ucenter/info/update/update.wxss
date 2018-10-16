@@ -301,12 +301,18 @@ page {
   position: relative
 }
 
-.item6 .row .left .pic {
+.item6 .row .left .pic-container {
   position: absolute;
   top: 16rpx;
   left: 16rpx;
   width: 210rpx;
   height: 210rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.item6 .row .left .pic-container .pic{
+  height: 100%
 }
 
 .item6 .row .left .add {

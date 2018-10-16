@@ -160,6 +160,11 @@ page {
   width: 750rpx;
 }
 
+.content .item6 {
+  width: 600rpx;
+  margin-left: 75rpx;  
+}
+
 .item3 .style-pic {
   width: 550rpx;
   height: 550rpx;
@@ -278,6 +283,65 @@ page {
 .item5 .row .active {
   color:#fff;
   background: #333;
+}
+
+.item6 .row {
+  height: 250rpx;
+  /* background: red; */
+  margin: 40rpx 0;
+}
+
+.item6 .row .left {
+  width: 250rpx;
+  height: 100%;
+  /* background: green; */
+  border-radius: 10rpx;
+  border: 4rpx #eee dashed;
+  float: left;
+  position: relative
+}
+
+.item6 .row .left .pic {
+  position: absolute;
+  top: 16rpx;
+  left: 16rpx;
+  width: 210rpx;
+  height: 210rpx;
+}
+
+.item6 .row .left .add {
+  position: absolute;
+  top: 81rpx;
+  left: 81rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.item6 .row .btn {
+  width: 50rpx;
+  height: 100%;
+  float: left;
+  margin-left: 10rpx;
+}
+
+.item6 .row .btn .pic {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}
+
+.item6 .row .text {
+  height: 100%;
+  width: 290rpx;
+  /* background: blue; */
+  float: left;
+  padding-left: 30rpx;
+}
+
+.item6 .row .text .title {
+  margin: 30rpx 0;
+  font-size: 32rpx;
 }
 
 .color-row {
@@ -472,4 +536,24 @@ page {
   background: rgb(255, 255, 255);
   margin-top: 10rpx;
   border-radius: 10rpx;
+}
+
+.big-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-img .pic {
+  width: 90%;
+}
+
+.hidden {
+  display: none;
 }

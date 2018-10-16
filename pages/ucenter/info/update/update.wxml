@@ -3,7 +3,7 @@
   <view class='navigation-item {{index == 0 || index == 1 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='0'>基础信息</view>
   <view class='navigation-item {{index == 2 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='2'>颜色偏好</view>
   <view class='navigation-item {{index == 3 || index == 4 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='3'>风格裁剪</view>
-  <view class='navigation-item {{index == 5 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='5'>个人信息</view>
+  <view class='navigation-item {{index == 5 || index == 6 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='5'>个人信息</view>
 </view>
 
 <swiper class='swiper' current="{{index}}" duration="300" bindchange="switchTab">
@@ -56,7 +56,7 @@
   <!-- 颜色偏好 -->
   <swiper-item class='content'>
     <view class='item2'>
-      <view class='color-row'>
+      <!-- <view class='color-row'>
         <view class='text'>你 喜 欢 的 颜 色</view>
         <view class='colors'>
           <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 1}}' wx:key='i' style='{{"background: " + colors[i].color}}'>
@@ -65,7 +65,7 @@
             <image class='add' src='../../../../static/icons/svg_add.svg'></image>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class='color-row'>
         <view class='text'>你 绝 不 能 接 受 的 颜 色</view>
         <view class='colors'>
@@ -117,7 +117,45 @@
       </view>
     </view>
   </swiper-item>
+  <swiper-item class='content'>
+    <view class='item6'>
+      <view>个人照片</view>
+      <view class='row'>
+        <view class='left'>
+          <image class='pic' src='{{pics[0]}}'></image>
+          <image class='add' src='../../../../static/icons/icon_add_pic.png' bindtap='choosePic' data-index='0'></image>
+        </view>
+        <view class='btn' data-index='0' bindtap='showBigImg'>
+          <image class='pic' src='../../../../static/icons/icon_big.png'></image>
+        </view>
+        <view class='text'>
+          <view class='title'>添加半身照</view>
+          <view>突出五官</view>
+          <view>面部不要有遮挡</view>
+          <view>例如:帽子 口罩 墨镜</view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='left'>
+          <image class='pic' src='{{pics[1]}}'></image>
+          <image class='add' src='../../../../static/icons/icon_add_pic.png' bindtap='choosePic' data-index='1'></image>
+        </view>
+        <view class='btn' data-index='1' bindtap='showBigImg'>
+          <image class='pic' src='../../../../static/icons/icon_big.png'></image>
+        </view>
+        <view class='text'>
+        <view class='title'>添加全身照</view>
+          <view>展示身型</view>
+          <view>图片清晰</view>
+          </view>
+      </view>
+    </view>
+  </swiper-item>
 </swiper>
+
+<view class='big-img {{showBigImg ? "": "hidden"}}' bindtap='hideBigImg'>
+  <image class='pic' src='{{bigImgUrl}}' mode='widthFix'></image>
+</view>
 
 <view class='bottom'>
   <view class='text'>{{bottomTexts[index]}}</view>

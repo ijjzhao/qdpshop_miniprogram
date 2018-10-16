@@ -1,6 +1,7 @@
 // pages/ucenter/info/update/update.js
 const util = require('../../../../utils/util.js')
 const api = require('../../../../config/api.js')
+const qiniuUploader = require('../../../..//utils/qiniuUploader.js')
 
 let canSetIndexByNavigation = true;
 
@@ -18,7 +19,8 @@ Page({
       '正 确 的 颜 色 是 搭 配 的 灵 魂',
       '每 个 人 都 有 自 己 期 望 的 样 子',
       '哪 种 裁 剪 让 你 觉 得 更 加 舒 适',
-      '合 身 的 衣 服 更 加 容 易 出 效 果 哦'
+      '合 身 的 衣 服 更 加 容 易 出 效 果 哦',
+      '上传可以清晰展示你五官和身型的个人照片'
       ],
     height: '请 选 择 您 的 身 高',
     heightIndex: 30,
@@ -75,13 +77,24 @@ Page({
       { name: 'XXL', value: '185' },
       { name: 'XXXL', value: '190' }
     ],
-    sizeStatus: [-1, -1]
+    sizeStatus: [-1, -1],
+    pics: ['', ''],
+    showBigImg: false,
+    bigImgUrl: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this;
+    util.request(api.GetTooken, 'POST').then(res => {
+      console.log(res)
+      that.setData({
+        qiniuUpload: res.data.uploadToken
+      })
+    })
+
     if (options.index) {
       this.setData({
         index: parseInt(options.index)
@@ -158,6 +171,11 @@ Page({
         sizeStatus: JSON.parse(userInfo.size)
       })
     }
+    if (userInfo.pics) {
+      this.setData({
+        pics: JSON.parse(userInfo.pics)
+      })
+    }
   },
 
   updateInfo(form) {
@@ -229,11 +247,16 @@ Page({
       form.size = JSON.stringify(this.data.sizeStatus)
     }
 
+    if (this.data.pics[0] != '' || this.data.pics[1] != '') {
+      form.pics = JSON.stringify(this.data.pics)
+    }
+
     wx.showLoading({
       title: '保存中',
     })
 
     let user_id = this.data.user_id
+    let pics = this.data.pics
     util.request(api.UserInfoUpdate, { user_id, form }, 'POST').then((res) => {
       if (res.errno == 0) {
         wx.navigateBack({
@@ -470,6 +493,42 @@ Page({
     })
   },
 
+  showBigImg(e) {
+    let index = e.currentTarget.dataset.index
+    let bigImgUrl = this.data.pics[index]
+    this.setData({
+      showBigImg: true,
+      bigImgUrl: bigImgUrl
+    })
+  },
+
+  hideBigImg() {
+    this.setData({
+      showBigImg: false,
+      bigImgUrl: ''
+    })
+  },
+
+  choosePic(e) {
+    let index = e.currentTarget.dataset.index
+    let that = this
+    initQiniu(that);
+    wx.chooseImage({
+      count: 1,
+      success: function(res) {
+        const tempFilePaths = res.tempFilePaths
+        let pics = that.data.pics
+        let filePath = tempFilePaths[0]
+        qiniuUploader.upload(filePath, (res) => {
+          pics[index] = api.uploadaddress + res.imageURL
+          that.setData({
+            pics
+          })
+        })
+      },
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -519,3 +578,15 @@ Page({
   
   }
 })
+
+// 初始化七牛相关参数
+function initQiniu(that) {
+  var options = {
+    region: 'ECN', // 华北区
+    // uptokenURL: 'https://[yourserver.com]/api/uptoken',
+    uptoken: that.data.qiniuUpload,
+    // domain: 'http://[yourBucketId].bkt.clouddn.com',
+    shouldUseQiniuFileName: true
+  };
+  qiniuUploader.init(options);
+}

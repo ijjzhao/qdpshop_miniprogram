@@ -98,6 +98,14 @@ Page({
         } else {
           noFill[3] += 2
         }
+
+        if (userInfo.pics) {
+          let pics = JSON.parse(userInfo.pics)
+          if (pics[0] == '') noFill[3]++
+          if (pics[1] == '') noFill[3]++
+        } else {
+          noFill[3] += 2
+        }
         this.setData({
           userInfo, noFill
         })

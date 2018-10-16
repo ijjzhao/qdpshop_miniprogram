@@ -227,7 +227,7 @@ view,text{
   /* border: 1px solid black; */
   width: 88%;
   font-weight: bold;
-  color: #dc3022;
+  color: #b4282d;
   font-size: 22rpx;
   padding-bottom: 8rpx;
   margin: auto;
@@ -239,7 +239,7 @@ view,text{
 /* .currency_goods_view_item_price  */
 .currency_goods_view_item_price_left {
   float: left;
-  color: #dc3022;
+  color: #b4282d;
 }
 .currency_goods_view_item_price_right {
   float: right;

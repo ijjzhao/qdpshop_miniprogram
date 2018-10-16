@@ -19,15 +19,15 @@
     <text class='row-text'>基础信息</text>
     <text class='row-text right'>{{noFill[0] == 0 ? "" : noFill[0]+"项未完成"}} ></text>
   </view>
-  <view class='row' bindtap='rowTapped' data-index='2'>
+  <view class='row' bindtap='rowTapped' data-index='1'>
     <text class='row-text'>颜色偏好</text>
     <text class='row-text right'>{{noFill[1] == 0 ? "" : noFill[1]+"项未完成"}} ></text>
   </view>
-  <view class='row' bindtap='rowTapped' data-index='3'>
+  <view class='row' bindtap='rowTapped' data-index='2'>
     <text class='row-text'>风格裁剪</text>
     <text class='row-text right'>{{noFill[2] == 0 ? "" : noFill[2]+"项未完成"}} ></text>
   </view>
-  <view class='row' bindtap='rowTapped' data-index='5'>
+  <view class='row' bindtap='rowTapped' data-index='3'>
     <text class='row-text'>个人信息</text>
     <text class='row-text right'>{{noFill[3] == 0 ? "" : noFill[3]+"项未完成"}} ></text>
   </view>

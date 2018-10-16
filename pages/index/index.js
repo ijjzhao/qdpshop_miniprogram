@@ -173,10 +173,11 @@ Page({
     // }
     // this.onLoad();
     // this.goLogin()
-    this.setData({
-      userInfo: app.globalData.userInfo,
-    });
-    console.log(this.data.userInfo)
+    
+    // this.setData({
+    //   userInfo: app.globalData.userInfo,
+    // });
+    // console.log(this.data.userInfo)
 
   },
   JumpUrl(e){

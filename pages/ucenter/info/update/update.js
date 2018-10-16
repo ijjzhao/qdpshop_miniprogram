@@ -59,13 +59,16 @@ Page({
     colorPickShow: 0,
     colorPickTitle: '',
     stylePics:[
-      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
-      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
-      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
-      { url: 'http://collocate.qingdapei.net/img/planTest/81.png', status: 0 },
+      { url: 'https://img.qingdapei.net/brief-deepColor.png', description: '简约' },
+      { url: 'https://img.qingdapei.net/brief-sampleColor.png', description: '简约' },
+      { url: 'https://img.qingdapei.net/fashion-HK-warmColor.png', description: '轻时尚' },
+      { url: 'https://img.qingdapei.net/fashion-simpleColor.png', description: '轻时尚' },
+      { url: 'https://img.qingdapei.net/light-deepColor.png', description: '休闲' },
+      { url: 'https://img.qingdapei.net/light-middleColor.png', description: '休闲' },
+      { url: 'https://img.qingdapei.net/light-sampleColor.png', description: '休闲' },
     ],
     styleIndex: 0,
-    styleChoice: [0, 0, 0, 0],
+    styleChoice: [0, 0, 0, 0, 0, 0, 0],
     cutStatus: -1,
     upwareSizeStatus: 0,
     downwareSizeStatus: 0,
@@ -79,6 +82,7 @@ Page({
     ],
     sizeStatus: [-1, -1],
     pics: ['', ''],
+    defaultPics: ['https://img.qingdapei.net/half-body.jpg', 'https://img.qingdapei.net/whole-body.png'],
     showBigImg: false,
     bigImgUrl: ''
   },
@@ -239,7 +243,7 @@ Page({
       form.color = JSON.stringify(this.data.colorChoise)
     }
 
-    if (this.data.styleChoice.join('') != '0000') {
+    if (this.data.styleChoice.join('') != '0000000') {
       form.style = JSON.stringify(this.data.styleChoice)
     }
 
@@ -498,7 +502,7 @@ Page({
     let bigImgUrl = this.data.pics[index]
     this.setData({
       showBigImg: true,
-      bigImgUrl: bigImgUrl
+      bigImgUrl: bigImgUrl || this.data.defaultPics[index]
     })
   },
 

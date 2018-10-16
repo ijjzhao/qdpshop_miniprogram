@@ -12,6 +12,7 @@ Page({
     avatarUrl: '',
     user_id: 0,
     noFill: [0, 0, 0, 0],
+    jumpIndex: [0, 2, 3, 5],
   },
 
   /**
@@ -70,44 +71,79 @@ Page({
         })
       } else {
         let noFill = [0, 0, 0, 0]
+        let jumpIndex = [0, 2, 3, 5]
+
+        // 第一项
+
+        if (!userInfo.detail) {
+          noFill[0]++
+          jumpIndex[0] = 1
+        }
+
         if (!userInfo.height) {
           noFill[0]++
+          jumpIndex[0] = 0
         }
         if (!userInfo.weight) {
           noFill[0]++
+          jumpIndex[0] = 0
         }
         if (!userInfo.age) {
           noFill[0]++
+          jumpIndex[0] = 0
         }
-        if (!userInfo.detail) {
-          noFill[0]++
-        }
+
+        // 第二项
+        
         if (!userInfo.color) {
           noFill[1]++
         }
-        if (!userInfo.style) {
-          noFill[2]++
-        }
+
+        // 第三项
         if (userInfo.cut == undefined) {
           noFill[2]++
+          jumpIndex[2] = 4
         }
-        if (userInfo.size) {
-          let sizeArr = JSON.parse(userInfo.size)
-          if (sizeArr[0] == -1) noFill[3]++
-          if (sizeArr[1] == -1) noFill[3]++
-        } else {
-          noFill[3] += 2
+        if (!userInfo.style) {
+          noFill[2]++
+          jumpIndex[2] = 3
         }
 
+        // 第四项
         if (userInfo.pics) {
           let pics = JSON.parse(userInfo.pics)
-          if (pics[0] == '') noFill[3]++
-          if (pics[1] == '') noFill[3]++
+          if (pics[0] == '') {
+            noFill[3]++
+            jumpIndex[3] = 6
+          }
+          if (pics[1] == '') {
+            noFill[3]++
+            jumpIndex[3] = 6
+          }
         } else {
           noFill[3] += 2
+          jumpIndex[3] = 6
         }
+
+
+
+        if (userInfo.size) {
+          let sizeArr = JSON.parse(userInfo.size)
+          if (sizeArr[0] == -1) {
+            noFill[3]++
+            jumpIndex[3] = 5
+          }
+          if (sizeArr[1] == -1) {
+            noFill[3]++
+            jumpIndex[3] = 5
+          }
+        } else {
+          noFill[3] += 2
+          jumpIndex[3] = 5
+        }
+        
         this.setData({
-          userInfo, noFill
+          userInfo, noFill, jumpIndex
         })
       }
     })
@@ -115,8 +151,9 @@ Page({
 
   rowTapped(e) {
     let index = e.currentTarget.dataset.index;
+    let jumpIndex = this.data.jumpIndex[index]
     wx.navigateTo({
-      url: `../update/update?index=${index}&user_id=${this.data.user_id}`,
+      url: `../update/update?index=${jumpIndex}&user_id=${this.data.user_id}`,
     })
   },
 

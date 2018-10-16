@@ -206,7 +206,7 @@ page {
 .item3 .style-pic-left {
   left: -350rpx;
   top: 70rpx;
-  opacity: 0.6;
+  opacity: 0.4;
   background: #fff;
   z-index: 1;
   transform: scale(0.95)
@@ -215,7 +215,7 @@ page {
 .item3 .style-pic-right {
   left: 550rpx;
   top: 70rpx;
-  opacity: 0.6;
+  opacity: 0.4;
   z-index: 1;
   transform: scale(0.95)  
 }
@@ -315,6 +315,14 @@ page {
   left: 81rpx;
   width: 80rpx;
   height: 80rpx;
+}
+
+.item6 .row .left .demo {
+  position: absolute;
+  top: 5rpx;
+  left: 5rpx;
+  color: #cc3b40;
+  z-index: 99;
 }
 
 .item6 .row .btn {

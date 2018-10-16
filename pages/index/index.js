@@ -17,7 +17,7 @@ Page({
     banner: [],
     channel: [],
     auth: false,
-    userinfo: {},
+    userInfo: {},
     Inviter_userid: [],
     Inviter_laster: '',
     isdistribution: false,
@@ -173,7 +173,10 @@ Page({
     // }
     // this.onLoad();
     // this.goLogin()
-
+    this.setData({
+      userInfo: app.globalData.userInfo,
+    });
+    console.log(this.data.userInfo)
 
   },
   JumpUrl(e){

@@ -78,7 +78,7 @@ Page({
               goods.scale = width / goods.w;
               goods.picwidth = goods.w;
               goods.picheight = goods.h;
-              that.getImgInfo(goods.url, `pic${i}`)
+              // that.getImgInfo(goods.url, `pic${i}`)
             }
             that.setData({
               planDetail: res.data.plan,
@@ -219,7 +219,7 @@ Page({
     goods.enabled = 0;
     goods.scale = 1;
     goodsArr.push(goods);
-    this.getImgInfo(goods.url, `pic${goodsArr.length - 1}`)
+    // this.getImgInfo(goods.url, `pic${goodsArr.length - 1}`)
     this.setData({
       goodsArr: goodsArr,
       removeBtnShow: false
@@ -247,32 +247,36 @@ Page({
     })
   },
 
-  getImgInfo(netUrl, storageKeyUrl) {
-    if (netUrl.indexOf('https') == -1) {
-      netUrl = netUrl.replace('http', 'https')
-    }
-    let that = this;
-    wx.getImageInfo({
-      src: netUrl,
-      success: function (res) {
-        wx.setStorage({
-          key: storageKeyUrl,
-          data: res.path,
-        });
-      },
-      fail: function (res) {
-        wx.showToast({
-          icon: 'none',
-          title: '画布图片下载失败',
-        })
+  getImgInfo: async (netUrl, storageKeyUrl) => {
+    let that = this;    
+    return new Promise((resolve, reject) =>  {
+      if (netUrl.indexOf('https') == -1) {
+        netUrl = netUrl.replace('http', 'https')
       }
+      wx.getImageInfo({
+        src: netUrl,
+        success: function (res) {
+          // wx.setStorage({
+          //   key: storageKeyUrl,
+          //   data: res.path,
+          // });
+          resolve(res.path)
+        },
+        fail: function (res) {
+          // wx.showToast({
+          //   icon: 'none',
+          //   title: '画布图片下载失败',
+          // })
+          reject('画布图片下载失败')
+        }
+      })
     })
   },
 
   saveCanvas() {
     if (this.data.goodsArr.length == 0) return;
     wx.showLoading({
-      title: '保存中...',
+      title: '图片绘制中',
     })
     var unit = this.data.unit;
     var _this = this;
@@ -280,84 +284,67 @@ Page({
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, _this.data.screenWidth * unit, _this.data.screenHeight * unit);
     var goodsArr = this.data.goodsArr;
-    for (let i in goodsArr) {
-      let goods = goodsArr[i];
-      if (goods.enabled == 1) {
-        var imgurl = wx.getStorageSync('pic' + i);
-        ctx.drawImage(imgurl, goods.x * unit, goods.y * unit, goods.w * unit, goods.h * unit);
+    // 排序 z小的在前
+    goodsArr = goodsArr.sort(function (a, b) {
+      if (a.z > b.z) {
+        return 1;
+      } else if (a.z < b.z) {
+        return -1
+      } else {
+        return 0;
       }
-    }
-    ctx.draw(false, function () {
-      wx.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: _this.data.screenWidth * unit,
-        height: _this.data.screenWidth * unit,
-        destWidth: _this.data.screenWidth * unit,
-        destHeight: _this.data.screenWidth * unit,
-        canvasId: 'customCanvas',
-        success: function (res) {
-          if (!res.tempFilePath) {
-            wx.showModal({
-              title: '提示',
-              content: '图片绘制中，请稍后重试',
-              showCancel: false
-            })
-          }
-          wx.hideLoading();
-          
-          wx.navigateTo({
-            url: `../add/add?planid=${_this.data.planid}&style=${_this.data.style}&tempFilePath=${res.tempFilePath}`,
-          })
-          /*
-          wx.uploadFile({
-            url: api.PlanSave,
-            filePath: res.tempFilePath,
-            name: 'image',
-            formData: {
-              goodsArr: JSON.stringify(_this.data.goodsArr), //带上参数
-              name: _this.data.name,
-              style: _this.data.style,
-              fit_group: _this.data.fit_group,
-              fit_scene: _this.data.fit_scene,
-              desc: _this.data.desc
-            },
-            success: function (res) {
-              console.log(res);
-              wx.hideLoading()
-              if (res.statusCode === 200) {
-                var pages = getCurrentPages();
-                var planListPage = pages[pages.length - 3];
-                planListPage.getPlanDataByStyle();
-                wx.navigateBack({
-                  delta: 2
-                })
-              }
-            }
-          })
-          */
-          // //画板路径保存成功后，调用方法吧图片保存到用户相册
-          // wx.saveImageToPhotosAlbum({
-          //   filePath: res.tempFilePath,
-          //   //保存成功失败之后，都要隐藏画板，否则影响界面显示。
-          //   success: (res) => {
-          //     console.log(res)
-          //     wx.hideLoading()
-          //     _this.setData({
-          //       canvasHidden: true
-          //     })
-          //   },
-          //   fail: (err) => {
-          //     console.log(err)
-          //     wx.hideLoading()
-          //     _this.setData({
-          //       canvasHidden: true
-          //     })
-          //   }
-          // })
+    })
+
+    let grawImg = async () => {
+      for (let i in goodsArr) {
+        let goods = goodsArr[i];
+        if (goods.enabled == 1) {
+          let imgurl = await this.getImgInfo(goods.url, `pic${i}`)
+          console.log(imgurl)
+          ctx.drawImage(imgurl, goods.x * unit, goods.y * unit, goods.w * unit, goods.h * unit);
         }
-      }, this)
-    });
+      }
+      saveCtx()
+    }
+
+    let saveCtx = function() {
+      ctx.draw(false, function () {
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: _this.data.screenWidth * unit,
+          height: _this.data.screenWidth * unit,
+          destWidth: _this.data.screenWidth * unit,
+          destHeight: _this.data.screenWidth * unit,
+          canvasId: 'customCanvas',
+          success: function (res) {
+            if (!res.tempFilePath) {
+              wx.showModal({
+                title: '提示',
+                content: '图片绘制中，请稍后重试',
+                showCancel: false
+              })
+            }
+            wx.hideLoading();
+
+            wx.navigateTo({
+              url: `../add/add?planid=${_this.data.planid}&style=${_this.data.style}&tempFilePath=${res.tempFilePath}`,
+            })
+           
+          }
+        }, this)
+      });
+    }
+
+    try {
+      grawImg();
+    } catch(err) {
+      wx.showModal({
+        title: '提示',
+        content: '商品图片下载失败，请重试',
+        showCancel: false
+      })
+    }
   },
 
   ImgTouchStart() {
@@ -518,7 +505,7 @@ Page({
     for (let i in goodsTestArr) {
       let goods = goodsTestArr[i];
       this.addGoods(goods);
-      this.getImgInfo(goods.url, 'pic' + i);
+      // this.getImgInfo(goods.url, 'pic' + i);
     }
   },
 })

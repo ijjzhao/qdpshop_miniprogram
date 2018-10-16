@@ -5,7 +5,7 @@
   <!-- <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
     bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}};'></image> -->
   <movable-view x="{{x}}" y="{{y}}" direction="all" class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' scale out-of-bounds
-    data-index='{{index}}' bindchange='handleChange' bindscale='handleScale' x='{{item.x}}' y='{{item.y}}' scale-value='{{item.scale}}' style='width: {{item.w}}px;height: {{item.h}}px;'>
+    data-index='{{index}}' bindchange='handleChange' bindscale='handleScale' x='{{item.x}}' y='{{item.y}}' scale-value='{{item.scale}}' style='width: {{item.w}}px;height: {{item.h}}px; z-index: {{item.z}};' bindlongpress='toggleActionBar'>
     <image class='goods-img' src='{{item.url}}'></image>
   </movable-view>
 </movable-area>

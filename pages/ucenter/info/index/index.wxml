@@ -40,6 +40,7 @@
 
 <view class='coupon-bag' wx:if='{{showCounponBag}}'>
   <view class='main'>
+    <text class='close-btn' bindtap='closeCouponBag'>X</text>
     <view class='btn' bindtap='getCouponBagBtnTapped'>领取</view>
   </view>
 </view>

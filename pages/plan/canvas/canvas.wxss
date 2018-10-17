@@ -14,7 +14,7 @@ canvas {
 .img-container {
   width: 750rpx;
   height: 750rpx;
-  border: 1rpx solid #c9c9c9;
+  border-bottom: 2rpx solid #c9c9c9;
   overflow: hidden;
   /* position: relative; */
 }

@@ -72,6 +72,7 @@ page  {
 
 .right {
   float: right;
+  font-size: 28rpx;
 }
 
 .login {
@@ -119,6 +120,7 @@ page  {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .coupon-bag .main {
@@ -142,5 +144,17 @@ page  {
   border-radius: 10rpx;
   bottom: 50rpx;
   left: 30rpx;
+  right: 30rpx;
+}
+
+.coupon-bag .main .close-btn {
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 10rpx;
+  top: 30rpx;
   right: 30rpx;
 }

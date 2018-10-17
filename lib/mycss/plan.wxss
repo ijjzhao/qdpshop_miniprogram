@@ -70,8 +70,8 @@
 .style-item-img {
   position: absolute;
   height: 300rpx;
-  width: 355rpx;
-  left: 10rpx;
+  width: 300rpx;
+  left: 37.5rpx;
   top: 10rpx;
   /* border: 1px solid #d8d8d8; */
 }

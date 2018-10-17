@@ -1,14 +1,17 @@
 <!--pages/plan/canvas/canvas.wxml-->
 <canvas canvas-id='customCanvas' style='width: {{750 * unit}}rpx; height: {{750 * unit}}rpx'></canvas>
 
-<movable-area class="img-container">
-  <!-- <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
-    bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}};'></image> -->
-  <movable-view x="{{x}}" y="{{y}}" direction="all" class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' scale='true' animation='false'
-    data-index='{{index}}' bindchange='handleChange' bindscale='handleScale' x='{{item.x}}' y='{{item.y}}' scale-min="0.5" scale-max="2.5" scale-value='{{item.scale}}' bindlongpress='toggleActionBar' style='width: {{screenWidth / 2 * unit}}rpx; height: {{screenWidth / 2 * unit}}rpx; z-index: {{zArr[index]}}'>
-    <image class='goods-img' src='{{item.url}}'></image>
-  </movable-view>
-</movable-area>
+<view class='img-container'>
+  <movable-area class="movable-area">
+    <!-- <image class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' data-index='{{index}}' src='{{item.url}}' bindtouchend='ImgTouchEnd' bindlongpress='toggleActionBar'
+      bindtouchstart='ImgTouchStart' bindtouchmove='ImgTouchMove' style='width: {{item.w}}px;height: {{item.h}}px; top: {{item.y}}px; left: {{item.x}}px; z-index: {{item.z}};'></image> -->
+    <movable-view x="{{x}}" y="{{y}}" direction="all" class="img {{ canvasGoodsIndex == index && actionBarShow ? 'img-selected' : ''}}" wx:for='{{goodsArr}}' wx:for-index="index" wx:key='{{item.id}}' wx:if='{{item.enabled == 1}}' scale='true' animation='false' out-of-bounds
+      data-index='{{index}}' bindchange='handleChange' bindscale='handleScale' x='{{item.x}}' y='{{item.y}}' scale-min="0.5" scale-max="2.5" scale-value='{{item.scale}}' bindlongpress='toggleActionBar' style='width: {{screenWidth / 2 * unit}}rpx; height: {{screenWidth / 2 * unit}}rpx; z-index: {{zArr[index]}}'>
+      <image class='goods-img' src='{{item.url}}'></image>
+    </movable-view>
+  </movable-area>
+</view>
+
 
 <view class="action-bar {{actionBarShow ? '.action-bar-show' : ''}}" wx:if="{{actionBarShow}}">
   <view class="action-bar-item" bindtap="removeFromCanvas">

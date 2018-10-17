@@ -228,8 +228,8 @@ Page({
     let zArr = this.data.zArr;
     goods.w = width;
     goods.h = width;
-    goods.y = width / 2;
-    goods.x = width / 2;
+    goods.y = width / 2 + 200 / this.data.unit;
+    goods.x = width / 2 + 200 / this.data.unit;
     goods.scale = 1;
     goods.z = goodsArr.length;
     zArr.push(zArr.length)
@@ -325,7 +325,7 @@ Page({
         let goods = moveData[i];
         if (goods.enabled == 1) {
           let imgurl = await this.getImgInfo(goods.url, `pic${i}`)
-          ctx.drawImage(imgurl, moveData[i].x * unit, moveData[i].y * unit, moveData[i].w * unit, moveData[i].h * unit);
+          ctx.drawImage(imgurl, moveData[i].x * unit - 200, moveData[i].y * unit - 200, moveData[i].w * unit, moveData[i].h * unit);
           console.log(moveData[i].x)
           console.log(moveData[i].y)
           console.log(moveData[i].w)

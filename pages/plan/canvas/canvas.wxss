@@ -19,6 +19,13 @@ canvas {
   /* position: relative; */
 }
 
+.img-container .movable-area {
+  width: 1150rpx;
+  height: 1150rpx;
+  margin-top: -200rpx;
+  margin-left: -200rpx;
+}
+
 .img-container .img {
   /* position: absolute; */
   width: 200rpx;

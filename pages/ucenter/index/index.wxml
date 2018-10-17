@@ -1,6 +1,9 @@
 <view class="container">
   <button class="profile-info" bindtap="goLogin" open-type="getUserInfo">
-    <image class="avatar" src="{{userInfo.avatar}}"></image>
+    <!-- <image class="avatar" src="{{userInfo.avatar}}"></image> -->
+    <view class="avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
     <view class="info">
       <text class="name">{{userInfo.nickname}}</text>
       <!-- <text class="level">{{userInfo.username}}</text> -->
@@ -111,12 +114,12 @@
         <text class="txt">我的档案</text>
       </navigator>
     </view>
-    <view class="item">
+    <!-- <view class="item">
       <navigator url="/pages/ucenter/couponbag/couponbag" class="a">
         <text class="icon feedback"></text>
         <text class="txt">卡包领取</text>
       </navigator>
-    </view>
+    </view> -->
 
 
   </view>

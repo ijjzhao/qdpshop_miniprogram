@@ -17,18 +17,29 @@
 <view class='rows'>
   <view class='row' bindtap='rowTapped' data-index='0'>
     <text class='row-text'>基础信息</text>
-    <text class='row-text right'>{{noFill[0] == 0 ? "" : noFill[0]+"项未完成"}} ></text>
+    <text class='row-text right'>{{noFill[0] == 0 ? (showLogin ?  "" : "已完成") : noFill[0]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='1'>
     <text class='row-text'>颜色偏好</text>
-    <text class='row-text right'>{{noFill[1] == 0 ? "" : noFill[1]+"项未完成"}} ></text>
+    <text class='row-text right'>{{noFill[1] == 0 ? (showLogin ?  "" : "已完成") : noFill[1]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='2'>
     <text class='row-text'>风格裁剪</text>
-    <text class='row-text right'>{{noFill[2] == 0 ? "" : noFill[2]+"项未完成"}} ></text>
+    <text class='row-text right'>{{noFill[2] == 0 ? (showLogin ?  "" : "已完成") : noFill[2]+"项未完成"}} ></text>
   </view>
   <view class='row' bindtap='rowTapped' data-index='3'>
     <text class='row-text'>个人信息</text>
-    <text class='row-text right'>{{noFill[3] == 0 ? "" : noFill[3]+"项未完成"}} ></text>
+    <text class='row-text right'>{{noFill[3] == 0 ? (showLogin ?  "" : "已完成") : noFill[3]+"项未完成"}} ></text>
+  </view>
+</view>
+
+<view class='login {{showLogin ? "" : "hidden"}}'>
+  <view class='text'>请先登录</view>
+  <button class="btn" bindtap="goLogin" open-type="getUserInfo">登录</button>
+</view>
+
+<view class='coupon-bag' wx:if='{{showCounponBag}}'>
+  <view class='main'>
+    <view class='btn' bindtap='getCouponBagBtnTapped'>领取</view>
   </view>
 </view>

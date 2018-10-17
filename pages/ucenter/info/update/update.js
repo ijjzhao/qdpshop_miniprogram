@@ -263,6 +263,12 @@ Page({
     let pics = this.data.pics
     util.request(api.UserInfoUpdate, { user_id, form }, 'POST').then((res) => {
       if (res.errno == 0) {
+        // 弹出卡包界面
+        let pages = getCurrentPages();
+        let indexpage = pages[pages.length - 2]
+        indexpage.getBagForNewUser();
+
+        // 调转回去
         wx.navigateBack({
           delta: 1
         })

@@ -230,7 +230,7 @@ module.exports = {
 
 
   StylistDetail: ApiRootUrl + 'stylist/detail', // 搭配师详情
-  StylistCheck: ApiRootUrl + 'stylist/check', // 查询用户是不是搭配师
+  StylistGetId: ApiRootUrl + 'stylist/getid', // 获取用户搭配师id
 
   PlanSave: ApiRootUrl + 'plan/save', // 保存方案
   PlanList: ApiRootUrl + 'plan/list', // 

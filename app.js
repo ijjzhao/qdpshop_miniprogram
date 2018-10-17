@@ -36,7 +36,7 @@ App({
 
   globalData: {
     userInfo: {
-      nickname: 'Hi,游客',
+      nickname: 'Hi,游客,点击登录',
       username: 'login',
       avatar: 'http://yanxuan.nosdn.127.net/8945ae63d940cc42406c3f67019c5cb6.png',
       stylist_id: 0

@@ -35,10 +35,12 @@ Page({
   },
 
   checkStylist: function(user_id) {
-    util.request(api.StylistCheck, { user_id }).then((res) => {
-      this.setData({
-        isCustomer: res.errno != 0
-      })
+    util.request(api.StylistGetId, { user_id }).then((res) => {
+      if (res.errno == 0) {
+        this.setData({
+          isCustomer: res.data == 0
+        })
+      }
     })
   },
 

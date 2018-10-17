@@ -1,6 +1,8 @@
 // pages/ucenter/info/index/index.js
 const util = require('../../../../utils/util.js')
 const api = require('../../../../config/api.js')
+const user = require('../../../../services/user.js')
+var app = getApp();
 
 Page({
 
@@ -11,8 +13,14 @@ Page({
     userInfo: {},
     avatarUrl: '',
     user_id: 0,
-    noFill: [0, 0, 0, 0],
+    noFill: [4, 1, 2, 4],
     jumpIndex: [0, 2, 3, 5],
+    showLogin: false,
+
+    // 以下为卡包数据
+    bag: {},
+    coupons: [],
+    showCounponBag: false
   },
 
   /**
@@ -25,20 +33,32 @@ Page({
         user_id: options.id
       })
     } else {
-      wx.showModal({
-        title: '提示',
-        content: '您尚未登录',
-        showCancel: false,
-        success: function(e) {
-          wx.navigateBack({
-            delta: 1
-          })
-        }
+      this.setData({
+        showLogin: true
       })
       return
     }
 
-    let that = this
+  },
+
+  goLogin() {
+    user.loginByWeixin().then(res => {
+      this.setData({
+        userInfo: res.data.userInfo,
+        showLogin: false
+      });
+      app.globalData.userInfo = res.data.userInfo;
+      app.globalData.token = res.data.token;
+      this.getUserInfo(res.data.userInfo.id)
+    }).catch((err) => {
+      console.log(err)
+    });
+  },
+
+  getUserInfo: function(user_id) {
+    if (!user_id) return
+
+    // 获取头像
     wx.getUserInfo({
       success: function (res) {
         let userInfo = res.userInfo
@@ -49,10 +69,7 @@ Page({
       }
     })
 
-  },
-
-  getUserInfo: function(user_id) {
-    if (!user_id) return
+    // 获取user_info
     let that = this
     util.request(api.UserInfoGet, {user_id}).then((res) => {
       let userInfo = res.data
@@ -157,6 +174,31 @@ Page({
     })
   },
 
+  getBagForNewUser() {
+    let that = this
+    util.request(api.CouponBagGetForNewUser).then(res => {
+      if (res.errno == 0) {
+        that.setData({
+          bag: res.data.bag,
+          coupons: res.data.coupons,
+          showCounponBag: true
+        })
+      }
+    })
+  },
+
+  getCouponBagBtnTapped() {
+    this.setData({
+      showCounponBag: false
+    })
+    // wx.navigateTo({
+    //   url: '../coupon/coupon',
+    // })
+    wx.redirectTo({
+      url: '/pages/ucenter/coupon/coupon',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -203,6 +245,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: '个人档案',
+      path: '/pages/ucenter/info/index/index',
+      imageUrl: "/image/body.png",
+      success: (res) => {
+        console.log("转发成功", res);
+      },
+      fail: (res) => {
+        console.log("转发失败", res);
+      }
+    }
   }
 })

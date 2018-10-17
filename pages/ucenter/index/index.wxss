@@ -25,6 +25,7 @@ page{
     height: 148rpx;
     width: 148rpx;
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .profile-info .info{

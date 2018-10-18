@@ -14,8 +14,6 @@ Page({
     screenHeight: 0,
     screenWidth: 0,
     goodsArr: [],
-    moveData: [],
-    zArr: [],
     distance: 0,
     touchX: 0,
     touchY: 0,
@@ -74,13 +72,10 @@ Page({
             })
           } else {
             let goodsArr = res.data.items;
-            that.data.moveData = goodsArr
-            let zArr = that.data.zArr;
             for (let i in goodsArr) {
               let goods = goodsArr[i];
               goods.scale = goods.w / 375;
               // console.log(goods.scale)
-              zArr[i] = goods.z
               // goods.picwidth = goods.w;
               // goods.picheight = goods.h;
               // that.getImgInfo(goods.url, `pic${i}`)
@@ -88,7 +83,6 @@ Page({
             that.setData({
               planDetail: res.data.plan,
               goodsArr: res.data.items,
-              zArr: zArr
             });
           }
         }
@@ -118,7 +112,6 @@ Page({
     let goodsArr = this.data.goodsArr;
     if (goodsArr[index].enabled == 0) {
       goodsArr[index].enabled = 1;
-      this.data.moveData[index].enabled = 1
       this.setData({
         goodsArr: goodsArr,
       })
@@ -133,7 +126,6 @@ Page({
     let index = this.data.canvasGoodsIndex;
     let goodsArr = this.data.goodsArr;
     goodsArr[index].enabled = 0;
-    this.data.moveData[index].enabled = 0
     this.setData({
       goodsArr: goodsArr,
       actionBarShow: false
@@ -143,108 +135,85 @@ Page({
   increaseZ() {
     let index = this.data.canvasGoodsIndex;
     let goodsArr = this.data.goodsArr;
-    let zArr = this.data.zArr
     let z = goodsArr[index].z
     if (z == goodsArr.length - 1) return;
     for (let i in goodsArr) {
       let goods = goodsArr[i];
       if (goods.z == z + 1) {
         goods.z = z
-        zArr[i] = z
-        this.data.moveData[i].z = z
         break
       }
     }
     goodsArr[index].z = z + 1;
-    zArr[index] = z + 1
-    this.data.moveData[index].z = z + 1;
     this.setData({
-      zArr,
+      goodsArr,
     })
   },
 
   decreaseZ() {
     let index = this.data.canvasGoodsIndex;
-    let goodsArr = this.data.goodsArr;
-    let zArr = this.data.zArr    
+    let goodsArr = this.data.goodsArr;    
     let z = goodsArr[index].z
     if (z == 0) return;
     for (let i in goodsArr) {
       let goods = goodsArr[i];
       if (goods.z == z - 1) {
         goods.z = z
-        zArr[i] = z
-        this.data.moveData[i].z = z
         break
       }
     }
     goodsArr[index].z = z - 1;
-    zArr[index] = z - 1
-    this.data.moveData[index].z = z - 1;
     this.setData({
-      zArr,
+      goodsArr,
     })
   },
 
-  // increaseScale() {
-  //   console.log('increaseScale')
-  //   let index = this.data.canvasGoodsIndex
-  //   let goodsArr = this.data.goodsArr
-  //   let goods = goodsArr[index]
-  //   let newScale = goods.scale * 1.05
-  //   // if (newScale > 2) return
-  //   goods.scale = newScale
-  //   goods.w = goods.picwidth * newScale
-  //   goods.h = goods.picheight * newScale
-  //   goods.x = goods.x - goods.picwidth * 0.025
-  //   goods.y = goods.y - goods.picheight * 0.025
-  //   console.log(goods.scale);
-  //   this.setData({
-  //     goodsArr: goodsArr,
-  //   })
-  // },
+  increaseScale() {
+    console.log('increaseScale')
+    let index = this.data.canvasGoodsIndex
+    let goodsArr = this.data.goodsArr
+    let goods = goodsArr[index]
+    let newScale = goods.scale * 1.05
+    // if (newScale > 2) return
+    goods.scale = newScale
+    goods.x = goods.x - 375 * 0.025
+    goods.y = goods.y - 375 * 0.025
+    console.log(goods.scale);
+    this.setData({
+      goodsArr: goodsArr,
+    })
+  },
 
-  // decreaseScale() {
-  //   console.log('decreaseScale')
-  //   let index = this.data.canvasGoodsIndex
-  //   let goodsArr = this.data.goodsArr
-  //   let goods = goodsArr[index]
-  //   let newScale = goods.scale * 0.95
-  //   // if (newScale < 0.5) return
-  //   goods.scale = newScale
-  //   goods.w = goods.picwidth * newScale
-  //   goods.h = goods.picheight * newScale
-  //   goods.x = goods.x + goods.picwidth * 0.025
-  //   goods.y = goods.y + goods.picheight * 0.025
-  //   this.setData({
-  //     goodsArr: goodsArr,
-  //   })
-  // },
+  decreaseScale() {
+    console.log('decreaseScale')
+    let index = this.data.canvasGoodsIndex
+    let goodsArr = this.data.goodsArr
+    let goods = goodsArr[index]
+    let newScale = goods.scale * 0.95
+    // if (newScale < 0.5) return
+    goods.scale = newScale
+    goods.x = goods.x + 375 * 0.025
+    goods.y = goods.y + 375 * 0.025
+    this.setData({
+      goodsArr: goodsArr,
+    })
+  },
 
   addGoods(goods) {
     let goodsArr = this.data.goodsArr;
-    let width = this.data.screenWidth / 2;
-    let zArr = this.data.zArr;
-    // goods.w = width;
-    // goods.h = width;
-    // goods.y = width / 2 + 200 / this.data.unit;
-    // goods.x = width / 2 + 200 / this.data.unit;
     goods.w = 375
     goods.h = 375
     goods.x = parseInt(750 / 4 + 200)
     goods.y = parseInt(750 / 4 + 200)
     goods.scale = 1;
     goods.z = goodsArr.length;
-    zArr.push(zArr.length)
     goods.enabled = 0;
     goods.scale = 1;
     goodsArr.push(goods);
-    this.data.moveData.push(goods)
     // this.getImgInfo(goods.url, `pic${goodsArr.length - 1}`)
     this.setData({
       goodsArr: goodsArr,
       removeBtnShow: false,
-      zArr: zArr
     })
   },
 
@@ -252,16 +221,12 @@ Page({
     let index = e.currentTarget.dataset.index;
     let goodsArr = this.data.goodsArr;
     let removeZ = goodsArr[index].z;
-    let zArr= this.data.zArr
     goodsArr.splice(index, 1);
-    this.data.moveData.splice(index, 1)
     for (let i in goodsArr) {
       let goods = goodsArr[i];
       // 后面的z 全部减1
       if (goods.z > removeZ) {
         goods.z = goods.z - 1;
-        this.data.moveData[i].z = z-1
-        zArr[i] = goods.z - 1;
       }
       // 缓存的图片地址 改一下key
       if (i >= index) {
@@ -271,7 +236,7 @@ Page({
       }
     }
     this.setData({
-      goodsArr, zArr
+      goodsArr
     })
   },
 
@@ -309,11 +274,11 @@ Page({
     var unit = this.data.unit;
     var _this = this;
     var ctx = wx.createCanvasContext('customCanvas');
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, _this.data.screenWidth * unit, _this.data.screenHeight * unit);
-    let moveData = this.data.moveData
+    ctx.setFillStyle('white')
+    ctx.fillRect(0, 0, 750, 750);
+    let goodsArr = this.data.goodsArr
     // 排序 z小的在前
-    moveData = moveData.sort(function (a, b) {
+    goodsArr = goodsArr.sort(function (a, b) {
       if (a.z > b.z) {
         return 1;
       } else if (a.z < b.z) {
@@ -324,25 +289,25 @@ Page({
     })
 
     let grawImg = async () => {
-      for (let i in moveData) {
-        let goods = moveData[i];
+      for (let i in goodsArr) {
+        let goods = goodsArr[i];
         if (goods.enabled == 1) {
           let imgurl = await this.getImgInfo(goods.url, `pic${i}`)
-          ctx.drawImage(imgurl, moveData[i].x - 200, moveData[i].y - 200, moveData[i].w, moveData[i].h);
+          ctx.drawImage(imgurl, goodsArr[i].x - 200, goodsArr[i].y - 200, goodsArr[i].w, goodsArr[i].h);
         }
       }
       saveCtx()
     }
 
     let saveCtx = function() {
-      ctx.draw(false, function () {
+      ctx.draw(true, function () {
         wx.canvasToTempFilePath({
           x: 0,
           y: 0,
-          width: _this.data.screenWidth * unit,
-          height: _this.data.screenWidth * unit,
-          destWidth: _this.data.screenWidth * unit,
-          destHeight: _this.data.screenWidth * unit,
+          width: 750,
+          height: 750,
+          destWidth: 750,
+          destHeight: 750,
           canvasId: 'customCanvas',
           success: function (res) {
             if (!res.tempFilePath) {
@@ -374,104 +339,23 @@ Page({
     }
   },
 
-  // ImgTouchStart() {
-  //   this.setData({
-  //     actionBarShow: false
-  //   })
-  // },
-
-  // ImgTouchMove(e) {
-  //   let clientX = e.touches[0].clientX
-  //   let clientY = e.touches[0].clientY
-  //   if (clientX > this.data.screenWidth || clientY > this.data.screenWidth) return;
-  //   let index = e.currentTarget.dataset.index;
-  //   let goodsArr = this.data.goodsArr;
-  //   let goods = goodsArr[index];
-  //   if (e.touches.length == 1) {
-  //     if (this.data.touchX != 0 || this.data.touchY != 0) {
-  //       let diffX = clientX - this.data.touchX;
-  //       let diffY = clientY - this.data.touchY;
-  //       goods.x = goods.x + diffX;
-  //       goods.y = goods.y + diffY;
-  //       this.setData({
-  //         goodsArr: goodsArr
-  //       })
-  //     }
-  //     this.data.touchX = e.touches[0].clientX;
-  //     this.data.touchY = e.touches[0].clientY;
-  //   } else {
-  //     let xMove = e.touches[1].clientX - e.touches[0].clientX;
-  //     let yMove = e.touches[1].clientY - e.touches[0].clientY;
-  //     let distance = Math.sqrt(xMove * xMove + yMove * yMove);
-  //     if (this.data.distance != 0) {
-  //       let distanceDiff = distance - this.data.distance;
-  //       let diffScale = 0.005 * distanceDiff;
-  //       let newScale = goods.scale + diffScale;
-  //       // if (newScale > 2 || newScale < 0.5) {
-  //       goods.scale = newScale;
-  //       goods.w = goods.picwidth * newScale;
-  //       goods.h = goods.picheight * newScale;
-  //       goods.x = goods.x - goods.picwidth * diffScale / 2
-  //       goods.y = goods.y - goods.picheight * diffScale / 2
-  //       // }
-  //     }
-  //     this.setData({
-  //       distance: distance,
-  //       goodsArr: goodsArr
-  //     })
-  //   }
-  // },
-
-  // ImgTouchEnd() {
-  //   this.setData({
-  //     distance: 0,
-  //     touchX: 0,
-  //     touchY: 0
-  //   })
-  // },
-
   handleChange(e) {
     let { x, y, source } = e.detail;
     let index = e.currentTarget.dataset.index;
-    // let goodsArr = this.data.goodsArr;
-    // let goods = goodsArr[index];
-    // if (source == 'touch') {
-    //   goods.x = x;
-    //   goods.y = y;
-    //   this.setData({
-    //     goodsArr: goodsArr
-    //   })
-    // }
     if (source == 'touch') {
-      // this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
-      // this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y
-      this.data.moveData[index].x = x * this.data.unit
-      this.data.moveData[index].y = y * this.data.unit
-      console.log(`x: ${x} , y: ${y}`)
+      this.data.goodsArr[index].x = x * this.data.unit
+      this.data.goodsArr[index].y = y * this.data.unit
     }
   },
 
   handleScale(e) {
     let { x, y, scale } = e.detail;
     let index = e.currentTarget.dataset.index;
-    // let goodsArr = this.data.goodsArr;
-    // let goods = goodsArr[index];
-
-    // // goods.scale = scale
-    // goods.w = this.data.screenWidth / 2 * scale
-    // goods.h = this.data.screenWidth / 2 * scale
-    // goods.x = x
-    // goods.y = y
-    // this.setData({
-    //   goodsArr: goodsArr
-    // })
-    this.data.moveData[index].w = parseInt(this.data.screenWidth / 2 * scale)
-    this.data.moveData[index].h = parseInt(this.data.screenWidth / 2 * scale)
-    // this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
-    // this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y 
-    this.data.moveData[index].x = x * this.data.unit
-    this.data.moveData[index].y = y * this.data.unit
-    this.data.moveData[index].scale = scale
+    this.data.goodsArr[index].w = parseInt(375 * scale)
+    this.data.goodsArr[index].h = parseInt(375 * scale)
+    this.data.goodsArr[index].x = x * this.data.unit
+    this.data.goodsArr[index].y = y * this.data.unit
+    this.data.goodsArr[index].scale = scale
   },
 
   /**

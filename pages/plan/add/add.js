@@ -118,7 +118,7 @@ Page({
       filePath: this.data.tempFilePath,
       name: 'image',
       formData: {
-        goodsArr: JSON.stringify(prePage.data.moveData), //带上参数
+        goodsArr: JSON.stringify(prePage.data.goodsArr), //带上参数
         name: _this.data.name,
         style: _this.data.style,
         fit_group: _this.data.fit_group,
@@ -153,7 +153,7 @@ Page({
       filePath: this.data.tempFilePath,
       name: 'image',
       formData: {
-        goodsArr: JSON.stringify(prePage.data.moveData), //带上参数
+        goodsArr: JSON.stringify(prePage.data.goodsArr), //带上参数
         name: _this.data.name,
         style: _this.data.style,
         fit_group: _this.data.fit_group,

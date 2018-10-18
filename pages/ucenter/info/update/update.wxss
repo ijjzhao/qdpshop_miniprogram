@@ -436,7 +436,7 @@ page {
   /* background: green; */
   position: absolute;
   /* top: 95rpx; */
-  left: 225rpx;
+  left: 220rpx;
   z-index: -1;
 }
 

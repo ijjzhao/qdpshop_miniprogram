@@ -78,9 +78,8 @@ Page({
             let zArr = that.data.zArr;
             for (let i in goodsArr) {
               let goods = goodsArr[i];
-              let width = that.data.screenWidth / 2
-              goods.scale = goods.w / width;
-              console.log(goods.scale)
+              goods.scale = goods.w / 375;
+              // console.log(goods.scale)
               zArr[i] = goods.z
               // goods.picwidth = goods.w;
               // goods.picheight = goods.h;
@@ -226,10 +225,14 @@ Page({
     let goodsArr = this.data.goodsArr;
     let width = this.data.screenWidth / 2;
     let zArr = this.data.zArr;
-    goods.w = width;
-    goods.h = width;
-    goods.y = width / 2 + 200 / this.data.unit;
-    goods.x = width / 2 + 200 / this.data.unit;
+    // goods.w = width;
+    // goods.h = width;
+    // goods.y = width / 2 + 200 / this.data.unit;
+    // goods.x = width / 2 + 200 / this.data.unit;
+    goods.w = 375
+    goods.h = 375
+    goods.x = parseInt(750 / 4 + 200)
+    goods.y = parseInt(750 / 4 + 200)
     goods.scale = 1;
     goods.z = goodsArr.length;
     zArr.push(zArr.length)
@@ -325,11 +328,7 @@ Page({
         let goods = moveData[i];
         if (goods.enabled == 1) {
           let imgurl = await this.getImgInfo(goods.url, `pic${i}`)
-          ctx.drawImage(imgurl, moveData[i].x * unit - 200, moveData[i].y * unit - 200, moveData[i].w * unit, moveData[i].h * unit);
-          console.log(moveData[i].x)
-          console.log(moveData[i].y)
-          console.log(moveData[i].w)
-          console.log(moveData[i].h)
+          ctx.drawImage(imgurl, moveData[i].x - 200, moveData[i].y - 200, moveData[i].w, moveData[i].h);
         }
       }
       saveCtx()
@@ -444,8 +443,11 @@ Page({
     //   })
     // }
     if (source == 'touch') {
-      this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
-      this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y 
+      // this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
+      // this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y
+      this.data.moveData[index].x = x * this.data.unit
+      this.data.moveData[index].y = y * this.data.unit
+      console.log(`x: ${x} , y: ${y}`)
     }
   },
 
@@ -465,8 +467,10 @@ Page({
     // })
     this.data.moveData[index].w = parseInt(this.data.screenWidth / 2 * scale)
     this.data.moveData[index].h = parseInt(this.data.screenWidth / 2 * scale)
-    this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
-    this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y 
+    // this.data.moveData[index].x = x + this.data.moveData[index].w > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].w : x
+    // this.data.moveData[index].y = y + this.data.moveData[index].h > this.data.screenWidth ? this.data.screenWidth - this.data.moveData[index].h : y 
+    this.data.moveData[index].x = x * this.data.unit
+    this.data.moveData[index].y = y * this.data.unit
     this.data.moveData[index].scale = scale
   },
 

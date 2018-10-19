@@ -101,7 +101,7 @@ view,text{
 .corner_btn {
   text-align: center;
   /* color: #f4f4f4; */
-  color: #333;
+  color: #fff;
   height: 88rpx;
   line-height: 88rpx;
   width: 730rpx;
@@ -110,9 +110,9 @@ view,text{
   border-bottom-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx; */
-  border-radius: 5rpx;
-  border: 1rpx solid #CCC;
-  background: #F7F7F9;
+  /* border-radius: 5rpx; */
+  /* border: 1rpx solid #CCC; */
+  background: #333;
   /* background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%); */
 }
 

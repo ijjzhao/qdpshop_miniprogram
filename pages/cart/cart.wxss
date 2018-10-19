@@ -660,12 +660,13 @@ page {
   height: 96rpx;
   line-height: 96rpx;
   font-size: 25rpx;
-  color: #f4f4f4;
+  color: #fff;
   /* text-align: center; */
-  border-top-left-radius: 50rpx;
+  /* border-top-left-radius: 50rpx;
   border-bottom-left-radius: 50rpx;
   border-top-right-radius: 50rpx;
-  border-bottom-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx; */
   letter-spacing: 3rpx;
-  background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%);
+  /* background-image: linear-gradient(to right, #ff7701 0%, #fe4800 100%); */
+  background: #333;
 }

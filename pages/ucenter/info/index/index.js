@@ -57,17 +57,27 @@ Page({
 
   getUserInfo: function(user_id) {
     if (!user_id) return
-
-    // 获取头像
-    wx.getUserInfo({
-      success: function (res) {
-        let userInfo = res.userInfo
-        userInfo.avatarUrl = userInfo.avatarUrl.replace('/132', '/0');
-        that.setData({
-          avatarUrl: res.userInfo.avatarUrl
-        })
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 获取头像
+          wx.getUserInfo({
+            success: function (res) {
+              let userInfo = res.userInfo
+              userInfo.avatarUrl = userInfo.avatarUrl.replace('/132', '/0');
+              that.setData({
+                avatarUrl: res.userInfo.avatarUrl
+              })
+            }
+          })
+        } else {
+          this.setData({
+            showLogin: true
+          })
+        }
       }
     })
+    
 
     // 获取user_info
     let that = this

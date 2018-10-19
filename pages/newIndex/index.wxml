@@ -1,0 +1,7 @@
+<!--pages/newIndex/index.wxml-->
+
+<swiper class='container' vertical current="{{index}}" duration="300">
+  <swiper-item class='item' wx:for='{{pics}}' wx:for-index='i'>
+    <image class='pic' src='{{pics[i]}}' mode='aspectFit'></image>
+  </swiper-item>
+</swiper>

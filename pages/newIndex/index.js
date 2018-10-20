@@ -6,11 +6,11 @@ Page({
    */
   data: {
     pics: [
-      'https://img.qingdapei.net/home-introduce.png',
-      'https://img.qingdapei.net/home-whyUs.png',
-      'https://img.qingdapei.net/home-collocate.png',
-      'https://img.qingdapei.net/home-userAppraise.png',
-      'https://img.qingdapei.net/home-brand.png',
+      'https://img.qingdapei.net/home-introduce.png?v=2',
+      'https://img.qingdapei.net/home-whyUs.png?v=2',
+      'https://img.qingdapei.net/home-collocate.png?v=2',
+      'https://img.qingdapei.net/home-userAppraise.png?v=2',
+      'https://img.qingdapei.net/home-brand.png?v=2',
     ],
     index: 0
   },

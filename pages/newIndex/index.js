@@ -5,13 +5,7 @@ Page({
    * Page initial data
    */
   data: {
-    pics: [
-      'https://img.qingdapei.net/home-introduce.png',
-      'https://img.qingdapei.net/home-whyUs.png',
-      'https://img.qingdapei.net/home-collocate.png',
-      'https://img.qingdapei.net/home-userAppraise.png',
-      'https://img.qingdapei.net/home-brand.png',
-    ],
+    pics: [],
     index: 0
   },
 
@@ -19,7 +13,16 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    let timestamp = new Date().getTime()
+    this.setData({
+      pics: [
+        'https://img.qingdapei.net/home-introduce.png' + `?v=${timestamp}`,
+        'https://img.qingdapei.net/home-whyUs.png' + `?v=${timestamp}`,
+        'https://img.qingdapei.net/home-collocate.png' + `?v=${timestamp}`,
+        'https://img.qingdapei.net/home-userAppraise.png' + `?v=${timestamp}`,
+        'https://img.qingdapei.net/home-brand.png' + `?v=${timestamp}`,
+      ],
+    })
   },
 
   /**

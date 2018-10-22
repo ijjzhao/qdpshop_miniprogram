@@ -59,6 +59,7 @@ Page({
       });
       app.globalData.userInfo = res.data.userInfo;
       app.globalData.token = res.data.token;
+      wx.setStorageSync('auth', true)
     }).catch((err) => {
       console.log(err)
     });

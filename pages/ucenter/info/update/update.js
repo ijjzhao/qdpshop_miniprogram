@@ -262,6 +262,7 @@ Page({
     let user_id = this.data.user_id
     let pics = this.data.pics
     util.request(api.UserInfoUpdate, { user_id, form }, 'POST').then((res) => {
+      wx.hideLoading()      
       if (res.errno == 0) {
         // 弹出卡包界面
         let pages = getCurrentPages();
@@ -272,8 +273,14 @@ Page({
         wx.navigateBack({
           delta: 1
         })
+      } else {
+        console.error(res)
+        wx.showModal({
+          title: '错误',
+          content: res.errmsg,
+          showCancel: false
+        })
       }
-      wx.hideLoading()
     })
   },
 

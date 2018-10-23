@@ -27,8 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    if (options.id) {
+    if (options.id || options.id == '0') {
       this.setData({
         user_id: options.id
       })
@@ -38,7 +37,6 @@ Page({
       })
       return
     }
-
   },
 
   goLogin() {
@@ -68,6 +66,10 @@ Page({
               that.setData({
                 avatarUrl: res.userInfo.avatarUrl
               })
+            },
+            fail: function (err) {
+              console.log('getUserInfo error')
+              console.error(err)
             }
           })
         } else {
@@ -75,6 +77,10 @@ Page({
             showLogin: true
           })
         }
+      },
+      fail: function (err) {
+        console.log('getSetting error')
+        console.error(err)
       }
     })
     

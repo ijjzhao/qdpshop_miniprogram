@@ -55,6 +55,7 @@ Page({
 
   getUserInfo: function(user_id) {
     if (!user_id) return
+    let that = this    
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -73,7 +74,7 @@ Page({
             }
           })
         } else {
-          this.setData({
+          that.setData({
             showLogin: true
           })
         }
@@ -86,7 +87,6 @@ Page({
     
 
     // 获取user_info
-    let that = this
     util.request(api.UserInfoGet, {user_id}).then((res) => {
       let userInfo = res.data
       if (!userInfo.user_id) {

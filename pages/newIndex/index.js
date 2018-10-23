@@ -20,6 +20,7 @@ Page({
         'https://img.qingdapei.net/home-whyUs.png' + `?v=${timestamp}`,
         'https://img.qingdapei.net/home-collocate.png' + `?v=${timestamp}`,
         'https://img.qingdapei.net/home-userAppraise.png' + `?v=${timestamp}`,
+        'https://img.qingdapei.net/home-about.png' + `?v=${timestamp}`,
         'https://img.qingdapei.net/home-brand.png' + `?v=${timestamp}`,
       ],
     })

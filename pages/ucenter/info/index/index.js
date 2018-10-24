@@ -27,7 +27,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.id || options.id == '0') {
+    if (options.id && options.id != '0') {
+      console.log('set id')
       this.setData({
         user_id: options.id
       })
@@ -93,7 +94,6 @@ Page({
         wx.showModal({
           title: '提示',
           content: '请完善您的档案',
-          showCancel: false,
           success: function(res) {
             if (res.confirm) {
               wx.navigateTo({
@@ -232,6 +232,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (this.data.user_id == 0) return
     this.getUserInfo(this.data.user_id)  
   },
 

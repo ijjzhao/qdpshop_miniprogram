@@ -55,9 +55,14 @@ Page({
         user_id: res.data.userInfo.id,
         showLogin: false
       });
+      
+      wx.showModal({
+        title: '提示',
+        content: `您的id为${this.data.user_id}`,
+      })
       app.globalData.userInfo = res.data.userInfo;
       app.globalData.token = res.data.token;
-      this.getUserInfo(res.data.userInfo.id)
+      // this.getUserInfo(res.data.userInfo.id)
     }).catch((err) => {
       console.log(err)
     });

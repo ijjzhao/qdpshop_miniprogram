@@ -27,17 +27,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.id && options.id != '0') {
-      console.log('set id')
-      this.setData({
-        user_id: options.id
+    try {
+      if (options.id && options.id != '0') {
+        console.log('set id')
+        this.setData({
+          user_id: parseInt(options.id)
+        })
+      } else {
+        this.setData({
+          showLogin: true
+        })
+      }
+    } catch (err) {
+      console.error(err)
+      wx.showModal({
+        title: '提示',
+        content: '用户ID有误',
       })
-    } else {
-      this.setData({
-        showLogin: true
-      })
-      return
     }
+   
   },
 
   goLogin() {
@@ -183,6 +191,12 @@ Page({
   },
 
   rowTapped(e) {
+    if (this.data.user_id == 0) {
+      this.setData({
+        showLogin: true
+      })
+      return
+    }
     let index = e.currentTarget.dataset.index;
     let jumpIndex = this.data.jumpIndex[index]
     wx.navigateTo({

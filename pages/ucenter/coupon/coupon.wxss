@@ -53,6 +53,8 @@ page {
   left: 0;
   bottom: 80rpx;
   width: 100vw;
+  height: calc(100% - 78rpx);
+  overflow: scroll;
 }
 
 .List_item {

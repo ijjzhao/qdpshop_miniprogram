@@ -52,6 +52,7 @@ Page({
     user.loginByWeixin().then(res => {
       this.setData({
         userInfo: res.data.userInfo,
+        user_id: res.data.userInfo.id,
         showLogin: false
       });
       app.globalData.userInfo = res.data.userInfo;

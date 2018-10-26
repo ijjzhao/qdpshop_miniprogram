@@ -29,7 +29,6 @@ Page({
   onLoad: function (options) {
     try {
       if (options.id && options.id != '0') {
-        console.log('set id')
         this.setData({
           user_id: parseInt(options.id)
         })
@@ -51,11 +50,15 @@ Page({
   goLogin() {
     user.loginByWeixin().then(res => {
       this.setData({
+        showLogin: false
+      })
+      wx.showLoading({
+        title: '登录中',
+      })
+      this.setData({
         userInfo: res.data.userInfo,
         user_id: res.data.userInfo.id,
-        showLogin: false
       });
-      
       // wx.showModal({
       //   title: '提示',
       //   content: `您的id为${this.data.user_id}`,
@@ -103,6 +106,7 @@ Page({
 
     // 获取user_info
     util.request(api.UserInfoGet, {user_id}).then((res) => {
+      wx.hideLoading()
       let userInfo = res.data
       if (!userInfo.user_id) {
         wx.showModal({

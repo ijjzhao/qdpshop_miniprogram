@@ -240,7 +240,7 @@ Page({
     })
   },
 
-  getImgInfo: async (netUrl, storageKeyUrl) => {
+  getImgInfo: (netUrl, storageKeyUrl) => {
     let that = this;    
     return new Promise((resolve, reject) =>  {
       if (netUrl.indexOf('https') == -1) {
@@ -267,6 +267,96 @@ Page({
   },
 
   saveCanvas() {
+    if (this.data.goodsArr.length == 0) return;
+    wx.showLoading({
+      title: '图片绘制中',
+    })
+    var unit = this.data.unit;
+    var _this = this;
+    var ctx = wx.createCanvasContext('customCanvas');
+    ctx.setFillStyle('white')
+    ctx.fillRect(0, 0, 750, 750);
+    let goodsArr = this.data.goodsArr
+    // 排序 z小的在前
+    goodsArr = goodsArr.sort(function (a, b) {
+      if (a.z > b.z) {
+        return 1;
+      } else if (a.z < b.z) {
+        return -1
+      } else {
+        return 0;
+      }
+    })
+
+    for (let i in goodsArr) {
+      let goods = goodsArr[i];
+      if (goods.enabled == 1) {
+        this.getImgInfo(goods.url, `pic${i}`).then(imgurl => {
+          ctx.drawImage(imgurl, goodsArr[i].x - 200, goodsArr[i].y - 200, goodsArr[i].w, goodsArr[i].h);
+          this.drawImageOK(i, ctx)
+        }).catch(err => {
+          this.drawImageFail()
+          wx.showModal({
+            title: '提示',
+            content: '商品图片下载失败，请重试',
+            showCancel: false
+          })
+        })
+      }
+    }
+  },
+
+  drawImageOK(i, ctx) {
+    this.data.goodsArr[i].draw = true
+    for (let i in this.data.goodsArr) {
+      let goods = this.data.goodsArr[i]
+      if (goods.enabled == 1) {
+        if (!goods.draw) return
+      }
+    }
+    this.saveCtx(ctx)
+  },
+
+  drawImageFail() {
+    for (let i in this.data.goodsArr) {
+      let goods = this.data.goodsArr[i]
+      goods.draw = false
+    }
+  },
+
+  saveCtx: function (ctx) {
+    let _this = this
+    ctx.draw(true, function () {
+      wx.canvasToTempFilePath({
+        x: 0,
+        y: 0,
+        width: 750,
+        height: 750,
+        destWidth: 750,
+        destHeight: 750,
+        canvasId: 'customCanvas',
+        success: function (res) {
+          if (!res.tempFilePath) {
+            wx.showModal({
+              title: '提示',
+              content: '图片绘制中，请稍后重试',
+              showCancel: false
+            })
+          }
+          wx.hideLoading();
+
+          wx.navigateTo({
+            url: `../add/add?planid=${_this.data.planid}&style=${_this.data.style}&tempFilePath=${res.tempFilePath}`,
+          })
+
+        }
+      }, this)
+    });
+  },
+
+  // es6
+  /*
+  saveCanvas_es6() {
     if (this.data.goodsArr.length == 0) return;
     wx.showLoading({
       title: '图片绘制中',
@@ -338,6 +428,7 @@ Page({
       })
     }
   },
+  */
 
   handleChange(e) {
     let { x, y, source } = e.detail;

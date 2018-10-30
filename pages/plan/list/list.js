@@ -178,6 +178,7 @@ Page({
   },
 
   planLongPressed(e) {
+    if (this.data.forCustomer == 1) return
     let index = e.currentTarget.dataset.index
     this.setData({
       editRowIndex: this.data.editRowIndex == index ? -1 : index

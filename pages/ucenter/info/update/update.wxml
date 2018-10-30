@@ -11,25 +11,25 @@
   <swiper-item class='content'>
     <view class='item0'>
       <view class='input-row'>
-        <view class='text'>身 高</view>
+        <view class='text'>身高</view>
         <!-- <input class='input' type='digit' placeholder='请输入您的身高' value='{{height}}' bindblur='bindinputHeight' confirm-type='next'></input> -->
         <picker class='input' bindchange="bindHeightPickerChange" value="{{heightIndex}}" range="{{heightRange}}">
-          <view class='{{height == "请 选 择 您 的 身 高" ? "placeholder" : ""}}'>{{height}}</view>
+          <view class='{{height == "请选择您的身高" ? "placeholder" : ""}}'>{{height}}</view>
         </picker>
-        <view class='text'>C M</view>
+        <view class='text'>CM</view>
       </view>
       <view class='input-row'>
-        <view class='text'>体 重</view>
+        <view class='text'>体重</view>
         <!-- <input class='input' type='digit' placeholder='请输入您的体重' value='{{weight}}' bindblur='bindinputWeight' confirm-type='next'></input> -->
         <picker class='input' bindchange="bindWeightPickerChange" value="{{weightIndex}}" range="{{weightRange}}">
-          <view class='{{weight == "请 选 择 您 的 体 重" ? "placeholder" : ""}}'>{{weight}}</view>
+          <view class='{{weight == "请选择您的体重" ? "placeholder" : ""}}'>{{weight}}</view>
         </picker>
-        <view class='text'>K G</view>
+        <view class='text'>KG</view>
       </view>
       <view class='input-row' style='margin-bottom: 0rpx;'>
-        <view class='text'>年 龄</view>
-        <input class='input' type='number' placeholder='请 填 写 您 的 年 龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
-        <view class='text'>A G E</view>
+        <view class='text'>年龄</view>
+        <input class='input' type='number' placeholder='请填写您的年龄' value='{{age}}' bindblur='bindinputAge' confirm-type='done' placeholder-class='placeholder'></input>
+        <view class='text'>AGE</view>
       </view>
     </view>
   </swiper-item>
@@ -67,7 +67,7 @@
         </view>
       </view> -->
       <view class='color-row'>
-        <view class='text'>你 绝 不 能 接 受 的 颜 色</view>
+        <view class='text'>你绝不能接受的颜色</view>
         <view class='colors'>
           <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 2}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
           <view class='color' bindtap='toggleColorPicker' data-show='2' data-title='请选择绝不能接受的颜色'>
@@ -179,7 +179,7 @@
     <view class='point {{i == 0 ? "point-first" : i == 5 ? "point-last" : "point-middle"}} {{index == i ? "active" : ""}}' wx:for='{{bottomTexts}}' wx:for-index='i' wx:key='i'>
     </view>
   </view>
-  <view class='btn-save' wx:else bindtap='saveInfo'>保  存</view>
+  <view class='btn-save' wx:else bindtap='saveInfo'>保存</view>
 </view>
 
 <view class='color-picker' wx:if='{{colorPickShow != 0}}'>

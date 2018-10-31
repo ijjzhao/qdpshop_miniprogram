@@ -1,0 +1,33 @@
+<!--pages/demand/list/list.wxml-->
+<text class='title'>{{isCustomer ? '我的需求' : '用户需求'}}</text>
+
+<view class='row {{index == list.length - 1 ? "lastrow" : ""}}' wx:for='{{list}}' wx:for-itme='item' wx:for-index='index' wx:key='item.id'>
+  <view class='left'>
+    <view class='pic'>
+      <image class='pic' src='{{map[item.user_id].avatarUrl}}'></image>
+    </view>
+    <view class='name'>{{map[item.user_id].nickname}}({{map[item.user_id].age}})</view>
+  </view>
+  <view class='right'>
+    <view class='line'>
+      <text class='text'>场景：</text>
+      <text class='text flex'>{{items[0][item.scene]}}</text>
+      <text class='text'>{{item.time2show}}</text>
+    </view>
+    <view class='line'>
+      <text class='text'>预算：</text>
+      <text class='text flex'>{{items[1][item.budget]}}</text>
+    </view>
+    <view class='line'>
+      <text class='text'>状态：</text>
+      <text class='text flex {{item.red}}'>{{item.statusDesc}}</text>
+      <text class='text detail' bindtap='gotoDetail' data-id='{{item.id}}'>详 情</text>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-btn {{isCustomer ? '' : 'hidden'}}" bindtap="">
+  <navigator class='bottom-navigator' url='/pages/demand/add/add'>
+    <view class="r black">发布需求</view>
+  </navigator>
+</view>

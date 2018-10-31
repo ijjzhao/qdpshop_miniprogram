@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/demand/list/list",
     "pages/newIndex/index",
     "pages/index/index",
     "pages/catalog/catalog",
@@ -58,7 +59,11 @@
     "pages/stylist/detail/detail",
     "pages/ucenter/couponbag/couponbag",
     "pages/ucenter/info/index/index",
-    "pages/ucenter/info/update/update"
+    "pages/ucenter/info/update/update",
+    "pages/demand/add/add",
+    "pages/demand/detail/user/detail",
+    "pages/demand/detail/stylist/detail"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -78,12 +83,6 @@
         "iconPath": "./image/tab_home.png",
         "selectedIconPath": "./image/tab_home_select_red.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/catalog/catalog",
-        "iconPath": "./image/tab_catelog.png",
-        "selectedIconPath": "./image/tab_catelog_select_red.png",
-        "text": "分类"
       },
       {
         "pagePath": "pages/cart/cart",

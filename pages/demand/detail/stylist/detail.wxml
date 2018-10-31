@@ -1,0 +1,2 @@
+<!--pages/demand/detail/stylist/detail.wxml-->
+<text>pages/demand/detail/stylist/detail.wxml {{id}}</text>

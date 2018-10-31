@@ -1,0 +1,106 @@
+/* pages/demand/add/add.wxss */
+@import "../../../lib/mycss/common.wxss";
+
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: calc(100% - 100rpx);
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 750rpx;
+  /* flex: 1; */
+  position: relative;
+  background: #fff;  
+}
+
+.row .title {
+  position: absolute;
+  top: 40rpx;
+  left: 5rpx;
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #333;
+  color: #fff;
+  /* text-align: center; */
+  padding-left: 20rpx; 
+  font-size: 26rpx;
+}
+
+.row .inner {
+  width: calc(100% - 40rpx);
+  height: calc(100% - 40rpx);
+  margin: 20rpx;
+  border: 2rpx solid #eee;
+  border-radius: 5rpx;
+  display: flex;
+}
+
+.row .inner .desc {
+  /* height: 88rpx;
+  color: #555;
+  font-size: 28rpx;
+  width: 100%;
+  text-align: right;
+  padding-top: 20rpx; 
+  padding-right: 20rpx; */
+  position: absolute;
+  top: 40rpx;
+  right: 45rpx;
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #666;
+  text-align: right;
+  font-size: 26rpx;
+}
+
+.row .inner .grid {
+  width: 100%;
+  margin-top: 90rpx;
+  /* background: red; */
+  padding: 20rpx;
+  flex: 1;
+}
+
+.row .inner .grid .grid-item {
+  width: 200rpx;
+  height: 70rpx;
+  border: 2rpx solid #333;
+  line-height: 70rpx;
+  text-align: center;
+  margin: 10rpx;
+  float: left;
+  border-radius: 5rpx;
+}
+
+.row .input {
+  height: 100rpx;
+  width: 710rpx;
+  margin: 0 20rpx;
+  /* background: darkblue */
+}
+
+.row .input .input {
+  width: 100%;  
+  border-bottom: 2rpx solid #ccc;
+  height: 100rpx;
+  padding: 0;
+  margin: 0;
+}
+
+.placeholder {
+  text-align: left
+}
+
+.selected {
+  background: #333;
+  color: #fff;
+}

@@ -1,0 +1,50 @@
+<!--pages/demand/detail/user/detail.wxml-->
+<!-- <text>pages/demand/detail/user/detail.wxml {{id}}</text> -->
+
+<view class='container'>
+  <view class='row'>
+    <view class='title'>我的需求</view>
+    <view class='inner'>
+      <view class='detail'>
+        <view class='item'>穿衣场景：{{items[0][demand.scene]}}</view>
+        <view class='item'>描 述：{{items[2][demand.desc]}}</view>
+        <view class='item'>费用预算：{{items[1][demand.budget]}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='row'>
+    <view class='title'>穿衣方案</view>
+    <view class='inner'>
+      <view class='detail' wx:if='{{demand.plans.lenght == 0}}'>
+        暂无方案
+      </view>
+      <view class='plan-container' wx:else>
+        <view class='plan' wx:for='{{demand.plans}}' wx:for-item='item' wx:for-index='index' wx:key='index'
+        bindtap='planTap' data-id='{{item}}'>
+          <view class='tip-back'></view>
+          <view class='tip'>定制</view>
+          <view class='left'>
+            <image class='pic' src='{{planMap[item].imageUrl}}'></image>
+          </view>
+          <view class='right'>
+            <view class='row heads'>
+              <view class='head-name'>
+                <image class='head' src='{{planMap[item].avatarUrl}}'></image>
+                {{planMap[item].nickname}}
+              </view>
+              <image class='head' src='../../../../static/icons/connect.png'></image>
+              <view class='head-name'>
+                <image class='head' src='{{demand.avatarUrl}}'></image>
+                {{demand.nickname}}
+              </view>
+            </view>
+            <view class='row plandesc'>
+              {{planMap[item].style}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

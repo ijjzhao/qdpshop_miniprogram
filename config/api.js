@@ -250,4 +250,13 @@ module.exports = {
   UserInfoUpdate: ApiRootUrl + 'userinfo/update', // 更新用户详细信息
 
   CouponBagGetForNewUser: ApiRootUrl + 'couponbag/getfornewuser', // 获取新用户卡包
+
+  DemandGet: ApiRootUrl + 'demand/get', // 需求获取
+  DemandList: ApiRootUrl + 'demand/list', // 需求列表
+  DemandSave: ApiRootUrl + 'demand/save', // 需求保存
+  DemandUpdate: ApiRootUrl + 'demand/update', // 需求更新
+
+
+  UpdateAvatarUrl: ApiRootUrl + 'user/updateAvatarUrl', // 更新用户头像
+
 };

@@ -1,0 +1,42 @@
+<!--pages/demand/add/add.wxml-->
+
+<view class='container'>
+  <view class='row'>
+    <view class='title'>1 穿衣场景</view>
+    <view class='inner'>
+      <view class='desc'>场景说明</view>
+      <view class='grid'>
+        <view class='grid-item {{index == selected[0] ? "selected" : ""}}' bindtap='btnTapped' data-row='0' data-index='{{index}}' wx:for='{{items[0]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='row'>
+    <view class='title'>2 预 算</view>
+    <view class='inner'>
+      <view class='desc'>费用说明</view>
+      <view class='grid'>
+        <view class='grid-item {{index == selected[1] ? "selected" : ""}}' bindtap='btnTapped' data-row='1' data-index='{{index}}' wx:for='{{items[1]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='row'>
+    <view class='title'>3 描 述</view>
+    <view class='inner'>
+      <view class='desc'>关于描述</view>
+      <view class='grid'>
+        <view class='grid-item {{index == selected[2] ? "selected" : ""}}' bindtap='btnTapped' data-row='2' data-index='{{index}}' wx:for='{{items[2]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
+      </view>
+    </view>
+    <view class='input'>
+      <input class='input' placeholder='有哪些想对搭配师说的话' placeholder-class='placeholder'
+      type='text' maxlength='100' confirm-type='完成' value='{{other}}' bindinput='handleInput'
+      ></input>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-btn" bindtap="post">
+  <!-- <navigator class='bottom-navigator' url='/pages/demand/add/add'> -->
+    <view class="r black">发布需求</view>
+  <!-- </navigator> -->
+</view>

@@ -115,6 +115,12 @@
         <text class="txt">我的档案</text>
       </navigator>
     </view>
+    <view class="item">
+      <navigator url="/pages/demand/list/list?isCustomer={{isCustomer ? 1 : 0}}" class="a">
+        <text class="icon feedback"></text>
+        <text class="txt">{{isCustomer ? "我的需求" : "用户需求"}}</text>
+      </navigator>
+    </view>
     <!-- <view class="item">
       <navigator url="/pages/ucenter/move/index" class="a">
         <text class="icon feedback"></text>

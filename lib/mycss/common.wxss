@@ -29,3 +29,12 @@
   border: 1px solid rgb(175, 175, 175);
   background: rgb(175, 175, 175);
 }
+
+.bottom-btn .black {
+  border: 1px solid #333;
+  background: #333;
+}
+
+.hidden {
+  display: none;
+}

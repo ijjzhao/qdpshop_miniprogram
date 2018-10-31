@@ -1,0 +1,153 @@
+/* pages/demand/detail/user/detail.wxss */
+
+
+.container {
+  width: 100%;
+  height: calc(100% - 100rpx);
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 750rpx;
+  /* flex: 1; */
+  position: relative;
+  background: #fff;
+}
+
+.row .title {
+  position: absolute;
+  top: 40rpx;
+  left: 5rpx;
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #333;
+  color: #fff;
+  /* text-align: center; */
+  padding-left: 30rpx; 
+  font-size: 26rpx;
+}
+
+.row .inner {
+  width: calc(100% - 40rpx);
+  height: calc(100% - 40rpx);
+  margin: 20rpx;
+  border: 2rpx solid #eee;
+  border-radius: 5rpx;
+  display: flex;
+  min-height: 200rpx;
+}
+
+.row .inner .detail {
+  width: 100%;
+  /* height: 100rpx; */
+  margin-top: 120rpx;
+  /* background: red; */
+  display: block;
+  padding: 0 40rpx;
+  color: #666;  
+}
+
+.row .inner .detail .item {
+  width: 300rpx;
+  height: 60rpx;
+  margin: 10rpx 10rpx 10rpx 0rpx;
+  /* background: gray; */
+  /* float: left; */
+  display: inline-block;
+  color: #666;
+}
+
+.plan-container {
+  margin-top: 120rpx;
+  width: 100%;
+}
+
+.plan {
+  height: 300rpx;
+  width: 100%;
+  /* background: red; */
+  border-top: 2rpx solid #eee;
+  padding: 20rpx;
+  position: relative;
+}
+
+.plan .tip {
+  position: absolute;
+  height: 40rpx;
+  width: 100rpx;
+  top: 5rpx;
+  left: 5rpx;
+  color: #fff;
+  font-size: 20rpx;
+  line-height: 40rpx;
+  text-align: center;
+  padding-left: 10rpx;
+  
+}
+
+.plan .tip-back {
+  position: absolute;
+  background: red;
+  height: 40rpx;
+  width: 100rpx;
+  top: 5rpx;
+  left: 5rpx;
+  color: #fff;
+  font-size: 20rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border-width: 20rpx;
+  border-style: solid;
+  border-color:  transparent transparent transparent white;
+}
+
+.plan .left {
+  width: 260rpx;
+  height: 260rpx;
+  float: left;
+}
+
+.plan .left .pic{
+  width: 100%;
+  height: 100%;
+}
+
+
+.plan .right {
+  width: 385rpx;
+  height: 260rpx;
+  background: red;
+  margin-left: 20rpx;
+  float: left  
+}
+
+.plan .right .row {
+  width: 100%;
+  height: 130rpx;
+}
+
+.heads {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.head {
+  height: 90rpx;
+  width: 90rpx;
+  margin: 10rpx;
+  margin-bottom: 0;
+  border-radius: 100rpx;
+}
+.head-name {
+  height: 120rpx;
+  width: 110rpx;
+  text-align: center;
+  font-size: 20rpx;
+}
+
+.plandesc {
+  background: red
+}

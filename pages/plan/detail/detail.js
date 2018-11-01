@@ -11,6 +11,7 @@ Page({
     planDetail: '',
     goodsArr: [],
     forCustomer: 1,
+    demandId: 0,
     imageUrl: ''
   },
 
@@ -29,6 +30,13 @@ Page({
       this.setData({
         forCustomer: options.forCustomer,        
       })
+      // 需求id
+      if (options.demandId != undefined) {
+        this.setData({
+          demandId: options.demandId,
+        })
+        console.log(`demandId : ${this.data.demandId}`)
+      }
     }
   },
 
@@ -127,30 +135,65 @@ Page({
     }
 
     wx.showLoading({
-      title: '添加中',
+      title: '下单中',
     })
 
-    let asyncRequest = async () => {
-      try {
-        for (let i in this.data.goodsArr) {
-          let goods = this.data.goodsArr[i];
-          if (goods.checked) {
-            await this.addCartRequest(goods);
-          }
-        }
-        wx.switchTab({
-          url: '/pages/cart/cart',
+    let goodsList = []
+    for (let i in this.data.goodsArr) {
+      let goods = this.data.goodsArr[i]
+      if (goods.checked) {
+        goodsList.push({
+          goodsId: goods.goods_id,
+          number: 1,
+          productId: goods.product_id
         })
-      } catch (err) {
-        console.log(err);
       }
-
-      wx.hideLoading()
     }
 
-    asyncRequest();
+    util.request(api.CartAddList, {
+      goodsList
+    }, "POST").then((res) => {
+      console.log(res)
+      if (res.errno === 0) {
+        console.log('添加购物车成功')
+        // wx.switchTab({
+        //   url: '/pages/cart/cart',
+        // })
+        wx.navigateTo({
+          url: `/pages/shopping/checkout/checkout?demandId=${this.data.demandId}`,
+        })
+      } else {
+        wx.showModal({
+          title: '错误',
+          content: res.errmsg,
+        })
+      }
+      wx.hideLoading()
+
+    })
+
+    // let asyncRequest = async () => {
+    //   try {
+    //     for (let i in this.data.goodsArr) {
+    //       let goods = this.data.goodsArr[i];
+    //       if (goods.checked) {
+    //         await this.addCartRequest(goods);
+    //       }
+    //     }
+    //     wx.switchTab({
+    //       url: '/pages/cart/cart',
+    //     })
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+
+    //   wx.hideLoading()
+    // }
+
+    // asyncRequest();
   },
 
+  /*
   addCartRequest(goods) {
     return new Promise((resolve, reject) => {
       util.request(api.CartAdd, {
@@ -168,6 +211,7 @@ Page({
       })
     })
   },
+  */
   
   /**
    * 生命周期函数--监听页面初次渲染完成

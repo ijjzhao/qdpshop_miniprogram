@@ -14,7 +14,7 @@ Page({
       ['100-300元', '300-600元', '600-1000元'],
       ['舒适就好', '要帅', '要有气质', '其他'],
     ],
-    id: 0,
+    id: 0, // demandId
     demand: {},
     planMap: {},
     myImg: ''
@@ -83,7 +83,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id)
     wx.navigateTo({
-      url: `../../../plan/detail/detail?forCustomer=1&planid=${id}`,
+      url: `../../../plan/detail/detail?forCustomer=1&planid=${id}&demandId=${this.data.id}`,
     })
   },
   /**

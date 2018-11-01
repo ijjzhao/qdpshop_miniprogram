@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/demand/list/list",
     "pages/newIndex/index",
     "pages/index/index",
     "pages/catalog/catalog",
@@ -61,6 +60,7 @@
     "pages/ucenter/info/index/index",
     "pages/ucenter/info/update/update",
     "pages/demand/add/add",
+    "pages/demand/list/list",
     "pages/demand/detail/user/detail",
     "pages/demand/detail/stylist/detail"
     
@@ -83,12 +83,6 @@
         "iconPath": "./image/tab_home.png",
         "selectedIconPath": "./image/tab_home_select_red.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "iconPath": "./image/tab_cart.png",
-        "selectedIconPath": "./image/tab_cart_select_red.png",
-        "text": "购物车"
       },
       {
         "pagePath": "pages/ucenter/index/index",

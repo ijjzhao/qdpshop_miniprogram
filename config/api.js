@@ -31,6 +31,7 @@ module.exports = {
 
   CartList: ApiRootUrl + 'cart/index', //获取购物车的数据
   CartAdd: ApiRootUrl + 'cart/add', // 添加商品到购物车
+  CartAddList: ApiRootUrl + 'cart/addlist', // 添加商品到购物车
   CartUpdate: ApiRootUrl + 'cart/update', // 更新购物车的商品
   CartDelete: ApiRootUrl + 'cart/delete', // 删除购物车的商品
   CartChecked: ApiRootUrl + 'cart/checked', // 选择或取消选择商品

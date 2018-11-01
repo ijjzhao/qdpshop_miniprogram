@@ -1,2 +1,128 @@
 <!--pages/demand/detail/stylist/detail.wxml-->
-<text>pages/demand/detail/stylist/detail.wxml {{id}}</text>
+<view class='navigation'>
+  <view class='navigation-item {{index == 0 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='0'>需求信息</view>
+  <view class='navigation-item {{index == 1 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='1'>用户档案</view>
+  <view class='navigation-item {{index == 2 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='2'>历史方案</view>
+  <view class='navigation-item {{index == 3 ? "active" : ""}}' bindtap='setIndexByNavigation' data-index='3'>备注信息</view>
+</view>
+
+<swiper class='swiper' current="{{index}}" duration="300" bindchange="switchTab">
+  <swiper-item class='content'>
+    <view class='item0'>
+    </view>
+  </swiper-item>
+  <swiper-item class='content'>
+    <view class='item1'>
+      <view class='row'>
+        <view class='title'>基础信息</view>
+        <view class='line'>
+          <view class='item'>
+            <view class='label'>身高</view>
+            <view class='content'>{{userInfo.height}}cm</view>
+          </view>
+          <view class='item'>
+            <view class='label'>体重</view>
+            <view class='content'>{{userInfo.weight}}kg</view>
+          </view>
+        </view>
+        <view class='line'>
+          <view class='item'>
+            <view class='label'>年龄</view>
+            <view class='content'>{{userInfo.age}}岁</view>
+          </view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='title'>颜色偏好</view>
+        <view class='line'>
+          <view class='item'>
+            <view class='label' style='height: 80rpx;line-height: 80rpx;'>不接受</view>
+            <view class='color-content'>
+              <view class='color' wx:for='{{colors}}' wx:for-index='i' wx:if='{{colorChoise[i] == 2}}' wx:key='i' style='{{"background: " + colors[i].color}}'></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='title'>风格偏好</view>
+        <view class='grid'>
+          <view class='item' data-index='0' bindtap='showBigStyleImg'>
+            <view class='pic'>
+              <image class='image' src='{{styleArr[0][0] ? styleArr[0][0] : "../../../../static/icons/empty.png"}}'></image>
+            </view>
+            <view class='label'>喜欢</view>
+          </view>
+          <view class='item' data-index='1' bindtap='showBigStyleImg'>
+            <view class='pic'>
+              <image class='image' src='{{styleArr[1][0] ? styleArr[1][0] : "../../../../static/icons/empty.png"}}'></image>              
+            </view>
+            <view class='label'>不喜欢</view>
+          </view>
+          <view class='item' data-index='2' bindtap='showBigStyleImg'>
+            <view class='pic'>
+              <image class='image' src='{{styleArr[2][0] ? styleArr[2][0] : "../../../../static/icons/empty.png"}}'></image>
+            </view>
+            <view class='label'>可以尝试</view>
+          </view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='title'>用户照片</view>
+        <view class='grid'>
+          <view class='item' data-index='0' bindtap='showBigBodyImg'>
+            <view class='pic'>
+            <image class='image' src='{{pics[0] ? pics[0] : "../../../../static/icons/empty.png"}}'></image>
+            </view>
+            <view class='label'>半身照</view>
+          </view>
+          <view class='item' data-index='1' bindtap='showBigBodyImg'>
+            <view class='pic'>
+             <image class='image' src='{{pics[1] ? pics[1] : "../../../../static/icons/empty.png"}}'></image>
+            </view>
+            <view class='label'>全身照</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+  <swiper-item class='content'>
+    <view class='item2'>
+    </view>
+  </swiper-item>
+  <swiper-item class='content'>
+    <view class='item3'>
+      <view class='row' wx:for='{{notes}}' wx:item='item' wx:for-index='index' wx:key='index'>
+        <view class='title'>
+          <view class='name'>{{item.stylist_name}}</view>
+          <view class='time'>{{item.create_date}}</view>
+        </view>
+        <view class='content'>
+          <view class='detail'>{{item.note}}</view>
+          <view class='delete' bindtap='deleteNote' data-id='{{item.id}}' data-index='{{index}}'>
+            <image class='img' src='../../../../static/icons/icon_delete.svg'>删除</image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<view class="bottom-btn">
+  <!-- <navigator class='bottom-navigator' url='/pages/demand/add/add'> -->
+  <view class="r flex" wx:if="{{index==3}}">
+    <input class='note-input' placeholder='添加备注' type='text' maxlength='100' value='{{note}}' bindinput='handleNoteInput'></input>
+    <view class="r black note-btn" bindtap="sendNote">提交备注</view>
+  </view>
+  
+  <view class="r black" bindtap="sendPlan" wx:else>发送方案</view>
+  <!-- </navigator> -->
+</view>
+
+<view class='big-img {{showBigImg ? "": "hidden"}}' bindtap='hideBigImg'>
+  <view class='title'>{{bigImgIndex + 1}}/{{bigImgUrl.length}}</view>
+  <swiper class='swiper' current="{{bigImgIndex}}" duration="300" bindchange="switchBigImgTab">
+    <swiper-item class='content' wx:for='{{bigImgUrl}}' wx:for-item='item' wx:for-index='index' wx:key='index'>
+      <image class='pic' src='{{item}}' mode='widthFix'></image>    
+    </swiper-item>
+  </swiper>
+</view>

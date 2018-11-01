@@ -1,1 +1,286 @@
 /* pages/demand/detail/stylist/detail.wxss */
+@import "../../../../lib/mycss/common.wxss";
+
+page {
+  height: 100%;
+}
+
+.navigation {
+  height: 70rpx;
+  width: 750rpx;
+  border-bottom: 2rpx solid #333;
+  display: flex
+}
+
+.navigation-item {
+  flex: 1;
+  height: 70rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 70rpx;
+}
+
+.navigation .active {
+  background: #333;
+  color: #fff;
+}
+
+
+.swiper {
+  width: 750rpx;
+  height: calc(100% - 100rpx - 70rpx);
+}
+
+.content {
+  width: 750rpx;
+  height: 100%;
+  /* background: red; */
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  /* justify-content: center; */
+}
+
+.item0 {
+  width: 600rpx;
+  margin-left: 75rpx;
+  background: red;
+}
+
+
+.item1 {
+  width: 710rpx;
+  margin-left: 20rpx; 
+  /* height: 560rpx; */
+  max-height: 100%;
+  position: relative;
+  overflow: scroll;
+  /* background: rebeccapurple; */
+}
+
+.item1 .row {
+  width: 100%;
+}
+
+.item1 .row .title {
+  width: 160rpx;
+  height: 60rpx;
+  /* padding: 0 20rpx; */
+  background: #eee;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.item1 .row .line {
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  margin: 20rpx 0;
+}
+
+.item1 .row .item {
+  flex: 1;
+  height: 60rpx;
+  /* margin: 10rpx 0; */
+  /* background: red; */
+  line-height: 60rpx;
+}
+
+.item1 .row .item .label{
+  width: 100rpx;
+  text-align: center;
+  float: left;
+}
+
+.item1 .row .item .content{
+  width: 160rpx;
+  background: #333;
+  color: #fff;
+  justify-content:center;
+  float: left;
+}
+
+.item1 .row .item .color-content{
+  /* background: red; */
+  float: left;
+}
+
+.item1 .row .item .color-content .color{
+  height: 60rpx;
+  width: 60rpx;
+  float: left;
+  margin: 10rpx;
+  border: 2rpx solid #eee;
+}
+
+.item1 .row .grid {
+  width: 100%;
+  height: 250rpx;
+  margin: 10rpx 0;
+}
+
+.item1 .row .grid .item{
+  width: 200rpx;
+  height: 250rpx;
+  /* background: red; */
+  margin: 15rpx;
+  float: left;
+}
+
+.item1 .row .grid .item .pic{
+  width: 200rpx;
+  height: 200rpx;
+  /* background: blue; */
+}
+
+.item1 .row .grid .item .pic .image{
+  width: 200rpx;
+  height: 200rpx;
+  border: 4rpx solid #eee;
+}
+
+.item1 .row .grid .item .label{
+  width: 200rpx;
+  height: 50rpx;
+  /* background: green; */
+  line-height: 50rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.item2 {
+  width: 500rpx;
+  margin-left: 125rpx;
+  background: gray;
+}
+
+.item3 {
+  width: 750rpx;
+  height: 100%;
+  overflow: scroll;
+  /* background: yellow; */
+}
+
+.item3 .row {
+  margin: 20rpx;
+}
+
+.item3 .row .title {
+  height: 50rpx;
+}
+
+.item3 .row .title .name{
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-size: 24rpx;
+  float: left;
+}
+
+.item3 .row .title .time{
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-left:20rpx; 
+  float: left;
+  color: #333;
+  font-size: 24rpx;
+}
+
+.item3 .row .content {
+  width: 100%;
+  background: #eee;
+  font-size: 26rpx;
+  color: #333;
+  border-radius: 5rpx;
+}
+
+.item3 .row .content .detail {
+  width: 640rpx;
+  line-height: 70rpx;
+  /* background: green; */
+  font-size: 28rpx;
+  color: #333;
+  /* background: green; */
+  padding: 0 20rpx;
+}
+
+.item3 .row .content .delete {
+  width: 70rpx;
+  height: auto;
+  /* display: flex;
+  justify-content: center;
+  align-content: center;
+  background: red; */
+}
+
+.item3 .row .content .delete .img {
+  width: 46rpx;
+  height: 46rpx;
+  margin: 12rpx;
+  /* background: red; */
+}
+
+
+.big-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 99;
+}
+
+.big-img .title{
+  position: absolute;
+  height: 60rpx;
+  width: 150rpx;
+  top: 20rpx;
+  left: 300rpx;
+  color: #fff;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.big-img .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.big-img .swiper .content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-img .swiper .content .pic {
+  width: 100%;
+  background: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex
+}
+
+.r {
+  border: 2rpx solid #333;
+}
+
+.note-input {
+  height: 100%;
+  flex: 3;
+  background: #fff;
+  color: #333;
+}
+
+.note-btn {
+  flex: 1;
+}

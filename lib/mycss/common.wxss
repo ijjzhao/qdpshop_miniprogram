@@ -15,7 +15,7 @@
 }
 
 .bottom-btn .r {
-  border: 1px solid #408ee2;
+  /* border: 1px solid #408ee2; */
   background: #408ee2;
   float: left;
   height: 100rpx;

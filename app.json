@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/demand/detail/stylist/detail",
     "pages/newIndex/index",
     "pages/index/index",
     "pages/catalog/catalog",
@@ -61,8 +62,7 @@
     "pages/ucenter/info/update/update",
     "pages/demand/add/add",
     "pages/demand/list/list",
-    "pages/demand/detail/user/detail",
-    "pages/demand/detail/stylist/detail"
+    "pages/demand/detail/user/detail"
     
   ],
   "window": {

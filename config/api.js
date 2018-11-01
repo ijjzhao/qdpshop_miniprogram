@@ -260,4 +260,10 @@ module.exports = {
 
   UpdateAvatarUrl: ApiRootUrl + 'user/updateAvatarUrl', // 更新用户头像
 
+  UserNoteGet: ApiRootUrl + 'usernote/get',
+  UserNoteList: ApiRootUrl + 'usernote/list',
+  UserNoteAdd: ApiRootUrl + 'usernote/add',
+  UserNoteUpdate: ApiRootUrl + 'usernote/update',
+  UserNoteDelete: ApiRootUrl + 'usernote/delete',
+  
 };

@@ -54,7 +54,7 @@
           </view>
           <view class='item' data-index='1' bindtap='showBigStyleImg'>
             <view class='pic'>
-              <image class='image' src='{{styleArr[1][0] ? styleArr[1][0] : "../../../../static/icons/empty.png"}}'></image>              
+              <image class='image' src='{{styleArr[1][0] ? styleArr[1][0] : "../../../../static/icons/empty.png"}}'></image>
             </view>
             <view class='label'>不喜欢</view>
           </view>
@@ -71,13 +71,13 @@
         <view class='grid'>
           <view class='item' data-index='0' bindtap='showBigBodyImg'>
             <view class='pic'>
-            <image class='image' src='{{pics[0] ? pics[0] : "../../../../static/icons/empty.png"}}'></image>
+              <image class='image' src='{{pics[0] ? pics[0] : "../../../../static/icons/empty.png"}}'></image>
             </view>
             <view class='label'>半身照</view>
           </view>
           <view class='item' data-index='1' bindtap='showBigBodyImg'>
             <view class='pic'>
-             <image class='image' src='{{pics[1] ? pics[1] : "../../../../static/icons/empty.png"}}'></image>
+              <image class='image' src='{{pics[1] ? pics[1] : "../../../../static/icons/empty.png"}}'></image>
             </view>
             <view class='label'>全身照</view>
           </view>
@@ -87,6 +87,10 @@
   </swiper-item>
   <swiper-item class='content'>
     <view class='item2'>
+        <view class="item" wx:for="{{allPlan}}" wx:for-item='item' wx:key="index" wx:index="index">
+          <image class="img" src="{{planMap[item].imageUrl}}" data-planid="{{planMap[item].id}}" data-index="{{index}}" bindtap="oldPlanTapped"></image>
+          <view class="text">{{planMap[item].name}}</view>
+        </view>
     </view>
   </swiper-item>
   <swiper-item class='content'>
@@ -113,7 +117,7 @@
     <input class='note-input' placeholder='添加备注' type='text' maxlength='100' value='{{note}}' bindinput='handleNoteInput'></input>
     <view class="r black note-btn" bindtap="sendNote">提交备注</view>
   </view>
-  
+
   <view class="r black" bindtap="sendPlan" wx:else>发送方案</view>
   <!-- </navigator> -->
 </view>
@@ -122,7 +126,7 @@
   <view class='title'>{{bigImgIndex + 1}}/{{bigImgUrl.length}}</view>
   <swiper class='swiper' current="{{bigImgIndex}}" duration="300" bindchange="switchBigImgTab">
     <swiper-item class='content' wx:for='{{bigImgUrl}}' wx:for-item='item' wx:for-index='index' wx:key='index'>
-      <image class='pic' src='{{item}}' mode='widthFix'></image>    
+      <image class='pic' src='{{item}}' mode='widthFix'></image>
     </swiper-item>
   </swiper>
 </view>

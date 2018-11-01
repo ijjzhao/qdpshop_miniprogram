@@ -12,7 +12,8 @@ Page({
     goodsArr: [],
     forCustomer: 1,
     demandId: 0,
-    imageUrl: ''
+    imageUrl: '',
+    planid: 0
   },
 
   /**
@@ -22,6 +23,7 @@ Page({
     // todo： 如何确定入口是用户 还是搭配师
     let planid = parseInt(options.planid);
     this.setData({
+      planid: planid,
       cdnImgUrl: api.cdnImgUrl
     })
     this.getPlanDetail(planid);
@@ -116,6 +118,7 @@ Page({
   },
 
   addToCart() {
+    let that = this;
     let hasGoods = false
     for (let i in this.data.goodsArr) {
       let goods = this.data.goodsArr[i];
@@ -162,6 +165,23 @@ Page({
         wx.navigateTo({
           url: `/pages/shopping/checkout/checkout?demandId=${this.data.demandId}`,
         })
+
+        // 更新需求状态 plan_id
+        if (that.data.demandId) {
+          util.request(api.DemandUpdate, {
+            id: that.data.demandId,
+            form: {
+              plan_id: that.data.planid
+            }
+          }, 'POST').then((res) => {
+            if (res.errno == 0) {
+              console.log(`需求订单：${that.data.demandId} 已下单`)
+            } else {
+              console.error(res.errmsg)
+            }
+          })
+        }
+
       } else {
         wx.showModal({
           title: '错误',

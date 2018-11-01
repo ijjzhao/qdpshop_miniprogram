@@ -256,6 +256,7 @@ module.exports = {
   DemandList: ApiRootUrl + 'demand/list', // 需求列表
   DemandSave: ApiRootUrl + 'demand/save', // 需求保存
   DemandUpdate: ApiRootUrl + 'demand/update', // 需求更新
+  DemandAllPlan: ApiRootUrl + 'demand/allplan', // 所有的需求 选择了的方案
 
 
   UpdateAvatarUrl: ApiRootUrl + 'user/updateAvatarUrl', // 更新用户头像

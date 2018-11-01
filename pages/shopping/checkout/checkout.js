@@ -349,6 +349,7 @@ Page({
             })
 
             console.log(`ordid: ${orderid}`)
+            
             // TODO: 更新需求状态
             if (that.data.demandId) {
               util.request(api.DemandUpdate, {

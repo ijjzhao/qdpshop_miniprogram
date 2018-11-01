@@ -9,7 +9,7 @@ Page({
    * Page initial data
    */
   data: {
-    index: 3, // tab index
+    index: 2, // tab index
     id: 10,
     user_id: 0,
     demand_user_id: 0,
@@ -50,7 +50,8 @@ Page({
     bigImgUrl: [],
     bigImgIndex: 0,
     notes: [],
-    note2Add: ''
+    note2Add: '',
+    allPlan: []
   },
 
   /**
@@ -84,7 +85,7 @@ Page({
       let demand = res.data.demand;
       demand.plans = JSON.parse(demand.plans)
       for (let i in demand.plans) {
-        this.getPlan(demand.plans[i])
+        if (this.data.planMap[demand.plans[i]] == undefined) this.getPlan(demand.plans[i])
       }
       this.setData({
         demand: demand,
@@ -92,6 +93,7 @@ Page({
       })
       this.getUserInfo(demand.user_id)
       this.getUserNote()
+      this.getAllPlan()
     })
   },
 
@@ -100,7 +102,7 @@ Page({
     util.request(api.PlanGet, {
       id: planid,
     })
-      .then(function (res) {
+      .then((res) => {
         if (res.errno === 0) {
           if (res.data.length == 0) {
             wx.showModal({
@@ -113,9 +115,9 @@ Page({
             let imageUrl = `${api.cdnImgUrl}${planDetail.id}.png?v=${planDetail.v}`;
             planDetail.imageUrl = imageUrl
             let planMap = that.data.planMap
-            planMap[planid] = planDetail
+            this.data.planMap[planid] = planDetail
             that.setData({
-              planMap,
+              planMap
             });
           }
         }
@@ -168,7 +170,7 @@ Page({
       user_id: this.data.demand_user_id,
     })
       .then(function (res) {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.errno === 0) {
           that.setData({
             notes: res.data
@@ -176,6 +178,26 @@ Page({
         }
         // wx.hideLoading()
       });
+  },
+
+  getAllPlan() {
+    util.request(api.DemandAllPlan, {
+      user_id: this.data.demand_user_id
+    }, 'POST').then((res) => {
+      if (res.errno == 0) {
+
+        for (let i in res.data) {
+          let plan_id = res.data[i]
+          if (this.data.planMap[plan_id] == undefined) {
+            this.getPlan(plan_id)
+          }
+        }
+        this.setData({
+          allPlan: res.data
+        })
+        console.log(this.data.allPlan)
+      }
+    })
   },
 
   setIndexByNavigation: function (e) {
@@ -292,6 +314,13 @@ Page({
     let note = e.detail.value
     this.setData({
       note
+    })
+  },
+
+  oldPlanTapped(e) {
+    let planid = e.currentTarget.dataset.planid;
+    wx.navigateTo({
+      url: `/pages/plan/detail/detail?planid=${planid}&forCustomer=${0}`,
     })
   },
 

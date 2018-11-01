@@ -1,5 +1,6 @@
 /* pages/demand/detail/stylist/detail.wxss */
 @import "../../../../lib/mycss/common.wxss";
+/* @import "../../../../lib/mycss/plan.wxss"; */
 
 page {
   height: 100%;
@@ -152,9 +153,31 @@ page {
 }
 
 .item2 {
-  width: 500rpx;
-  margin-left: 125rpx;
-  background: gray;
+  width: 750rpx;
+  height: 100%;
+  /* background: gray; */
+  overflow: scroll;
+}
+
+.item2 .item {
+  width: 335rpx;
+  height: 395rpx;
+  margin: 20rpx;
+  border: 2rpx solid #eee;
+}
+
+.item2 .item .img{
+  width: 331rpx;
+  height: 331rpx;
+}
+
+.item2 .item .text{
+  width: 331rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #333;
+  border-top: 2rpx solid #eee;
 }
 
 .item3 {

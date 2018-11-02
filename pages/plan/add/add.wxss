@@ -4,8 +4,44 @@
 /* @import "../../../lib/iView/input/index.wxss"; */
 @import "../../../lib/mycss/common.wxss";
 
+.title {
+  font-size: 32rpx;
+  margin: 20rpx;
+  color: #333;
+}
 
-.i-cell {
+.input {
+  margin: 20rpx;
+  height: 70rpx;
+  width: 710rpx;
+  border: 2rpx solid #eee;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+}
+
+.grid {
+  margin: 20rpx;
+}
+
+.grid .item {
+  height: 70rpx;
+  width: 210rpx;
+  margin: 10rpx 20rpx 10rpx 0;
+  border: 2rpx solid #333;
+  color: #333;
+  background: #fff;
+  text-align: center;
+  line-height: 70rpx;
+  display: inline-block;
+}
+
+.grid .enable {
+  color: #fff;
+  background: #333;
+}
+
+
+/* .i-cell {
   position: relative;
   padding: 12px 15px;
   display: flex;
@@ -133,4 +169,4 @@
 
 .i-input-wrapped.i-input-error::after {
   border-color: #ed3f14;
-}
+} */

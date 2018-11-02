@@ -14,6 +14,10 @@ Page({
       ['100-300元', '300-600元', '600-1000元'],
       ['舒适就好', '要帅', '要有气质', '其他'],
     ],
+    styles: ['简约', '时尚', '休闲', '运动', '商务'],
+    cuts: ['修身', '适中', '宽松'],
+    feels: ['舒适', '透气', '有型', '正常'],
+
     id: 0, // demandId
     demand: {},
     planMap: {},
@@ -68,6 +72,7 @@ Page({
             let planDetail = res.data.plan
             let imageUrl = `${api.cdnImgUrl}${planDetail.id}.png?v=${planDetail.v}`;
             planDetail.imageUrl = imageUrl
+            planDetail.feels = JSON.parse(planDetail.feel)
             let planMap = that.data.planMap
             planMap[planid] = planDetail
             that.setData({

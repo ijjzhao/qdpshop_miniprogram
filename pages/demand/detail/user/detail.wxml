@@ -39,8 +39,13 @@
                 {{demand.nickname}}
               </view>
             </view>
-            <view class='row plandesc'>
-              {{planMap[item].style}}
+            <view class='row'>
+              
+              <view class='plandesc'>{{styles[planMap[item].style]}}</view>
+              <view class='plandesc'>{{cuts[planMap[item].cut]}}</view>
+              <view class='plandesc' wx:for='{{planMap[item].feels}}' wx:for-item='item1' wx:for-index='index'
+              wx:key='index' wx:if='{{item1 == 1}}'
+              >{{feels[index]}}</view>
             </view>
           </view>
         </view>

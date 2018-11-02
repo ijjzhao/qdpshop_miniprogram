@@ -15,9 +15,8 @@
     <i-input value="{{ value7 }}" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" />
 </i-panel> -->
 
-<form>
+<!-- <form>
   <i-panel title="方案详情">
-    <!-- <i-input value="{{ name }}" type="text" right title="方案名称" mode="wrapped" placeholder="" maxlength="20" bind:change='handleNameChange' /> -->
     <view class="i-class i-cell i-input i-input-wrapped">
       <view class="i-cell-hd i-input-title">方案名称</view>
       <input type="text" value="{{ name }}" maxlength="20" class="i-input-input i-cell-bd i-input-input-right" placeholder-class="i-input-placeholder" bindinput='handleNameChange' />
@@ -28,25 +27,41 @@
         {{style}}
       </picker>
     </view>
-    <!-- <i-input value="{{ fit_group }}" type="text" right title="适合人群" mode="wrapped" placeholder="" maxlength="50" bind:change='handlefitGroupChange' /> -->
      <view class="i-class i-cell i-input i-input-wrapped">
       <view class="i-cell-hd i-input-title">适合人群</view>
       <input type="text" value="{{ fit_group }}" maxlength="50" class="i-input-input i-cell-bd i-input-input-right" placeholder-class="i-input-placeholder" bindinput='handlefitGroupChange' />
     </view>
-    <!-- <i-input value="{{ fit_scene }}" type="text" right title="适合场景" mode="wrapped" placeholder="" maxlength="50" bind:change='handlefitSceneChange' /> -->
     <view class="i-class i-cell i-input i-input-wrapped">
       <view class="i-cell-hd i-input-title">适合场景</view>
       <input type="text" value="{{ fit_scene }}" maxlength="50" class="i-input-input i-cell-bd i-input-input-right" placeholder-class="i-input-placeholder" bindinput='handlefitSceneChange' />
     </view>
-    <!-- <i-input value="{{ desc }}" type="text" right title="方案描述" mode="wrapped" placeholder="" maxlength="200" bind:change='handleDescChange' /> -->
     <view class="i-class i-cell i-input i-input-wrapped">
       <view class="i-cell-hd i-input-title">方案描述</view>
       <input type="text" value="{{ desc }}" maxlength="200" class="i-input-input i-cell-bd i-input-input-right" placeholder-class="i-input-placeholder" bindinput='handleDescChange' />
     </view>
   </i-panel>
-</form>
+</form> -->
 
-
+<view class='title'>名称</view>
+<input class='input' value='{{name}}' bindinput='handleNameChange' placeholder='请输入方案名称'></input>
+<view class='title'>风格</view>
+<view class='grid'>
+  <view class='item {{values[0] == index ? "enable":""}}' wx:for='{{styles}}' wx:for-item='item' wx:for-index='index' wx:key='index'
+  bindtap='itemTapped' data-key='0' data-index='{{index}}'
+  >{{item}}</view>
+</view>
+<view class='title'>版型</view>
+<view class='grid'>
+  <view class='item {{values[1] == index ? "enable":""}}' wx:for='{{cuts}}' wx:for-item='item' wx:for-index='index' wx:key='index'
+  bindtap='itemTapped' data-key='1' data-index='{{index}}'
+  >{{item}}</view>
+</view>
+<view class='title'>体感</view>
+<view class='grid'>
+  <view class='item {{values[2][index] == 1 ? "enable":""}}' wx:for='{{feels}}' wx:for-item='item' wx:for-index='index' wx:key='index'
+  bindtap='itemTapped' data-key='2' data-index='{{index}}'
+  >{{item}}</view>
+</view>
 
 
 <view class="bottom-btn" bindtap="{{planid ? 'updatePlan' : 'savePlan'}}">

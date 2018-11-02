@@ -11,13 +11,13 @@ page {
   height: calc(100% - 100rpx);
   display: flex;
   flex-direction: column;
+  background: #fff;    
 }
 
 .row {
   width: 750rpx;
   /* flex: 1; */
   position: relative;
-  background: #fff;  
 }
 
 .row .title {

@@ -9,13 +9,18 @@ Page({
    * Page initial data
    */
   data: {
-    index: 2, // tab index
-    id: 10,
+    index: 0, // tab index
+    id: 0,
     user_id: 0,
     demand_user_id: 0,
     demand: {},
     userInfo: {},
     planMap: {},
+    items: [
+      ['日 常', '商务拜访', '运动休闲', '约 会', '其 他'],
+      ['100-300元', '300-600元', '600-1000元'],
+      ['舒适就好', '要帅', '要有气质', '其他'],
+    ],
     colors: [
       { color: '#000000', name: '黑色' },
       { color: '#FFFFFF', name: '白色' },
@@ -94,6 +99,7 @@ Page({
       this.getUserInfo(demand.user_id)
       this.getUserNote()
       this.getAllPlan()
+      wx.hideLoading()
     })
   },
 
@@ -160,7 +166,7 @@ Page({
       this.setData({
         userInfo
       })
-      wx.hideLoading()
+      // wx.hideLoading()
     }) 
   },
 
@@ -195,7 +201,7 @@ Page({
         this.setData({
           allPlan: res.data
         })
-        console.log(this.data.allPlan)
+        // console.log(this.data.allPlan)
       }
     })
   },
@@ -248,7 +254,50 @@ Page({
   },
 
   sendPlan() {
-    console.log(`sendPlan`)
+    let demand = this.data.demand;
+    if (!demand.plans || demand.plans.length == 0) {
+      return wx.showToast({
+        icon: 'none',
+        title: '请选择方案',
+        duration: 1500,
+        mask: true
+      })
+    }
+    wx.showLoading({
+      title: '发布中',
+    })
+    util.request(api.DemandUpdate, {
+      id: demand.id,
+      form: {
+        status: 1,
+        plans: JSON.stringify(demand.plans),
+        stylist_desc: demand.stylist_desc
+      }
+    }, 'POST').then((res) => {
+      if (res.errno == 0) {
+        wx.showToast({
+          title: '发布成功',
+          duration: 1500,
+          mask: true
+        })
+        // 返回列表
+        setTimeout(() => {
+          // 刷新列表
+          let pages = getCurrentPages();
+          let listPage = pages[pages.length - 2]
+          listPage.setData({
+            page: 0
+          })
+          listPage.getList();
+          wx.navigateBack({
+            delta: 1
+          })
+          wx.hideLoading()
+        }, 1500)
+      } else {
+        wx.hideLoading()        
+      }
+    })
   },
 
   sendNote() {
@@ -322,6 +371,63 @@ Page({
     wx.navigateTo({
       url: `/pages/plan/detail/detail?planid=${planid}&forCustomer=${0}`,
     })
+  },
+
+  deletePlan(e) {
+    if (this.data.demand.status != 0) return
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    wx.showModal({
+      title: '提示',
+      content: '是否要删除该方案',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          let demand = that.data.demand;
+          demand.plans.splice(index, 1)
+          that.setData({
+            demand
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+   
+  },
+
+  addPlan(planid) {
+    let demand = this.data.demand;
+    if (this.data.demand.status != 0) return
+    if (demand.plans.indexOf(planid) != -1) return
+    demand.plans.push(planid)
+    this.setData({
+      demand
+    })
+    if (!this.data.planMap[planid]) {
+      this.getPlan(planid)
+    }
+    console.log('方案添加成功')
+    // setTimeout(() => {
+    //   wx.showToast({
+    //     icon: 'success',
+    //     title: '方案添加成功',
+    //     duration: 1500,
+    //     mask: true
+    //   })
+    // }, 200)
+
+  },
+
+  toPlanList() {
+    wx.navigateTo({
+      url: '/pages/plan/list/list?forCustomer=0&forNeed=1',
+    })
+  },
+
+  bindTextAreaInput(e) {
+    let desc = e.detail.value
+    this.data.demand.stylist_desc = desc
   },
 
   /**

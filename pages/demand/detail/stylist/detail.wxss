@@ -43,11 +43,85 @@ page {
 }
 
 .item0 {
-  width: 600rpx;
-  margin-left: 75rpx;
-  background: red;
+  width: 710rpx;
+  height: 100%;
+  /* background: red; */
+  overflow: scroll;
+  margin: 0 20rpx 0 10rpx;
+}
+.item0 .row {
+  margin: 10rpx 0;
+  display: flex
 }
 
+.item0 .row .title {
+  flex: 1;
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #333;
+  text-align: center;
+  float: left;
+  margin: 10rpx 0;
+}
+
+.item0 .row .content-black {
+  flex: 1;
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #fff;
+  text-align: center;
+  background: #333;
+  float: left;
+  margin: 10rpx 0;
+}
+
+.item0 .row .content-other {
+  flex: 3;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  margin: 10rpx 0;
+}
+
+.plan-container {
+  margin: 10rpx 0;  
+}
+
+.plan-container .plans {
+  text-align: center;
+}
+
+.plan-container .plan {
+  height: 200rpx;
+  width: 200rpx;
+  border: 4rpx solid #ddd;
+  margin: 10rpx;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.plan-container .plan .plan-pic {
+  width: 180rpx;
+  height: 180rpx;
+  margin: 10rpx;
+}
+
+.plan-container .add {
+  height: 120rpx;
+  width: 120rpx;
+  margin: 40rpx 40rpx;
+  display: block;
+  opacity: 0.3;
+}
+
+.textarea {
+  margin: 10rpx auto;
+  padding: 20rpx;
+  min-height: 100rpx;
+  background: #eee;
+
+}
 
 .item1 {
   width: 710rpx;
@@ -153,31 +227,50 @@ page {
 }
 
 .item2 {
-  width: 750rpx;
+  width: 710rpx;
+  margin: 0 20rpx;
   height: 100%;
   /* background: gray; */
   overflow: scroll;
 }
 
-.item2 .item {
-  width: 335rpx;
-  height: 395rpx;
-  margin: 20rpx;
-  border: 2rpx solid #eee;
+.item2 .row {
+  margin: 20rpx 0;
+  /* background: green; */
 }
 
-.item2 .item .img{
-  width: 331rpx;
-  height: 331rpx;
+.item2 .row .block{
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin: 0 20rpx;
+  background: #eee;
+  text-align: center;
+}
+
+.item2 .item {
+  width: 295rpx;
+  height: 355rpx;
+  margin: 20rpx;
+  /* border: 2rpx solid #eee; */
+}
+
+.item2 .item .img {
+  width: 295rpx;
+  height: 295rpx;
+  padding: 20rpx;
+  background: rgb(211, 211, 211);
 }
 
 .item2 .item .text{
-  width: 331rpx;
+  width: 295rpx;
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
   color: #333;
-  border-top: 2rpx solid #eee;
+  /* border-top: 2rpx solid #eee; */
 }
 
 .item3 {

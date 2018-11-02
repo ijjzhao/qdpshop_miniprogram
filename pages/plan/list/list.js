@@ -18,6 +18,7 @@ Page({
     cdnImgUrl: '',
     page: 0,
     forCustomer: 1,
+    forNeed: 0 // 是不是为了需求选方案的状态
   },
 
   /**
@@ -31,6 +32,12 @@ Page({
     if (options && options.forCustomer != undefined) {
       this.setData({
         forCustomer: options.forCustomer        
+      })
+    }
+
+    if (options && options.forNeed != undefined) {
+      this.setData({
+        forNeed: options.forNeed
       })
     }
 
@@ -163,7 +170,7 @@ Page({
 
   enterPlanDetail(planid) {
     wx.navigateTo({
-      url: `../detail/detail?planid=${planid}&forCustomer=${this.data.forCustomer}`,
+      url: `../detail/detail?planid=${planid}&forCustomer=${this.data.forCustomer}&forNeed=${this.data.forNeed}`,
     })
     this.setData({
       editRowIndex: -1

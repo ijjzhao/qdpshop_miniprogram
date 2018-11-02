@@ -13,7 +13,8 @@ Page({
     forCustomer: 1,
     demandId: 0,
     imageUrl: '',
-    planid: 0
+    planid: 0,
+    forNeed: 0,
   },
 
   /**
@@ -39,6 +40,12 @@ Page({
         })
         console.log(`demandId : ${this.data.demandId}`)
       }
+    }
+
+    if (options.forNeed) {
+      this.setData({
+        forNeed: options.forNeed,
+      })
     }
   },
 
@@ -111,9 +118,26 @@ Page({
     if (this.data.forCustomer == 1) {
       this.addToCart();
     } else {
-      wx.navigateTo({
-        url: `../canvas/canvas?planid=${this.data.planDetail.id}`,
-      })
+      if (this.data.forNeed == 1) {
+        let pages = getCurrentPages()
+        let needPage = pages[pages.length - 3]
+        if (needPage.data.demand.plans.indexOf(this.data.planid) == -1) {
+          needPage.addPlan(this.data.planid)
+          wx.navigateBack({
+            delta: 2
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '已经选择了该方案',
+            showCancel: false
+          })
+        }
+      } else {
+        wx.navigateTo({
+          url: `../canvas/canvas?planid=${this.data.planDetail.id}`,
+        })
+      }
     }
   },
 

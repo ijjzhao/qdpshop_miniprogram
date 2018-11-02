@@ -9,6 +9,44 @@
 <swiper class='swiper' current="{{index}}" duration="300" bindchange="switchTab">
   <swiper-item class='content'>
     <view class='item0'>
+      <view class='row'>
+        <view class='title'>穿衣场景:</view>
+        <view class='content-black'>{{items[0][demand.scene]}}</view>
+        <view class='title'>费用预算:</view>
+        <view class='content-black'>{{items[1][demand.budget]}}</view>
+      </view>
+      <view class='row'>
+        <view class='title'>描述信息:</view>
+        <view class='content-black'>{{items[2][demand.desc]}}</view>
+        <view class='title'></view>
+        <view class='title'></view>
+      </view>
+      <view class='row'>
+        <view class='title'>其他描述:</view>
+        <view class='content-other'>{{demand.other}}</view>
+      </view>
+      <view class='row'>
+        <view class='title'>待选方案:</view>
+        <view class='content-other'></view>
+      </view>
+      <view class='plan-container'>
+        <view class='plans'>
+          <view class='plan' wx:for='{{demand.plans}}'  wx:for-item='item' wx:for-index='i' wx:key='i'
+            bindtap='deletePlan' data-index='{{i}}'>
+            <image class='plan-pic' src='{{planMap[item].imageUrl}}'></image>
+          </view>
+          <view class='plan' bindtap='toPlanList'>
+            <image class='add' src='../../../../static/icons/svg_add.svg'></image>
+          </view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='title'>搭配描述:</view>
+        <view class='content-other'></view>        
+      </view>
+      <view class='row'>
+        <textarea class='textarea' value='{{demand.stylist_desc}}' bindinput="bindTextAreaInput" auto-height placeholder="可输入搭配描述" maxlength='100' />
+      </view>
     </view>
   </swiper-item>
   <swiper-item class='content'>
@@ -87,10 +125,13 @@
   </swiper-item>
   <swiper-item class='content'>
     <view class='item2'>
-        <view class="item" wx:for="{{allPlan}}" wx:for-item='item' wx:key="index" wx:index="index">
-          <image class="img" src="{{planMap[item].imageUrl}}" data-planid="{{planMap[item].id}}" data-index="{{index}}" bindtap="oldPlanTapped"></image>
-          <view class="text">{{planMap[item].name}}</view>
-        </view>
+      <view class='row'>
+        <view class='block'>已下单</view>
+      </view>
+      <view class="item" wx:for="{{allPlan}}" wx:for-item='item' wx:key="index" wx:index="index">
+        <image class="img" src="{{planMap[item].imageUrl}}" data-planid="{{planMap[item].id}}" data-index="{{index}}" bindtap="oldPlanTapped"></image>
+        <view class="text">{{planMap[item].name}}</view>
+      </view>
     </view>
   </swiper-item>
   <swiper-item class='content'>
@@ -118,7 +159,7 @@
     <view class="r black note-btn" bindtap="sendNote">提交备注</view>
   </view>
 
-  <view class="r black" bindtap="sendPlan" wx:else>发送方案</view>
+  <view class="r black" bindtap="sendPlan" wx:if='{{index!=3 && demand.status == 0}}'>发送方案</view>
   <!-- </navigator> -->
 </view>
 

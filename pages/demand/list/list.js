@@ -24,20 +24,14 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-    if (options.isCustomer != undefined) {
+    if (options && options.isCustomer != undefined) {
       this.setData({
         isCustomer: parseInt(options.isCustomer)
       })
     }
 
     let that = this;
-    wx.showLoading({
-      title: '加载中...',
-      mask: true,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+  
     if (app.globalData.token == "") {
       that.setData({
         auth: false
@@ -66,10 +60,15 @@ Page({
   },
 
   getList() {
-    wx.hideLoading()
+
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+    })
     util.request(api.DemandList, {
       page: this.data.page + 1
     }).then((res) => {
+      wx.hideLoading()      
       if (res.data.list == 0) {
         return
       }
@@ -96,8 +95,13 @@ Page({
         }
       }
 
-      let list = this.data.list;
-      list = list.concat(res.data.list);
+      let list;
+      if (this.data.page == 0) {
+        list = res.data.list
+        wx.stopPullDownRefresh()
+      } else {
+        list = this.data.list.concat(res.data.list);
+      }
       let map = this.data.map;
       for (let key in res.data.map) {
         map[key] = res.data.map[key]
@@ -181,7 +185,10 @@ Page({
    * Page event handler function--Called when user drop down
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      page: 0
+    })
+    this.getList();
   },
 
   /**

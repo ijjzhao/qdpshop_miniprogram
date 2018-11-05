@@ -97,8 +97,8 @@
   /* padding: 8px */
   padding-left: 4px;
   padding-right: 4px;
-  border: 1px solid #27b44b; 
-  color: #27b44b;
+  border: 1px solid #333; 
+  color: #333;
 }
 .apply_dis_code_area_left_text {
   width: 15vw;
@@ -145,7 +145,7 @@
   height: 70rpx !important;
   line-height: 70rpx !important;
   font-size: 28rpx;
-  background: #06be04;
+  background: #333;
   color: #f4f4f4;
   letter-spacing: 2rpx;
 }
@@ -203,7 +203,8 @@
 }
 .changebtn {
   position: absolute;
-  left: 50vw;
+  left: 225rpx;
+  width: 300rpx;
   margin-top: 20vh;
   /* background-color: #409EFF; */
 }

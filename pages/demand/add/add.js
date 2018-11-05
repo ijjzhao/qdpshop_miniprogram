@@ -1,6 +1,9 @@
 // pages/demand/add/add.js
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
+const user = require('../../../services/user.js')
+
+var app = getApp();
 
 Page({
 
@@ -16,6 +19,10 @@ Page({
     selected: [-1, -1, -1],
     other: '',
     explanIndex: -1,
+    showLogin: false,
+    userInfo: {},
+    user_id: 0,
+    mobile: ''
   },
 
   btnTapped(e) {
@@ -33,6 +40,9 @@ Page({
   },
 
   post() {
+    if (this.data.mobile) {
+      return this.checkPhone();
+    }
     let selected = this.data.selected;
     if (selected[0] == -1) {
       return wx.showToast({
@@ -108,6 +118,31 @@ Page({
     })
   },
 
+  goLogin() {
+    wx.showLoading({
+      title: '登录中',
+    })
+    user.loginByWeixin().then(res => {
+      this.setData({
+        showLogin: false
+      })
+      this.setData({
+        userInfo: res.data.userInfo,
+        user_id: res.data.userInfo.id,
+      });
+      // wx.showModal({
+      //   title: '提示',
+      //   content: `您的id为${this.data.user_id}`,
+      // })
+      app.globalData.userInfo = res.data.userInfo;
+      app.globalData.token = res.data.token;
+      wx.hideLoading()
+      this.checkPhone();
+    }).catch((err) => {
+      console.log(err)
+    });
+  },
+
   updateAvatarUrl() {
 
     wx.getSetting({
@@ -160,7 +195,48 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
+    try {
 
+      if (app.globalData.userInfo.id) {
+        this.setData({
+          user_id: app.globalData.userInfo.id
+        })
+        this.checkPhone();
+      } else {
+        this.setData({
+          showLogin: true
+        })
+      }
+
+    } catch (err) {
+      console.error(err)
+      wx.showModal({
+        title: '提示',
+        content: '用户ID有误',
+      })
+    }
+
+
+  },
+
+  checkPhone() {
+    util.request(api.BingPhoneFind, {
+      userId: this.data.user_id
+    }, 'POST').then( (res) => {
+      if (res.data.Result.mobile == "") {
+        wx.navigateTo({
+          url: '/pages/ucenter/bingphone/bingphone',
+          success: function (res) { },
+          fail: function (res) { },
+          complete: function (res) { },
+        })
+      } else {
+        this.setData({
+          mobile: res.data.Result.mobile
+        })
+        return
+      }
+    });
   },
 
   /**

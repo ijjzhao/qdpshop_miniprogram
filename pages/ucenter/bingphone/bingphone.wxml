@@ -37,29 +37,29 @@
 
 <view class='mask_model' bindtap='hide_model' wx:if="{{show_mask}}"></view>
 <view class='show_model' wx:if="{{show_mask}}">
-<view class='apply_dis_title'>绑定手机号</view>
-  <view class='apply_dis_phone_area'>
+  <view class='apply_dis_title'>绑定手机号</view>
+  <!-- <view class='apply_dis_phone_area'>
     <view class='apply_dis_phone_area_left'>国家区号</view>
-    <picker bindchange="bindPickerChange" value="{{AreacodeArray_index}}" range="{{AreacodeArray}}" >
-    <view class="apply_dis_phone_area_input no_width" style='color:#757575'>
-      {{AllAreacodeArray[AreacodeArray_index].country_name_chinese}}  +{{AllAreacodeArray[AreacodeArray_index].phone_code}}
-    </view>
-  </picker>
-  </view>
-    <view class='apply_dis_phone_area'>
+    <picker bindchange="bindPickerChange" value="{{AreacodeArray_index}}" range="{{AreacodeArray}}">
+      <view class="apply_dis_phone_area_input no_width" style='color:#757575'>
+        {{AllAreacodeArray[AreacodeArray_index].country_name_chinese}} +{{AllAreacodeArray[AreacodeArray_index].phone_code}}
+      </view>
+    </picker>
+  </view> -->
+  <view class='apply_dis_phone_area'>
     <view class='apply_dis_phone_area_left'>手机号</view>
     <input class='apply_dis_phone_area_input' bindinput='phoneinput' placeholder-style='font-weight:normal' placeholder='输入手机号'></input>
   </view>
-    <view class='apply_dis_code_area'>
-      <view class='apply_dis_code_area_left'>
-        <view class='apply_dis_code_area_left_text'>
-          验证码
-        </view>
-     <input class='apply_dis_code_input' bindinput='codeinput' placeholder-style='font-weight:normal' placeholder='输入短信验证码'></input> 
+  <view class='apply_dis_code_area'>
+    <view class='apply_dis_code_area_left'>
+      <view class='apply_dis_code_area_left_text'>
+        验证码
       </view>
-      <view class='apply_dis_code_area_getbtn_area'>
+      <input class='apply_dis_code_input' bindinput='codeinput' placeholder-style='font-weight:normal' placeholder='输入短信验证码'></input>
+    </view>
+    <view class='apply_dis_code_area_getbtn_area'>
       <button class='apply_dis_code_area_getbtn' loading="{{codeloading}}" disabled="{{codedisabled}}" bindtap='getcode'>{{sendcodetext}}</button>
-      </view>
+    </view>
   </view>
   <view class='actionbuttom_area'>
     <button class='btn' bindtap="checked">确认</button>

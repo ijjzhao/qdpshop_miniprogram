@@ -82,3 +82,9 @@
     <view class='btn' bindtap='hideExplan'>知道了</view>
   </view>
 </view>
+
+
+<view class='login {{showLogin ? "" : "hidden"}}'>
+  <view class='text'>请先登录</view>
+  <button class="btn" bindtap="goLogin" open-type="getUserInfo">登录</button>
+</view>

@@ -6,7 +6,7 @@
     <view class='pic'>
       <image class='pic' src='{{map[item.user_id].avatarUrl}}'></image>
     </view>
-    <view class='name'>{{map[item.user_id].nickname}}({{map[item.user_id].age}})</view>
+    <view class='name'>{{map[item.user_id].nickname}}({{map[item.user_id].age}}岁)</view>
   </view>
   <view class='right'>
     <view class='line'>
@@ -26,8 +26,8 @@
   </view>
 </view>
 
-<view class="bottom-btn {{isCustomer ? '' : 'hidden'}}" bindtap="">
+<!-- <view class="bottom-btn {{isCustomer ? '' : 'hidden'}}" bindtap="">
   <navigator class='bottom-navigator' url='/pages/demand/add/add'>
     <view class="r black">发布需求</view>
   </navigator>
-</view>
+</view> -->

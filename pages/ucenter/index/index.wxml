@@ -23,7 +23,7 @@
         <text class="txt">我的优惠券</text>
       </navigator>
     </view>
-    <view class="item">
+    <view class="item" wx:if='{{!isCustomer}}'>
       <navigator url="/pages/plan/list/list?forCustomer={{isCustomer ? 1 : 0}}" class="a">
         <text class="icon feedback"></text>
         <text class="txt">{{isCustomer ? '方案库' : '我的方案'}}</text>
@@ -35,12 +35,12 @@
         <view class='txt'>绑定手机</view>
       </navigator>
     </view>
-    <view class='item'>
+    <!-- <view class='item'>
       <navigator url="/pages/ucenter/bingbankcard/bingbankcard" class="a">
         <image class='box_bottom_item_image icon' src='../../../image/ucenter_bank.png'></image>
         <view class='txt'>绑定银行卡</view>
       </navigator>
-    </view>
+    </view> -->
     <!-- <view class="item no-border">
       <navigator url="url" class="a">
         <text class="icon gift"></text>
@@ -53,12 +53,12 @@
         <text class="txt">我的收藏</text>
       </navigator>
     </view>
-    <view class="item">
+    <!-- <view class="item">
       <navigator url="/pages/ucenter/footprint/footprint" class="a">
         <text class="icon security"></text>
         <text class="txt">我的足迹</text>
       </navigator>
-    </view>
+    </view> -->
     <!-- <view class="item no-border">
       <navigator url="url" class="a">
         <text class="icon kefu"></text>
@@ -121,7 +121,7 @@
         <text class="txt">{{isCustomer ? "我的需求" : "用户需求"}}</text>
       </navigator>
     </view>
-    <view class="item" w:if='{{isCustomer == 0}}'>
+    <view class="item" wx:if='{{!isCustomer}}'>
       <navigator url="/pages/catalog/catalog" class="a">
         <text class="icon feedback"></text>
         <text class="txt">商品分类</text>

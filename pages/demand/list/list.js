@@ -106,6 +106,7 @@ Page({
       for (let key in res.data.map) {
         map[key] = res.data.map[key]
       }
+      console.log(map)
       this.setData({
         list: list,
         map: map,

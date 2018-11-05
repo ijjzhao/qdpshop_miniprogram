@@ -8,7 +8,7 @@
       <view class='detail'>
         <view class='item'>穿衣场景：{{items[0][demand.scene]}}</view>
         <view class='item'>描 述：{{items[2][demand.desc]}}</view>
-        <view class='item'>费用预算：{{items[1][demand.budget]}}</view>
+        <view class='item' style='width:500rpx'>费用预算：{{items[1][demand.budget]}}</view>
       </view>
     </view>
   </view>

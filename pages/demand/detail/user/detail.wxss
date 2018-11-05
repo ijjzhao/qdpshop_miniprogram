@@ -17,16 +17,16 @@
 
 .row .title {
   position: absolute;
-  top: 40rpx;
+  top: 20rpx;
   left: 5rpx;
   width: 200rpx;
   height: 70rpx;
   line-height: 70rpx;
-  background: #333;
-  color: #fff;
+  /* background: #333; */
+  color: #333;
   /* text-align: center; */
   padding-left: 30rpx; 
-  font-size: 26rpx;
+  font-size: 36rpx;
 }
 
 .row .inner {
@@ -42,48 +42,51 @@
 .row .inner .detail {
   width: 100%;
   /* height: 100rpx; */
-  margin-top: 120rpx;
+  margin-top: 80rpx;
   /* background: red; */
   display: block;
   padding: 0 40rpx;
   color: #666;  
+  background: #f2f2f2;
 }
 
 .row .inner .detail .item {
   width: 300rpx;
   height: 60rpx;
-  margin: 10rpx 10rpx 10rpx 0rpx;
+  /* margin: 10rpx 10rpx 10rpx 0rpx; */
+  margin-right: 10rpx;
   /* background: gray; */
   /* float: left; */
   display: inline-block;
   color: #666;
+  line-height: 60rpx;
 }
 
 .plan-container {
-  margin-top: 120rpx;
+  margin-top: 80rpx;
   width: 100%;
 }
 
 .plan {
-  height: 300rpx;
+  height: 320rpx;
   width: 100%;
   /* background: red; */
   border: 2rpx solid #eee;
-  padding: 20rpx;
-  padding-left: 0;
+  /* padding: 20rpx; */
+  /* padding-left: 0; */
   margin: 10rpx 0;
   position: relative;
 }
 
 .plan .tip {
   position: absolute;
-  height: 40rpx;
-  width: 100rpx;
+  height: 44rpx;
+  width: 120rpx;
   top: 5rpx;
   left: 5rpx;
   color: #fff;
-  font-size: 20rpx;
-  line-height: 40rpx;
+  font-size: 24rpx;
+  line-height: 44rpx;
   text-align: center;
   padding-left: 10rpx;
   
@@ -91,14 +94,14 @@
 
 .plan .tip-back {
   position: absolute;
-  background: red;
-  height: 40rpx;
-  width: 100rpx;
+  background: #EB544D;
+  height: 44rpx;
+  width: 120rpx;
   top: 5rpx;
   left: 5rpx;
   color: #fff;
   font-size: 20rpx;
-  line-height: 40rpx;
+  line-height: 44rpx;
   text-align: center;
   border-width: 20rpx;
   border-style: solid;
@@ -106,9 +109,11 @@
 }
 
 .plan .left {
-  width: 260rpx;
-  height: 260rpx;
+  width: 300rpx;
+  height: 300rpx;
   float: left;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
 }
 
 .plan .left .pic{
@@ -116,29 +121,29 @@
   height: 100%;
 }
 
-
 .plan .right {
-  width: 385rpx;
+  width: 350rpx;
   height: 260rpx;
   /* background: red; */
-  margin-left: 20rpx;
+  margin-left: 10rpx;
   float: left  
 }
 
 .plan .right .row {
   width: 100%;
   height: 130rpx;
+  margin-top: 20rpx;
 }
 
 .plandesc {
-  width: 174rpx;
-  height: 54rpx;
-  margin: 8rpx;
+  width: 140rpx;
+  height: 50rpx;
+  margin: 10rpx 15rpx;
   float: left;
-  line-height: 54rpx;
+  line-height: 50rpx;
   text-align: center;
   color: #fff;
-  background: #ccc;
+  background: #BCBCBC;
   font-size: 24rpx;
 }
 
@@ -149,9 +154,9 @@
 }
 
 .head {
-  height: 90rpx;
-  width: 90rpx;
-  margin: 10rpx;
+  height: 80rpx;
+  width: 80rpx;
+  margin: 15rpx;
   margin-bottom: 0;
   border-radius: 100rpx;
 }

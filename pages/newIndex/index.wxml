@@ -5,3 +5,9 @@
     <image class='pic' src='{{pics[i]}}' mode='aspectFit'></image>
   </swiper-item>
 </swiper>
+
+<view class="bottom-btn" bindtap="">
+  <navigator class='bottom-navigator' url='/pages/demand/add/add'>
+    <view class="r black">发布需求</view>
+  </navigator>
+</view>

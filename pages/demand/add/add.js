@@ -15,6 +15,7 @@ Page({
     ],
     selected: [-1, -1, -1],
     other: '',
+    explanIndex: -1,
   },
 
   btnTapped(e) {
@@ -138,6 +139,20 @@ Page({
         console.log('getSetting error')
         console.error(err)
       }
+    })
+  },
+
+
+  showExplan(e) {
+    let index = e.currentTarget.dataset.index
+    this.setData({
+      explanIndex: index
+    })
+  },
+
+  hideExplan() {
+    this.setData({
+      explanIndex: -1
     })
   },
 

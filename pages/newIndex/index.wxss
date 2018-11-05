@@ -1,4 +1,5 @@
 /* pages/newIndex/index.wxss */
+@import "../../lib/mycss/common.wxss";
 
 page {
   width: 100%;

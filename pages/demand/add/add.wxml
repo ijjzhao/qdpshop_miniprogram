@@ -2,41 +2,83 @@
 
 <view class='container'>
   <view class='row'>
-    <view class='title'>1 穿衣场景</view>
+    <view class='title'>
+      <view class='text'>1 穿衣场景</view>
+      <image class='image' src='../../../static/icons/icon_scene.png'></image>
+    </view>
     <view class='inner'>
-      <view class='desc'>场景说明</view>
+      <view class='desc' bindtap='showExplan' data-index='0'>
+        <image class='image' src='../../../static/icons/icon_question.png'></image>
+        场景说明
+      </view>
       <view class='grid'>
         <view class='grid-item {{index == selected[0] ? "selected" : ""}}' bindtap='btnTapped' data-row='0' data-index='{{index}}' wx:for='{{items[0]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
       </view>
     </view>
   </view>
   <view class='row'>
-    <view class='title'>2 预 算</view>
+    <view class='title'>
+      <view class='text'>2 预算/套</view>
+      <image class='image' src='../../../static/icons/icon_scene.png'></image>
+    </view>
     <view class='inner'>
-      <view class='desc'>费用说明</view>
+      <view class='desc' bindtap='showExplan' data-index='1'>
+        <image class='image' src='../../../static/icons/icon_question.png'></image>
+        费用说明
+      </view>
       <view class='grid'>
         <view class='grid-item {{index == selected[1] ? "selected" : ""}}' bindtap='btnTapped' data-row='1' data-index='{{index}}' wx:for='{{items[1]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
       </view>
     </view>
   </view>
   <view class='row'>
-    <view class='title'>3 描 述</view>
-    <view class='inner'>
-      <view class='desc'>关于描述</view>
+    <view class='title'>
+      <view class='text'>3 描 述</view>
+      <image class='image' src='../../../static/icons/icon_desc.png'></image>
+    </view>
+    <view class='inner' style='height: 420rpx;'>
+      <view class='desc' bindtap='showExplan' data-index='2'>
+        <image class='image' src='../../../static/icons/icon_question.png'></image>
+        关于描述
+      </view>
       <view class='grid'>
         <view class='grid-item {{index == selected[2] ? "selected" : ""}}' bindtap='btnTapped' data-row='2' data-index='{{index}}' wx:for='{{items[2]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>
       </view>
     </view>
     <view class='input'>
-      <input class='input' placeholder='有哪些想对搭配师说的话' placeholder-class='placeholder'
-      type='text' maxlength='100' confirm-type='完成' value='{{other}}' bindinput='handleInput'
-      ></input>
-    </view>
+        <input class='input' placeholder='还有哪些想对搭配师说的呢？' placeholder-class='placeholder' type='text' maxlength='100' confirm-type='完成' value='{{other}}' bindinput='handleInput'></input>
+      </view>
+
   </view>
 </view>
 
 <view class="bottom-btn" bindtap="post">
   <!-- <navigator class='bottom-navigator' url='/pages/demand/add/add'> -->
-    <view class="r black">发布需求</view>
+  <view class="r black">发布需求</view>
   <!-- </navigator> -->
+</view>
+
+<view class='explanation-container' wx:if='{{explanIndex != -1}}'>
+  <view class='explanation explanation-scene' wx:if='{{explanIndex == 0}}'>
+    <view class='title'>场景说明</view>
+    <view class='content'>
+      <text class='text'>你只需要告诉我们这套衣服会在什么场景下穿，搭配师就会根据你的穿搭场景为你推荐合适的衣服</text>
+    </view>
+    <view class='btn' bindtap='hideExplan'>知道了</view>
+  </view>
+  <view class='explanation explanation-budge' wx:if='{{explanIndex == 1}}'>
+    <view class='title'>费用说明</view>
+    <view class='content'>
+      <text class='text'>表单上的预算是按照整套来算的，单品的价格范围可以参考下面:\n T恤：59-199元；外套：149-399元
+裤子：99-199元；鞋子：199-399元</text>
+    </view>
+    <view class='btn' bindtap='hideExplan'>知道了</view>
+  </view>
+  <view class='explanation explanation-desc' wx:if='{{explanIndex == 2}}'>
+    <view class='title'>关于描述</view>
+    <view class='content'>
+      <text class='text'>我们希望了解到你对与这套衣服最主要的诉求，这样搭配师会根据你主要的诉求去制作搭配方案。你的诉求越明确，当然得到的结果也会越精确了。</text>
+    </view>
+    <view class='btn' bindtap='hideExplan'>知道了</view>
+  </view>
 </view>

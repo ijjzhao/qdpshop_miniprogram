@@ -85,6 +85,18 @@
         "text": "首页"
       },
       {
+        "pagePath": "pages/ucenter/info/index/index",
+        "iconPath": "./image/tab_info.png",
+        "selectedIconPath": "./image/tab_info_selected.png",
+        "text": "档案"
+      },
+      {
+        "pagePath": "pages/ucenter/order/order",
+        "iconPath": "./image/tab_order.png",
+        "selectedIconPath": "./image/tab_order_selected.png",
+        "text": "订单"
+      },
+      {
         "pagePath": "pages/ucenter/index/index",
         "iconPath": "./image/tab_my.png",
         "selectedIconPath": "./image/tab_my_select_red.png",

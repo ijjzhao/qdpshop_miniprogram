@@ -11,12 +11,12 @@
   </button>
 
   <view class="user-menu">
-    <view class="item">
+    <!-- <view class="item">
       <navigator url="/pages/ucenter/order/order" class="a">
         <text class="icon order"></text>
         <text class="txt">我的订单</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="item">
       <navigator url="/pages/ucenter/coupon/coupon" class="a">
         <text class="icon coupon"></text>
@@ -109,16 +109,22 @@
       </navigator>
     </view> -->
     <!-- <view class="item" wx:if="{{isCustomer}}"> -->
-    <view class="item">
+    <!-- <view class="item">
       <navigator url="/pages/ucenter/info/index/index?id={{userInfo.id}}" class="a">
         <text class="icon feedback"></text>
         <text class="txt">我的档案</text>
       </navigator>
-    </view>
+    </view> -->
     <view class="item">
       <navigator url="/pages/demand/list/list?isCustomer={{isCustomer ? 1 : 0}}" class="a">
         <text class="icon feedback"></text>
         <text class="txt">{{isCustomer ? "我的需求" : "用户需求"}}</text>
+      </navigator>
+    </view>
+    <view class="item" w:if='{{isCustomer == 0}}'>
+      <navigator url="/pages/catalog/catalog" class="a">
+        <text class="icon feedback"></text>
+        <text class="txt">商品分类</text>
       </navigator>
     </view>
     <!-- <view class="item">

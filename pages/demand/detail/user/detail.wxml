@@ -33,13 +33,13 @@
                 <image class='head' src='{{planMap[item].avatarUrl}}'></image>
                 {{planMap[item].nickname}}
               </view>
-              <image class='head' src='../../../../static/icons/connect.png'></image>
+              <image class='head' src='../../../../static/icons/icon_link.png'></image>
               <view class='head-name'>
                 <image class='head' src='{{demand.avatarUrl}}'></image>
                 {{demand.nickname}}
               </view>
             </view>
-            <view class='row'>
+            <view class='row' style='margin-top: 0rpx;'>
               
               <view class='plandesc'>{{styles[planMap[item].style]}}</view>
               <view class='plandesc'>{{cuts[planMap[item].cut]}}</view>

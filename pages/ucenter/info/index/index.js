@@ -28,15 +28,26 @@ Page({
    */
   onLoad: function (options) {
     try {
-      if (options.id && options.id != '0') {
+      // if (options.id && options.id != '0') {
+      //   this.setData({
+      //     user_id: parseInt(options.id)
+      //   })
+      // } else {
+      //   this.setData({
+      //     showLogin: true
+      //   })
+      // }
+
+      if (app.globalData.userInfo.id) {
         this.setData({
-          user_id: parseInt(options.id)
+          user_id: app.globalData.userInfo.id
         })
       } else {
         this.setData({
           showLogin: true
         })
       }
+
     } catch (err) {
       console.error(err)
       wx.showModal({

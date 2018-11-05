@@ -3,7 +3,7 @@
 <view class='container'>
   <view class='row'>
     <view class='title'>
-      <view class='text'>1 穿衣场景</view>
+      <view class='text'> 穿衣场景</view>
       <image class='image' src='../../../static/icons/icon_scene.png'></image>
     </view>
     <view class='inner'>
@@ -18,8 +18,8 @@
   </view>
   <view class='row'>
     <view class='title'>
-      <view class='text'>2 预算/套</view>
-      <image class='image' src='../../../static/icons/icon_scene.png'></image>
+      <view class='text'> 预算/套</view>
+      <image class='image' src='../../../static/icons/icon_budge.png'></image>
     </view>
     <view class='inner'>
       <view class='desc' bindtap='showExplan' data-index='1'>
@@ -33,7 +33,7 @@
   </view>
   <view class='row'>
     <view class='title'>
-      <view class='text'>3 描 述</view>
+      <view class='text'> 描 述</view>
       <image class='image' src='../../../static/icons/icon_desc.png'></image>
     </view>
     <view class='inner' style='height: 420rpx;'>

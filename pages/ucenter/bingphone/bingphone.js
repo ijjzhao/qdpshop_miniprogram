@@ -311,8 +311,14 @@ Page({
               wx.showToast({
                 title: '绑定成功',
                 icon: 'success',
-                duration: 2000
+                duration: 1500,
+                mask:true
               })
+              setTimeout(function() {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1400)
               util.request(api.BingPhoneFind, {
                 userId: that.data.userinfo.id
               }, 'POST').then(function (res) {
@@ -324,9 +330,7 @@ Page({
                   inputcode: '',
                   userinfo: res.data.Result
                 })
-                wx.navigateBack({
-                  delta: 1
-                })
+                
               });
             }
           })

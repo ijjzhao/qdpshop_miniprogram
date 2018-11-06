@@ -242,7 +242,8 @@ Page({
     try {
       if (app.globalData.userInfo.id) {
         this.setData({
-          user_id: app.globalData.userInfo.id
+          user_id: app.globalData.userInfo.id,
+          showLogin: false
         })
       } else {
         this.setData({

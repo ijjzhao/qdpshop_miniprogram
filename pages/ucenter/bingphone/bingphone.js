@@ -324,6 +324,9 @@ Page({
                   inputcode: '',
                   userinfo: res.data.Result
                 })
+                wx.navigateBack({
+                  delta: 1
+                })
               });
             }
           })

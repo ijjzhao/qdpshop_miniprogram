@@ -1,4 +1,8 @@
 // pages/newIndex/index.js
+var util = require('../../utils/util.js');
+var api = require('../../config/api.js');
+const app = getApp();
+
 Page({
 
   /**
@@ -6,7 +10,8 @@ Page({
    */
   data: {
     pics: [],
-    index: 0
+    index: 0,
+    user_id: 0
   },
 
   /**
@@ -23,6 +28,34 @@ Page({
         'https://img.qingdapei.net/home-about.png' + `?v=${timestamp}`,
         'https://img.qingdapei.net/home-brand.png' + `?v=${timestamp}`,
       ],
+    })
+
+    if (app.globalData.userInfo.id) {
+      this.setData({
+        user_id: app.globalData.userInfo.id
+      })
+    }
+  },
+
+  bottomBtnTapped() {
+    if (this.data.user_id == 0) {
+      return wx.showToast({
+        title: '请先登录',
+        duration: 1500,
+      })
+    }
+    util.request(api.UserInfoCheck, {
+      user_id: this.data.user_id
+    }).then((res) => {
+      if (res.errno == 0 && res.data == 1) {
+        wx.navigateTo({
+          url: '/pages/demand/add/add',
+        })
+      } else {
+        wx.switchTab({
+          url: '/pages/ucenter/info/index/index',
+        })
+      }
     })
   },
 

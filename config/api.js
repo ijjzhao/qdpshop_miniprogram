@@ -249,6 +249,7 @@ module.exports = {
 
   UserInfoGet: ApiRootUrl + 'userinfo/get', // 获取用户详细信息
   UserInfoUpdate: ApiRootUrl + 'userinfo/update', // 更新用户详细信息
+  UserInfoCheck: ApiRootUrl + 'userinfo/checkComplete', // 查看用户详细信息是否完整
 
   CouponBagGetForNewUser: ApiRootUrl + 'couponbag/getfornewuser', // 获取新用户卡包
 

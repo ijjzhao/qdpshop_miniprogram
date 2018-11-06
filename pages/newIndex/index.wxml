@@ -6,8 +6,8 @@
   </swiper-item>
 </swiper>
 
-<view class="bottom-btn" bindtap="">
-  <navigator class='bottom-navigator' url='/pages/demand/add/add'>
+<view class="bottom-btn" bindtap="bottomBtnTapped">
+  <!-- <navigator class='bottom-navigator' url='/pages/demand/add/add'> -->
     <view class="r black">立即体验</view>
-  </navigator>
+  <!-- </navigator> -->
 </view>

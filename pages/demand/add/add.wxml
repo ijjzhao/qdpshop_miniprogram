@@ -33,13 +33,13 @@
   </view>
   <view class='row'>
     <view class='title'>
-      <view class='text'> 描 述</view>
+      <view class='text'> 倾 向</view>
       <image class='image' src='../../../static/icons/icon_desc.png'></image>
     </view>
     <view class='inner' style='height: 420rpx;'>
       <view class='desc' bindtap='showExplan' data-index='2'>
         <image class='image' src='../../../static/icons/icon_question.png'></image>
-        关于描述
+        关于倾向
       </view>
       <view class='grid'>
         <view class='grid-item {{index == selected[2] ? "selected" : ""}}' bindtap='btnTapped' data-row='2' data-index='{{index}}' wx:for='{{items[2]}}' wx:for-item='item' wx:key='item' wx:for-index='index'>{{item}}</view>

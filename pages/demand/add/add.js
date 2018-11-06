@@ -11,11 +11,7 @@ Page({
    * Page initial data
    */
   data: {
-    items: [
-      ['日 常', '商务拜访', '运动休闲', '约 会', '其 他'],
-      ['100-300元', '300-600元', '600-1000元'],
-      ['舒适就好', '要帅', '要有气质', '其他'],
-    ],
+    items: [],
     selected: [-1, -1, -1],
     other: '',
     explanIndex: -1,
@@ -239,6 +235,10 @@ Page({
         content: '用户ID有误',
       })
     }
+
+    this.setData({
+      items: app.globalData.demandItems
+    })
 
   },
 

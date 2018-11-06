@@ -9,11 +9,7 @@ Page({
    * Page initial data
    */
   data: {
-    items: [
-      ['日 常', '商务拜访', '运动休闲', '约 会', '其 他'],
-      ['100-300元', '300-600元', '600-1000元'],
-      ['舒适就好', '要帅', '要有气质', '其他'],
-    ],
+    items: [],
     isCustomer: 1,
     list: [],
     page: 0,
@@ -57,6 +53,10 @@ Page({
       })
       that.getList()
     }
+
+    this.setData({
+      items: app.globalData.demandItems
+    })
   },
 
   getList() {

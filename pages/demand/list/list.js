@@ -66,7 +66,8 @@ Page({
       mask: true,
     })
     util.request(api.DemandList, {
-      page: this.data.page + 1
+      page: this.data.page + 1,
+      isCustomer: this.data.isCustomer
     }).then((res) => {
       wx.hideLoading()      
       if (res.data.list == 0) {

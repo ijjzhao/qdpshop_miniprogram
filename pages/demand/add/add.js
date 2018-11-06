@@ -43,6 +43,11 @@ Page({
     if (this.data.mobile == '') {
       return this.checkPhone();
     }
+    if (this.data.user_id == 0) {
+      return this.setData({
+        showLogin: true
+      })
+    }
     let selected = this.data.selected;
     if (selected[0] == -1) {
       return wx.showToast({
@@ -72,8 +77,6 @@ Page({
     wx.showLoading({
       title: '发布中',
     })
-
-    this.updateAvatarUrl();
 
     util.request(api.DemandSave, {
       form: {
@@ -132,6 +135,8 @@ Page({
         })
       }
     })
+
+    // this.updateAvatarUrl();
   },
 
   goLogin() {

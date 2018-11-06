@@ -22,10 +22,10 @@ Page({
       '合身的衣服更加容易出效果哦',
       '上传可以清晰展示你五官和身型的个人照片'
       ],
-    height: '请 选 择 您 的 身 高',
+    height: '请选择您的身高',
     heightIndex: 30,
     heightRange: [],
-    weight: '请 选 择 您 的 体 重',
+    weight: '请选择您的体重',
     weightIndex: 10,
     weightRange: [],
     age: '',

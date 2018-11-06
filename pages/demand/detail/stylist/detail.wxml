@@ -159,7 +159,7 @@
     <view class="r black note-btn" bindtap="sendNote">提交备注</view>
   </view>
 
-  <view class="r black" bindtap="sendPlan" wx:if='{{index!=3 && demand.status == 0}}'>发送方案</view>
+  <view class="r black" bindtap="sendPlan" wx:if='{{index!=3}}'>发送方案</view>
   <!-- </navigator> -->
 </view>
 

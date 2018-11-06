@@ -374,7 +374,7 @@ Page({
   },
 
   deletePlan(e) {
-    if (this.data.demand.status != 0) return
+    // if (this.data.demand.status != 0) return
     let that = this;
     let index = e.currentTarget.dataset.index;
     wx.showModal({
@@ -398,7 +398,7 @@ Page({
 
   addPlan(planid) {
     let demand = this.data.demand;
-    if (this.data.demand.status != 0) return
+    // if (this.data.demand.status != 0) return
     if (demand.plans.indexOf(planid) != -1) return
     demand.plans.push(planid)
     this.setData({

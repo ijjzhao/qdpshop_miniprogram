@@ -97,10 +97,10 @@ Page({
               }).then((res) => {
                 console.log(res)
                 if (res.errno == 0) {
-                  wx.navigateBack({
-                    delta: -1
-                  })
-                  wx.navigateTo({
+                  // wx.navigateBack({
+                  //   delta: -1
+                  // })
+                  wx.redirectTo({
                     url: '/pages/demand/list/list',
                   })
                 } else {

@@ -22,7 +22,7 @@ Page({
     showLogin: false,
     userInfo: {},
     user_id: 0,
-    mobile: '1'
+    mobile: ''
   },
 
   btnTapped(e) {

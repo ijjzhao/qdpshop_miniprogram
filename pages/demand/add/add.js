@@ -22,7 +22,7 @@ Page({
     showLogin: false,
     userInfo: {},
     user_id: 0,
-    mobile: ''
+    mobile: '1'
   },
 
   btnTapped(e) {
@@ -40,7 +40,7 @@ Page({
   },
 
   post() {
-    if (this.data.mobile) {
+    if (this.data.mobile == '') {
       return this.checkPhone();
     }
     let selected = this.data.selected;
@@ -87,24 +87,40 @@ Page({
       if (res.errno == 0) {
         wx.showToast({
           icon: 'success',
-          duration: 2000,
+          duration: 1500,
           mask: true,
           title: '发布成功',
           complete: (res) => {
-            setTimeout(function() {
-              wx.navigateBack({
-                delta: -1
+            setTimeout(() => {
+             
+              util.request(api.UserInfoCheck, {
+                user_id: this.data.user_id
+              }).then((res) => {
+                console.log(res)
+                if (res.errno == 0) {
+                  wx.navigateBack({
+                    delta: -1
+                  })
+                  wx.navigateTo({
+                    url: '/pages/demand/list/list',
+                  })
+                } else {
+                  wx.switchTab({
+                    url: '/pages/ucenter/info/index/index',
+                  })
+                }
               })
+
               // 刷新列表
-              let pages = getCurrentPages();
-              let previousPage = pages[pages.length - 2];
+              // let pages = getCurrentPages();
+              // let previousPage = pages[pages.length - 2];
 
-              previousPage.setData({
-                page: 0
-              })
+              // previousPage.setData({
+              //   page: 0
+              // })
 
-              previousPage.getList();
-            }, 2000)
+              // previousPage.getList();
+            }, 1500)
           }
         })
       } else {
@@ -140,6 +156,7 @@ Page({
       this.checkPhone();
     }).catch((err) => {
       console.log(err)
+      wx.hideLoading()
     });
   },
 
@@ -201,7 +218,9 @@ Page({
         this.setData({
           user_id: app.globalData.userInfo.id
         })
-        this.checkPhone();
+        setTimeout(() => {
+          this.checkPhone();
+        }, 500)
       } else {
         this.setData({
           showLogin: true
@@ -216,7 +235,6 @@ Page({
       })
     }
 
-
   },
 
   checkPhone() {
@@ -226,15 +244,11 @@ Page({
       if (res.data.Result.mobile == "") {
         wx.navigateTo({
           url: '/pages/ucenter/bingphone/bingphone',
-          success: function (res) { },
-          fail: function (res) { },
-          complete: function (res) { },
         })
       } else {
         this.setData({
           mobile: res.data.Result.mobile
         })
-        return
       }
     });
   },

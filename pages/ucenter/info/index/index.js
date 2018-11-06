@@ -51,6 +51,7 @@ Page({
       this.getUserInfo(res.data.userInfo.id)
     }).catch((err) => {
       console.log(err)
+      wx.hideLoading()
     });
   },
 

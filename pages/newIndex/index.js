@@ -38,10 +38,17 @@ Page({
   },
 
   bottomBtnTapped() {
+    wx.navigateTo({
+      url: '/pages/demand/add/add',
+    })
+
+    return
+
     if (this.data.user_id == 0) {
       return wx.showToast({
         title: '请先登录',
         duration: 1500,
+        icon: 'none'
       })
     }
     util.request(api.UserInfoCheck, {

@@ -27,35 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    try {
-      // if (options.id && options.id != '0') {
-      //   this.setData({
-      //     user_id: parseInt(options.id)
-      //   })
-      // } else {
-      //   this.setData({
-      //     showLogin: true
-      //   })
-      // }
-
-      if (app.globalData.userInfo.id) {
-        this.setData({
-          user_id: app.globalData.userInfo.id
-        })
-      } else {
-        this.setData({
-          showLogin: true
-        })
-      }
-
-    } catch (err) {
-      console.error(err)
-      wx.showModal({
-        title: '提示',
-        content: '用户ID有误',
-      })
-    }
-   
+    
   },
 
   goLogin() {
@@ -267,8 +239,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    try {
+      if (app.globalData.userInfo.id) {
+        this.setData({
+          user_id: app.globalData.userInfo.id
+        })
+      } else {
+        this.setData({
+          showLogin: true
+        })
+      }
+
+    } catch (err) {
+      console.error(err)
+      wx.showModal({
+        title: '提示',
+        content: '用户ID有误',
+      })
+    }
+
     if (this.data.user_id == 0) return
-    this.getUserInfo(this.data.user_id)  
+    this.getUserInfo(this.data.user_id) 
   },
 
   /**
